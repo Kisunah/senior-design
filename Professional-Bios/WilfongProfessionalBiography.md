@@ -36,6 +36,6 @@ training platform
 ▪ Video Games
 
 ## Type of project sought
-▪ web-based classification/experiences reporting system for senior projects teams to report
+▪ Web-based classification/experiences reporting system for senior projects teams to report
 experiences with hardware components and comment on their usability, support,
 documentation, functionality, programming, etc.
