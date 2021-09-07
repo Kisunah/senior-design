@@ -29,7 +29,7 @@ training platform
 ▪ DocuSign
 ```
 ## Areas of Interest
-▪ Cloud computing
+▪ Cloud Computing
 ▪ Database Administration
 ▪ Application Development
 ▪ Web Design
