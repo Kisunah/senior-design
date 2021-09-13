@@ -7,4 +7,4 @@
 - Seth Hanusik: hanusisw@mail.uc.edu
 
 ## Project Topic
-A web based classification and experiences reporting system for senior design teams to report their experiences with hardware components. Each user will be able to comment on each component's usability, support, documentation, functionality, programming, etc. This system will be able to help future students by aiding them in their hardware selection for their senior projects. 
+A web based classification and storage system for code snippets being set aside for future use. Each snippet will be categorized and searchable on a number of different criteria. For example, if you wrote and algorithm or function that that could be useful in another projec in the future, it can be easily stored here for later retreival rather than having to search through old code files to find the specific block that you are looking for.
