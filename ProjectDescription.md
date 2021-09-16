@@ -7,4 +7,4 @@
 - Seth Hanusik: hanusisw@mail.uc.edu
 
 ## Project Topic
-A web based classification and storage system for code snippets being set aside for future use. Each snippet will be categorized and searchable on a number of different criteria. For example, if you wrote and algorithm or function that that could be useful in another projec in the future, it can be easily stored here for later retreival rather than having to search through old code files to find the specific block that you are looking for.
+The focus of this group will be the development of a web based application for the sharing and storing of code snippets. A given user will be able save and classify a piece of code either publicly or privately. Each entry will be able to be tagged by language and purpose, allowing for an easily searchable and filterable nexus of coding solutions. Publicly posted entries will feature a liking and commenting system to promote discussion and the advancement of better code over inefficient code.
