@@ -5,7 +5,9 @@
 
 #### Explanation
 User - This represents the end-user or system-user that will be making use of the web application.
+
 Web Application - This represents the core web application that will store the user defined code snippets, comments, etc.
+
 Input - There are three primary inputs the web application will take...
 1. Code snippet accompanied by description and title.
 2. Comments/Reviews of another user's public code snippet.
