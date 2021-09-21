@@ -16,7 +16,7 @@ Input - There are three primary inputs the web application will take...
 Output - The primary output will be the end-user's public/private snippets or filtered snippets from other users. 
 
 ### D1
-![DO](D0.png)
+![D1](D1.png)
 
 #### Explanation
 
