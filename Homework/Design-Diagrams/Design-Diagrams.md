@@ -18,9 +18,7 @@ Output - The primary output will be the end-user's public/private snippets or fi
 ### D1
 ![D1](D1.png)
 
-#### Explanation
 
 ### D2
 ![D2](D2.png)
 
-#### Explanation
