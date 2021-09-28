@@ -15,8 +15,8 @@
 5. Create detailed documentation of the UI layer.
 
 ### James Wilfong - Back-end Development and Database Design
-1.
-2.
-3.
-4.
-5.
+1. Research possible back-end frameworks to use and determine which will work best for this project.
+2. Write code to handle user registration, filtering of code snippets, sorting of code snippets.
+3. Develop stored procedures for inserting and updating code snippets.
+4. Write unit tests and integration tests for back-end code.
+5. Create documentation of back-end code.
