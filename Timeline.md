@@ -2,6 +2,10 @@
 
 | Milestone | Deliverables | Completion Date |
 | --------- | ------------ | --------------- |
+| Research: Determine overall project archetecture, UI and back-end framework, and database platform  | MD file outlining project | 01/01/2022 |
+|           |              |                 |
+|           |              |                 |
+|           |              |                 |
 |           |              |                 |
 
 
@@ -9,9 +13,10 @@
 
 | #  | Task                                                                                              | Start Date | Completion Date |
 | -- | ------------------------------------------------------------------------------------------------- | ---------- | --------------- |
-| 1  | Research options for database to determine the best option for storing our data.                  | TBD        | TBD             |
-| 2  | Research different JS frameworks and determine the best fit for the projects needs.               | TBD        | TBD             |
-| 3  | Research possible back-end frameworks to use and determine which will work best for this project. | TBD        | TBD             |
+| 1  | Research options for database to determine the best option for storing our data.                  | 10/01/2021 | 12/15/2021      |
+| 2  | Research different JS frameworks and determine the best fit for the projects needs.               | 10/01/2021 | 12/15/2021      |
+| 3  | Research possible back-end frameworks to use and determine which will work best for this project. | 10/01/2021 | 12/15/2021      |
+|    | Milestone 1: Research                                                                             | 10/01/2021 | 01/01/2022      |
 | 4  | Design code snippet, comment section, and overall UI layer.                                       | TBD        | TBD             |
 | 5  | Test and develop a schema for the database and how the data will be structured.                   | TBD        | TBD             |
 | 6  | Write code to handle user registration, filtering of code snippets, sorting of code snippets.     | TBD        | TBD             |
@@ -29,9 +34,10 @@
 
 | Task #       | Lead             | Seth Hanusik | Matthew Schlager | James Wilfong   | 
 | ------------ | ---------------- | ------------ | ---------------- | --------------- |
-| 1            |                  | %            | %                | %               |
-| 2            |                  | %            | %                | %               |
-| 3            |                  | %            | %                | %               |
+| 1            | Matthew Schlager | 10%          | 80%              | 10%             |
+| 2            | Seth Hanusik     | 80%          | 10%              | 10%             |
+| 3            | James Wilfong    | 10%          | 10%              | 80%             |
+| Milestone 1  | Matthew Schlager | 33%          | 33%              | 33%             |
 | 4            |                  | %            | %                | %               |
 | 5            |                  | %            | %                | %               |
 | 6            |                  | %            | %                | %               |
