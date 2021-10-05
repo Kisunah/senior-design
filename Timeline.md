@@ -38,10 +38,10 @@
 | 1            | Matthew Schlager | 10%          | __80%__          | 10%             |
 | 2            | Seth Hanusik     | __80%__      | 10%              | 10%             |
 | 3            | James Wilfong    | 10%          | 10%              | __80%__         |
-| Milestone 1  | ---------------- | 33%          | 33%              | 33%             |
+| Milestone 1  | Matthew Schlager | 33%          | 33%              | 33%             |
 | 4            | Matthew Schlager | 10%          | __57%__          | 33%             |
 | 5            | Seth Hanusik     | __57%__      | 10%              | 33%             |
-| Milestone 2  | ---------------- | 33%          | 33%              | 33%             |
+| Milestone 2  |                  | 33%          | 33%              | 33%             |
 | 6            |                  | %            | %                | %               |
 | 7            |                  | %            | %                | %               |
 | 8            |                  | %            | %                | %               |
