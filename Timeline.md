@@ -3,7 +3,7 @@
 | Milestone | Deliverables | Completion Date |
 | --------- | ------------ | --------------- |
 | Research: Determine overall project archetecture, UI and back-end framework, and database platform  | MD file outlining project | 01/01/2022 |
-|           |              |                 |
+| Determine          |              |                 |
 |           |              |                 |
 |           |              |                 |
 |           |              |                 |
