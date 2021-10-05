@@ -41,7 +41,7 @@
 | Milestone 1  | Matthew Schlager | 33%          | 33%              | 33%             |
 | 4            | Matthew Schlager | 10%          | __57%__          | 33%             |
 | 5            | Seth Hanusik     | __57%__      | 10%              | 33%             |
-| Milestone 2  |                  | 33%          | 33%              | 33%             |
+| Milestone 2  | Seth Hanusik     | 33%          | 33%              | 33%             |
 | 6            |                  | %            | %                | %               |
 | 7            |                  | %            | %                | %               |
 | 8            |                  | %            | %                | %               |
