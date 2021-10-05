@@ -3,7 +3,7 @@
 | Milestone | Deliverables | Completion Date |
 | --------- | ------------ | --------------- |
 | Research: Determine overall project archetecture, UI and back-end framework, and database platform  | MD file outlining project | 01/01/2022 |
-| Determine          |              |                 |
+| Determine database structure and web design | Entity Relationship Diagram, UI Wireframe | 02/01/2022 |
 |           |              |                 |
 |           |              |                 |
 |           |              |                 |
@@ -19,6 +19,7 @@
 |    | Milestone 1: Research                                                                             | 10/01/2021 | 01/01/2022      |
 | 4  | Design code snippet, comment section, and overall UI layer.                                       | TBD        | TBD             |
 | 5  | Test and develop a schema for the database and how the data will be structured.                   | TBD        | TBD             |
+|    | Milestone 2: Database and Web Design                                                              | 1/01/2021 | 02/01/2022       |
 | 6  | Write code to handle user registration, filtering of code snippets, sorting of code snippets.     | TBD        | TBD             |
 | 7  | Integrate the database into project architecture.                                                 | TBD        | TBD             |
 | 8  | Develop and implement UI layer.                                                                   | TBD        | TBD             |
@@ -34,12 +35,13 @@
 
 | Task #       | Lead             | Seth Hanusik | Matthew Schlager | James Wilfong   | 
 | ------------ | ---------------- | ------------ | ---------------- | --------------- |
-| 1            | Matthew Schlager | 10%          | __80%__              | 10%             |
-| 2            | Seth Hanusik     | __80%__          | 10%              | 10%             |
-| 3            | James Wilfong    | 10%          | 10%              | __80%__             |
-| Milestone 1  | Matthew Schlager | 33%          | 33%              | 33%             |
-| 4            |                  | %            | %                | %               |
-| 5            |                  | %            | %                | %               |
+| 1            | Matthew Schlager | 10%          | __80%__          | 10%             |
+| 2            | Seth Hanusik     | __80%__      | 10%              | 10%             |
+| 3            | James Wilfong    | 10%          | 10%              | __80%__         |
+| Milestone 1  | ---------------- | 33%          | 33%              | 33%             |
+| 4            | Matthew Schlager | 10%          | __57%__          | 33%             |
+| 5            | Seth Hanusik     | __57%__      | 10%              | 33%             |
+| Milestone 2  | ---------------- | 33%          | 33%              | 33%             |
 | 6            |                  | %            | %                | %               |
 | 7            |                  | %            | %                | %               |
 | 8            |                  | %            | %                | %               |
