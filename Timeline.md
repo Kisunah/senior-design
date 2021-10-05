@@ -34,9 +34,9 @@
 
 | Task #       | Lead             | Seth Hanusik | Matthew Schlager | James Wilfong   | 
 | ------------ | ---------------- | ------------ | ---------------- | --------------- |
-| 1            | Matthew Schlager | 10%          | 80%              | 10%             |
-| 2            | Seth Hanusik     | 80%          | 10%              | 10%             |
-| 3            | James Wilfong    | 10%          | 10%              | 80%             |
+| 1            | Matthew Schlager | 10%          | __80%__              | 10%             |
+| 2            | Seth Hanusik     | __80%__          | 10%              | 10%             |
+| 3            | James Wilfong    | 10%          | 10%              | __80%__             |
 | Milestone 1  | Matthew Schlager | 33%          | 33%              | 33%             |
 | 4            |                  | %            | %                | %               |
 | 5            |                  | %            | %                | %               |
