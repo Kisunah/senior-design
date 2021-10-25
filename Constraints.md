@@ -10,5 +10,5 @@ Security will be another significant constraint for this project. We intend to a
 ## Scope
 Scope is something that has come into question as we have been building out the design for the application. While we have a base idea for what we want to accomplish, we have brought up the thought that we might be reinventing the wheel a little bit, so we want to make sure that we are able to implement a feature that sets our app apart from those that already exist and make sure the application is a viable option. So while we have the scope of the main idea, we want to expand on the idea as we develop to make our take unique. 
 
-## Econmic Cost
+## Economic Cost
 Starting out, our goal will to make the best use of open source software that is available to us to further development. This will be focused on using packages for example from NPM with node.js or NuGet with C#. Down the line, the only thing that we could consider making a small investment into for a short amount of time would be paying for a database service such as Elasticsearch to store our data as well as contain crucial APIs to make the data easily searchable via full text search. 
