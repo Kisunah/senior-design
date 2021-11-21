@@ -72,6 +72,29 @@
 
 ### 7.2 Matthew Schlager <a name="22"></a>
 
+#### Co-op Experience
+Web Development Co-op | Fortech LLC | West Chester, OH | December 2019 - Present <br>
+o Impliment upgrades and maintain internal time accounting and project management software <br>
+o Design and implimentation of internal invoice web application <br>
+o Provide support to pre-exisiting customer web applications <br>
+o Manage and maintain internal and customer databases <br>
+
+Script Services Co-op | Engine US | Cincinnati, OH | May 2018 - August 2019 <br>
+o Program and manage data collection scripts <br>
+o Verify the quality of the data collected <br>
+o Provide support to internal team members on their projects <br>
+o Coordinate with internal clients on timing, approach, and project details <br>
+o Review current processes and identify process improvements and automation <br>
+
+#### Relevant Software Experience
+
+```
+▪ Languages: C#, C++, Python, SQL, HTML, CSS, JavaScript
+▪ .NET: MVC, API, ASP.NET
+▪ Azure
+▪ Git
+```
+
 ### 7.3 James Wilfong <a name="23"></a>
 
 ## 8. Budget <a name="24"></a>
