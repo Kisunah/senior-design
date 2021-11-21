@@ -74,9 +74,9 @@
 
 #### Co-op Experience
 Web Development Co-op | Fortech LLC | West Chester, OH | December 2019 - Present <br>
-o Impliment upgrades and maintain internal time accounting and project management software <br>
-o Design and implimentation of internal invoice web application <br>
-o Provide support to pre-exisiting customer web applications <br>
+o Implement upgrades and maintain internal time accounting and project management software <br>
+o Design and implementation of internal invoice web application <br>
+o Provide support to pre-existing customer web applications <br>
 o Manage and maintain internal and customer databases <br>
 
 Script Services Co-op | Engine US | Cincinnati, OH | May 2018 - August 2019 <br>
