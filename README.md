@@ -6,8 +6,8 @@
 [2. User Stories](Homework/UserStories.md)<br>
 [3. Design Diagrams](Homework/Design-Diagrams/Design-Diagrams.md) - TODO<br>
 4. Project Tasks and Timeline<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.1 Task List](Homework/TaskList.md) - TODO<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2 Timeline & Effort Matrix](Homework/Timeline.md) - TODO<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.1 Task List](Homework/TaskList.md)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2 Timeline & Effort Matrix](Homework/Timeline.md)<br>
 5. Self-Assessment Essays - MOVE TO MD FILE<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[5.1 Seth Hanusik](Homework/Individual-Capstone-Assessment/HanusikIndividualCapstoneAssessment.docx) - TODO<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[5.2 Matthew Schlager](Homework/Individual-Capstone-Assessment/SchlagerIndividualCapstoneAssessment.md)<br>
