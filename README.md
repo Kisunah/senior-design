@@ -2,7 +2,7 @@
 
 ## Table of Contents	
 
-[1. Project Description](Homework/ProjectDescription.md) - TODO<br>
+[1. Project Description](Homework/ProjectDescription.md) - REVIEW & ADD TO<br>
 [2. User Stories](Homework/UserStories.md) - TODO<br>
 [3. Design Diagrams](Homework/Design-Diagrams/Design-Diagrams.md) - TODO<br>
 4. Project Tasks and Timeline<br>
