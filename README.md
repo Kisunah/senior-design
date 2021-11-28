@@ -13,7 +13,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[5.2 Matthew Schlager](Homework/Individual-Capstone-Assessment/SchlagerIndividualCapstoneAssessment.md)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[5.3 James Wilfong](Homework/Individual-Capstone-Assessment/WilfongIndividualCapstoneAssessment.pdf) - TODO<br>
 6. Professional Biographies - MAKE CONSISTANT FORMATE, I COPIED THE FORMATE JAMES HAS<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.1 Seth Hanusik](Homework/Professional-Bios/HanusikProfessionalBiography.md) - TODO<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.1 Seth Hanusik](Homework/Professional-Bios/HanusikProfessionalBiography.md)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.2 Matthew Schlager](Homework/Professional-Bios/SchlagerProfessionalBiography.md)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.3 James Wilfong](Homework/Professional-Bios/WilfongProfessionalBiography.md) - TODO<br>
 [7. Budget]() - TODO<br>
