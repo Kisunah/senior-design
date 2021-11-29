@@ -18,4 +18,4 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.2 Matthew Schlager](Homework/Professional-Bios/SchlagerProfessionalBiography.md)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.3 James Wilfong](Homework/Professional-Bios/WilfongProfessionalBiography.md)<br>
 [8. Budget](Homework/Budget.md)<br>
-[9. Appendix](Homework/Appendix.md) - TODO<br>
+[9. Appendix](Homework/Appendix.md)<br>
