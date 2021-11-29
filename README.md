@@ -4,7 +4,7 @@
 
 [1. Project Description](Homework/ProjectDescription.md)<br>
 [2. User Stories](Homework/UserStories.md)<br>
-[3. Design Diagrams](Homework/Design-Diagrams/Design-Diagrams.md) - TODO<br>
+[3. Design Diagrams](Homework/Design-Diagrams/Design-Diagrams.md) <br>
 4. Project Tasks and Timeline<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.1 Task List](Homework/TaskList.md)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2 Timeline & Effort Matrix](Homework/Timeline.md)<br>
