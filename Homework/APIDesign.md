@@ -2,7 +2,7 @@
 
 ## Full Text Search
 ### HTTP Route
-```json
+```
     POST codebaseEnpoint/search
 ```
 
@@ -54,7 +54,7 @@ Status Codes | Description
 ## Insert Data into DB
 
 ### HTTP Route
-```json
+```
 POST codebaseEnpoint/insertCode
 ```
 
@@ -79,7 +79,7 @@ Status Code | Description
 ## Vote
 
 ### HTTP Routes
-```json
+```
 POST codebaseEndpoint/codeId/upVote
 POST codebaseEndpoint/codeId/downVote
 ```
@@ -100,7 +100,7 @@ Status Code | Description
 ## Comment
 
 ### HTTP Route
-```json
+```
 POST codebaseEndpoint/codeId/comment
 ```
 
