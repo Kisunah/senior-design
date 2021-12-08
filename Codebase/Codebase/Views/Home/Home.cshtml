@@ -1,0 +1,78 @@
+﻿@*@model Codebase.Models.HomeModel*@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div id="home">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+                <div class="row">
+                    <H2>Tags</H2>
+                </div>
+                <div class="row border-bottom">
+                    <div class="mb-1" v-for="tag in tags" v-bind:key="tag.id" style="width: fit-content; padding-left: 0; padding-right: 10px;">
+                            <input type="checkbox" class="btn-check" :id="'tag-checkbox-' + tag.id" autocomplete="off">
+                            <label class="btn btn-outline-primary" :for="'tag-checkbox-' + tag.id">{{ tag.tag }}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <H2>Langauges</H2>
+                </div>
+                <div class="row">
+                    <div class="mb-1" v-for="language in languages" v-bind:key="language.id" style="width: fit-content; padding-left: 0; padding-right: 10px;">
+                            <input type="checkbox" class="btn-check" :id="'language-checkbox-' + language.id" autocomplete="off">
+                            <label class="btn btn-outline-primary" :for="'language-checkbox-' + language.id">{{ language.language }}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-7">
+                <div class="row">
+                    <div class="list-group" v-for="snippet in snippets" v-bind:key="snippet.id">
+                        <button type="button" class="list-group-item list-group-item-action" v-on:click="navigateToSnippet(snippet)">
+                            <div class="row">
+                                <div class="col-2">
+                                    <div class="row">
+                                        <i class="fas fa-arrow-up"></i>
+                                    </div>
+                                    <div class="row">
+                                        <h2>{{ snippet.upvotes - snippet.downvotes }}</h2>
+                                    </div>
+                                    <div class="row">
+                                        <i class="fas fa-arrow-down"></i>
+                                    </div>
+                                </div>
+                                <div class="col-10">
+                                    <div class="row">
+                                        <h1>{{ snippet.title }}</h1>
+                                    </div>
+                                    <div class="row">
+                                        {{ snippet.description }}
+                                    </div>
+                                    <div class="row">
+                                        {{ snippet.username }}
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="row">
+                    <H2>Top 10 Snippets</H2>
+                </div>
+                <div class="row">
+                    <div class="list-group" v-for="snippet in topTenSnippets" v-bind:key="snippet.id">
+                        <button type="button" class="list-group-item list-group-item-action" v-on:click="navigateToSnippet(snippet)">{{ snippet.upvotes - snippet.downvotes }} - {{ snippet.title }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+  <script src="~/js/home.js" asp-append-version="true"></script>
+}
