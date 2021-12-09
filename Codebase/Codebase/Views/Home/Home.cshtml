@@ -3,17 +3,17 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div id="home">
-    <div class="container-fluid">
+<div id="home" v-cloak>
+    <div class="container-lg">
         <div class="row">
             <div class="col-3">
                 <div class="row">
                     <H2>Tags</H2>
                 </div>
-                <div class="row border-bottom">
+                <div class="row">
                     <div class="mb-1" v-for="tag in tags" v-bind:key="tag.id" style="width: fit-content; padding-left: 0; padding-right: 10px;">
-                            <input type="checkbox" class="btn-check" :id="'tag-checkbox-' + tag.id" autocomplete="off">
-                            <label class="btn btn-outline-primary" :for="'tag-checkbox-' + tag.id">{{ tag.tag }}</label>
+                        <input type="checkbox" class="btn-check" :id="'tag-checkbox-' + tag.id" autocomplete="off" v-on:click="addTagFilter(tag)">
+                        <label class="btn btn-outline-primary btn-sm" :for="'tag-checkbox-' + tag.id">{{ tag.tag }}</label>
                     </div>
                 </div>
                 <div class="row">
@@ -21,41 +21,84 @@
                 </div>
                 <div class="row">
                     <div class="mb-1" v-for="language in languages" v-bind:key="language.id" style="width: fit-content; padding-left: 0; padding-right: 10px;">
-                            <input type="checkbox" class="btn-check" :id="'language-checkbox-' + language.id" autocomplete="off">
-                            <label class="btn btn-outline-primary" :for="'language-checkbox-' + language.id">{{ language.language }}</label>
+                        <input type="checkbox" class="btn-check" :id="'language-checkbox-' + language.id" autocomplete="off" v-on:click="addLanguageFilter(language)">
+                        <label class="btn btn-outline-primary btn-sm" :for="'language-checkbox-' + language.id">{{ language.language }}</label>
                     </div>
                 </div>
             </div>
             <div class="col-7">
-                <div class="row">
-                    <div class="list-group" v-for="snippet in snippets" v-bind:key="snippet.id">
-                        <button type="button" class="list-group-item list-group-item-action" v-on:click="navigateToSnippet(snippet)">
+                <div class="row overflow-auto">
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-dark" aria-current="true">
+                            <div class="row">
+                                <div class="col-3">
+                                    <h2>Snippets</h2>
+                                </div>
+                                <div class="col-9">
+                                    <div class="btn-group btn-group-sm align-middle" role="group" aria-label="Basic radio toggle button group">
+                                        <input type="radio" class="btn-check" name="filterHome" id="btnradio1" autocomplete="off" checked v-on:click="sortSnippets">
+                                        <label class="btn btn-primary" for="hot">Hot</label>
+
+                                        <input type="radio" class="btn-check" name="filterHome" id="btnradio2" autocomplete="off" v-on:click="sortSnippets">
+                                        <label class="btn btn-primary" for="popular">Popular</label>
+
+                                        <input type="radio" class="btn-check" name="filterHome" id="btnradio3" autocomplete="off" v-on:click="sortSnippets">
+                                        <label class="btn btn-primary" for="controversial">Controversial</label>
+
+                                        <input type="radio" class="btn-check" name="filterHome" id="btnradio4" autocomplete="off" v-on:click="sortSnippets">
+                                        <label class="btn btn-primary" for="week">Week</label>
+
+                                        <input type="radio" class="btn-check" name="filterHome" id="btnradio5" autocomplete="off" v-on:click="sortSnippets">
+                                        <label class="btn btn-primary" for="month">Month</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item mt-3" v-for="snippet in filteredSnippets" v-bind:key="snippet.id">
                             <div class="row">
                                 <div class="col-2">
                                     <div class="row">
-                                        <i class="fas fa-arrow-up"></i>
+                                        <i class="fas fa-arrow-up" style="text-align: center;" v-on:click="upvote(snippet)"></i>
                                     </div>
-                                    <div class="row">
-                                        <h2>{{ snippet.upvotes - snippet.downvotes }}</h2>
+                                    <div class="row justify-content-center">
+                                        <h4 style="text-align: center;">{{ snippet.upvotes - snippet.downvotes }}</h4>
                                     </div>
-                                    <div class="row">
-                                        <i class="fas fa-arrow-down"></i>
+                                    <div class="row justify-content-center">
+                                        <i class="fas fa-arrow-down" style="text-align: center;" v-on:click="downvote(snippet)"></i>
                                     </div>
                                 </div>
                                 <div class="col-10">
                                     <div class="row">
-                                        <h1>{{ snippet.title }}</h1>
-                                    </div>
+                                        <div class="col-8">
+                                            <div class="row" v-on:click="navigateToSnippet(snippet)">
+                                                <h1>{{ snippet.title }}</h1>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="row" v-on:click="gotoUser(snippet)">
+                                                Author: {{ snippet.username }}
+                                            </div>
+                                            <div class="row">
+                                                Created: {{snippet.creationDate}}
+                                            </div>
+                                        </div>
+                                    </div>   
                                     <div class="row">
-                                        {{ snippet.description }}
+                                        Language:&nbsp;
+                                        <div class="mb-1" style="width: fit-content; padding-left: 0; padding-right: 10px;">
+                                            <button type="button" :id="'language-button-' + snippet.languageID" class="btn btn-outline-primary btn-sm" disabled>{{ snippet.language }}</button>
+                                        </div>
                                     </div>
-                                    <div class="row">
-                                        {{ snippet.username }}
+                                    <div class="row" v-if="snippet.tags.length != 0">
+                                        Tags:&nbsp;
+                                        <div class="mb-1" v-for="tag in snippet.tags" v-bind:key="tag.id" style="width: fit-content; padding-left: 0; padding-right: 10px;">
+                                            <button type="button" :id="'tag-button-' + tag.id" class="btn btn-outline-primary btn-sm" disabled>{{ tag.tag }}</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </button>
-                    </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div class="col-2">
