@@ -56,9 +56,9 @@
             { id: 3, userID: 1,  username: "ProgrammerNumber1", creationDate: "2021-12-10", languageID: 1, language: "Python",     tags: [{id: 2, tag:"Parallel"}], title: "Title 3",  upvotes: 1000, downvotes: 45},
             { id: 4, userID: 1,  username: "ProgrammerNumber1", creationDate: "2021-12-11", languageID: 3, language: "JavaScript", tags: [{id: 3, tag:"Help"}], title: "Title 4",  upvotes: 1000000, downvotes: 9789},
             { id: 5, userID: 1,  username: "ProgrammerNumber1", creationDate: "2021-12-12", languageID: 1, language: "Python",     tags: [{id: 4, tag:"CUDA"}, {id: 15, tag:"CRUD"}], title: "Title 5",  upvotes: 100, downvotes: 7815},
-            { id: 6, userID: 2,  username: "Student1",          creationDate: "2021-11-08", languageID: 2, language: "Java",       tags: [{id: 5, tag:"DB"}, {id: 1, tag:"Sorting"}], title: "Title 6",  upvotes: 10000, downvotes: 45},
-            { id: 7, userID: 2,  username: "Student1",          creationDate: "2021-10-08", languageID: 3, language: "JavaScript", tags: [{id: 6, tag:"Problem"}, { id: 1, tag: "Sorting" }, { id: 8, tag: "HTTP" }, { id: 2, tag: "Parallel" }], title: "Title 7",  upvotes: 10000, downvotes: 498},
-            { id: 8, userID: 2,  username: "Student1",          creationDate: "2021-09-08", languageID: 2, language: "Java",       tags: [{id: 7, tag:"NP-Complete"}, {id: 6, tag:"Problem"}, { id: 1, tag: "Sorting" }, { id: 8, tag: "HTTP" }, { id: 2, tag: "Parallel" }], title: "Title 8",  upvotes: 100, downvotes: 78},
+            { id: 6, userID: 2,  username: "Student1",          creationDate: "2021-11-20", languageID: 2, language: "Java",       tags: [{id: 5, tag:"DB"}, {id: 1, tag:"Sorting"}], title: "Title 6",  upvotes: 10000, downvotes: 45},
+            { id: 7, userID: 2,  username: "Student1",          creationDate: "2021-11-16", languageID: 3, language: "JavaScript", tags: [{id: 6, tag:"Problem"}, { id: 1, tag: "Sorting" }, { id: 8, tag: "HTTP" }, { id: 2, tag: "Parallel" }], title: "Title 7",  upvotes: 10000, downvotes: 498},
+            { id: 8, userID: 2,  username: "Student1",          creationDate: "2021-11-14", languageID: 2, language: "Java",       tags: [{id: 7, tag:"NP-Complete"}, {id: 6, tag:"Problem"}, { id: 1, tag: "Sorting" }, { id: 8, tag: "HTTP" }, { id: 2, tag: "Parallel" }], title: "Title 8",  upvotes: 100, downvotes: 78},
             { id: 9, userID: 2,  username: "Student1",          creationDate: "2021-08-08", languageID: 1, language: "Python",     tags: [], title: "Title 9",  upvotes: 10, downvotes: 126},
             { id: 10, userID: 2, username: "Student1",          creationDate: "2021-07-08", languageID: 3, language: "JavaScript", tags: [{id: 8, tag:"HTTP"}], title: "Title 10", upvotes: 1, downvotes: 7851},
             { id: 11, userID: 2, username: "Student1",          creationDate: "2021-06-08", languageID: 3, language: "JavaScript", tags: [{id: 9, tag:"Python3"}, {id: 6, tag:"Problem"}, { id: 1, tag: "Sorting" }, { id: 8, tag: "HTTP" }, { id: 2, tag: "Parallel" }], title: "Title 11", upvotes: 100, downvotes: 781},
@@ -66,9 +66,9 @@
             { id: 13, userID: 2, username: "Student1",          creationDate: "2021-04-08", languageID: 3, language: "JavaScript", tags: [{id: 11, tag:"G++"}], title: "Title 13", upvotes: 10, downvotes: 78},
             { id: 14, userID: 3, username: "RegularDude1",      creationDate: "2021-04-15", languageID: 1, language: "Python",     tags: [{id: 12, tag:"Compiler Error"}], title: "Title 14", upvotes: 10, downvotes: 0},
             { id: 15, userID: 3, username: "RegularDude1",      creationDate: "2021-05-15", languageID: 1, language: "Python",     tags: [{id: 13, tag:"SQL"}, {id: 15, tag:"CRUD"}], title: "Title 15", upvotes: 10, downvotes: 7849},
-            { id: 16, userID: 3, username: "RegularDude1",      creationDate: "2021-06-15", languageID: 1, language: "Python",     tags: [{id: 14, tag:"Select"}, { id: 15, tag: "CRUD"}, { id: 9, tag: "Python3" }, { id: 6, tag: "Problem" }, { id: 1, tag: "Sorting" }, { id: 8, tag: "HTTP" }, { id: 2, tag: "Parallel" }, {id: 1, tag:"Sorting"}], title: "Title 16", upvotes: 1, downvotes: 78},
+            { id: 16, userID: 3, username: "RegularDude1",      creationDate: "2021-06-15", languageID: 1, language: "Python",     tags: [{id: 14, tag:"Select"}, { id: 15, tag: "CRUD"}, { id: 9, tag: "Python3" }, { id: 6, tag: "Problem" }, { id: 1, tag: "Sorting" }, { id: 8, tag: "HTTP" }, { id: 2, tag: "Parallel" }], title: "Title 16", upvotes: 1, downvotes: 78},
             { id: 17, userID: 3, username: "RegularDude1",      creationDate: "2021-07-15", languageID: 2, language: "Java",       tags: [], title: "Title 17", upvotes: 1, downvotes:950},
-            { id: 18, userID: 3, username: "RegularDude1",      creationDate: "2021-08-15", languageID: 3, language: "JavaScript", tags: [{id: 15, tag:"CRUD"}, {id: 9, tag:"Python3"}, {id: 6, tag:"Problem"}, { id: 1, tag: "Sorting" }, { id: 8, tag: "HTTP" }, { id: 2, tag: "Parallel" }, {id: 1, tag:"Sorting"}], title: "Title 18", upvotes: 10, downvotes: 0},
+            { id: 18, userID: 3, username: "RegularDude1",      creationDate: "2021-08-15", languageID: 3, language: "JavaScript", tags: [{id: 15, tag:"CRUD"}, {id: 9, tag:"Python3"}, {id: 6, tag:"Problem"}, { id: 8, tag: "HTTP" }, { id: 2, tag: "Parallel" }, {id: 1, tag:"Sorting"}], title: "Title 18", upvotes: 10, downvotes: 0},
             { id: 19, userID: 3, username: "RegularDude1",      creationDate: "2021-09-15", languageID: 3, language: "JavaScript", tags: [], title: "Title 19", upvotes: 1, downvotes: 1},
             { id: 20, userID: 3, username: "RegularDude1",      creationDate: "2021-10-15", languageID: 3, language: "JavaScript", tags: [], title: "Title 20", upvotes: 100000, downvotes: 77770},
         ],
@@ -86,7 +86,8 @@
         ],
 
         tagFilters: [],
-        languageFilters: []
+        languageFilters: [],
+        sortBy: 1
     },
 
     computed: {
@@ -94,28 +95,50 @@
         filteredSnippets: function () {
             let v = this;
 
-            //FIX ME
-
             results = v.snippets;
 
             if (v.tagFilters.length != 0) {
-                results = _.forEach(results, (s) => {
-                    if (_.forEach(s.tags, (t) => {
+                results = _.filter(results, (s) => {
+                    if (_.filter(s.tags, (t) => {
                         if (v.tagFilters.includes(t.id)) {
                             return t;
                         }
-                    }) > 0) {
+                    }).length > 0) {
                         return s;
                     }
                 })
             }
 
             if (v.languageFilters.length != 0) {
-                results = _.forEach(results, (s) => {
+                results = _.filter(results, (s) => {
                     if (v.languageFilters.includes(s.languageID)) {
                         return s;
                     }
-                })
+                });
+            }
+
+            if (v.sortBy === 1) {
+                results = _.orderBy(results, (s) => { return s.upvotes / (s.upvotes + s.downvotes);}, 'desc');
+            }
+            else if (v.sortBy === 2) {
+                results = _.orderBy(results, (s) => { return s.upvotes + s.downvotes; }, 'desc');
+            }
+            else if (v.sortBy === 3) {
+                results = _.orderBy(results, (s) => { return Math.abs((s.upvotes / (s.upvotes + s.downvotes)) - .5); }, 'asc');
+            }
+            else if (v.sortBy === 4 || v.sortBy === 5) {
+                results = _.orderBy(results, (s) => { return s.upvotes; }, 'desc');
+            }
+
+            if (v.sortBy === 4 || v.sortBy === 5) {
+                results = _.filter(results, (s) => {
+                    if (v.sortBy === 4 && moment(s.creationDate) >= moment().subtract(7, 'days')) {
+                        return s;
+                    }
+                    else if (v.sortBy === 5 && moment(s.creationDate) >= moment().subtract(30, 'days')) {
+                        return s;
+                    }
+                });
             }
 
             return results;
@@ -140,8 +163,6 @@
             else {
                 v.tagFilters.push(tag.id);
             }
-
-            alert("Tag Filer List: " + v.tagFilters);
         },
 
         addLanguageFilter: function (language) {
@@ -153,14 +174,12 @@
             else {
                 v.languageFilters.push(language.id);
             }
-
-            alert("Language Filters List: " + v.languageFilters);
         },
 
-        sortSnippets: function (event) {
+        sortSnippets: function (id) {
             let v = this;
 
-            console.log(event);
+            v.sortBy = id;
         },
 
         upvote: function (snippet) {
