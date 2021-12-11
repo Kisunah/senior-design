@@ -47,14 +47,14 @@
                         </li>
                         <li class="list-group-item mt-3" v-for="snippet in filteredSnippets" v-bind:key="snippet.id">
                             <div class="row">
-                                <div class="col-2">
+                                <div class="col-2" style="margin: auto;">
                                     <div class="row">
                                         <i class="fas fa-arrow-up" style="text-align: center;" v-on:click="upvote(snippet)"></i>
                                     </div>
-                                    <div class="row justify-content-center">
-                                        <h4 style="text-align: center;">{{ snippet.upvotes - snippet.downvotes }}</h4>
+                                    <div class="row">
+                                        <h4 style="text-align: center; margin: auto;">{{ snippet.upvotes - snippet.downvotes }}</h4>
                                     </div>
-                                    <div class="row justify-content-center">
+                                    <div class="row">
                                         <i class="fas fa-arrow-down" style="text-align: center;" v-on:click="downvote(snippet)"></i>
                                     </div>
                                 </div>
