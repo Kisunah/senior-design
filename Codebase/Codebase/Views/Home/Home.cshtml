@@ -7,29 +7,37 @@
     <div class="container-lg" style="position: fixed;">
         <div class="row" style="height: 88vh;">
             <div class="col-2">
-                <div class="row">
-                    <H2>Tags</H2>
-                </div>
-                <div class="row">
-                    <div class="mb-1" v-for="tag in tags" v-bind:key="tag.id" style="width: fit-content; padding-left: 0; padding-right: 10px;">
-                        <input type="checkbox" class="btn-check" :id="'tag-checkbox-' + tag.id" autocomplete="off" v-on:click="addTagFilter(tag)">
-                        <label class="btn btn-outline-primary btn-sm" :for="'tag-checkbox-' + tag.id">{{ tag.tag }}</label>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <H2>Tags</H2>
+                        </div>
+                        <div class="row">
+                            <div class="mb-1" v-for="tag in tags" v-bind:key="tag.id" style="width: fit-content; padding-left: 0; padding-right: 5px;">
+                                <input type="checkbox" class="btn-check" :id="'tag-checkbox-' + tag.id" autocomplete="off" v-on:click="addTagFilter(tag)">
+                                <label class="btn btn-outline-primary btn-sm" :for="'tag-checkbox-' + tag.id">{{ tag.tag }}</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <H2>Langauges</H2>
-                </div>
-                <div class="row">
-                    <div class="mb-1" v-for="language in languages" v-bind:key="language.id" style="width: fit-content; padding-left: 0; padding-right: 10px;">
-                        <input type="checkbox" class="btn-check" :id="'language-checkbox-' + language.id" autocomplete="off" v-on:click="addLanguageFilter(language)">
-                        <label class="btn btn-outline-primary btn-sm" :for="'language-checkbox-' + language.id">{{ language.language }}</label>
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <H2>Langauges</H2>
+                        </div>
+                        <div class="row">
+                            <div class="mb-1" v-for="language in languages" v-bind:key="language.id" style="width: fit-content; padding-left: 0; padding-right: 5px;">
+                                <input type="checkbox" class="btn-check" :id="'language-checkbox-' + language.id" autocomplete="off" v-on:click="addLanguageFilter(language)">
+                                <label class="btn btn-outline-primary btn-sm" :for="'language-checkbox-' + language.id">{{ language.language }}</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-8" style="padding-right: 3vh;">
-                <div class="row" style="overflow-y: scroll; height: 88vh;">
-                    <ul class="list-group">
-                        <li class="list-group-item list-group-item-dark" aria-current="true">
+            <div class="col-8">
+                <div class="row hidescroll" style="overflow-y: scroll; height: 88vh;">
+                    <div class="card">
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col-3">
                                     <h2>Snippets</h2>
@@ -44,8 +52,10 @@
                                     </div>
                                 </div>
                             </div>
-                        </li>
-                        <li class="list-group-item mt-3" v-for="snippet in filteredSnippets" v-bind:key="snippet.id">
+                        </div>
+                    </div>
+                    <div class="card mt-3" v-for="snippet in filteredSnippets" v-bind:key="snippet.id">
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col-2" style="margin: auto;">
                                     <div class="row">
@@ -88,17 +98,26 @@
                                     </div>
                                 </div>
                             </div>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-2" style="height: 88vh;">
-                <div class="row">
-                    <H2>Top 10 Snippets</H2>
-                </div>
-                <div class="row">
-                    <div class="list-group" v-for="snippet in topTenSnippets" v-bind:key="snippet.id">
-                        <button type="button" class="list-group-item list-group-item-action" v-on:click="navigateToSnippet(snippet)">{{ snippet.upvotes - snippet.downvotes }} - {{ snippet.title }}</button>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <H2>Trending</H2>
+                        </div>
+                        <div class="row">
+                            <table class="table table-borderless">
+                                <tbody>
+                                    <tr v-for="snippet in topTenSnippets" v-bind:key="snippet.id">
+                                        <td style="text-align: right;" scope="row">{{ snippet.upvotes - snippet.downvotes }}</td>
+                                        <td v-on:click="navigateToSnippet(snippet)">{{ snippet.title }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

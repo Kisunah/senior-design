@@ -36,7 +36,8 @@
             downvotes: 676,
             comments: 57
         },
-        sortBy: 1
+        sortBy: 1,
+        hidePublic: false
     },
 
     computed: {
@@ -44,6 +45,14 @@
             let v = this;
 
             results = v.snippets;
+
+            if (v.hidePublic) {
+                results = _.filter(results, (s) => {
+                    if (s.isPrivate) {
+                        return s;
+                    }
+                });
+            }
 
             if (v.sortBy === 1) {
                 results = _.orderBy(results, (s) => { return s.upvotes / (s.upvotes + s.downvotes); }, 'desc');
@@ -85,6 +94,17 @@
             let v = this;
 
             v.sortBy = id;
+        },
+
+        filterLock: function () {
+            let v = this;
+
+            if (v.hidePublic) {
+                v.hidePublic = false;
+            }
+            else {
+                v.hidePublic = true
+            }
         },
 
         upvote: function (snippet) {
