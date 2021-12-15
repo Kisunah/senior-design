@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "57e27327-49eb-451c-9a4f-ee8bd6059400",
+		"name": "Codebase",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "createIndex",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{codebaseEndpoint}}/codebase/createIndex",
+					"host": [
+						"{{codebaseEndpoint}}"
+					],
+					"path": [
+						"codebase",
+						"createIndex"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "indexData",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"code\": \"test codeBlock\",\r\n    \"isPublic\": true,\r\n    \"tags\": [\"tag1\", \"tag2\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{codebaseEndpoint}}/codebase/indexData",
+					"host": [
+						"{{codebaseEndpoint}}"
+					],
+					"path": [
+						"codebase",
+						"indexData"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

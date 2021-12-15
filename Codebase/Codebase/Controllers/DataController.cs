@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿erusing Microsoft.AspNetCore.Mvc;
 using Codebase.Managers;
 using Codebase.InputOutput;
 
@@ -18,7 +18,7 @@ namespace Codebase.Controllers
 
 
         [HttpPost]
-        [Route("/codebase/insertData")]
+        [Route("/codebase/indexData")]
         [ProducesResponseType(typeof(void), 204)]
         [Produces("application/json")]
         public async Task<IActionResult> InsertDataAsync(
