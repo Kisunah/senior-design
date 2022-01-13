@@ -19,7 +19,7 @@
                     <div>{{ user.description }}</div>
                 </div>
                 <div class="row mt-3">
-                    <ul class="list-group">
+                    <ul class="list-group shadow">
                       <li class="list-group-item active" aria-current="true">Stats for Nerds</li>
                       <li class="list-group-item">Number of Posts: {{ user.numberOfPosts }}</li>
                       <li class="list-group-item">Upvotes: {{ user.upvotes }}</li>
@@ -30,7 +30,7 @@
             </div>
             <div class="col-10" style="padding-right: 3vh;">
                 <div class="row hidescroll" style="overflow-y: scroll; height: 88vh;">
-                    <div class="card">
+                    <div class="card shadow">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-3">
@@ -52,7 +52,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card mt-3" v-for="snippet in sortedSnippets" v-bind:key="snippet.id">
+                    <div class="card shadow mt-3" v-for="snippet in sortedSnippets" v-bind:key="snippet.id">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-2" style="margin: auto;">
