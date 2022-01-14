@@ -13,10 +13,12 @@
                             <H2>Tags</H2>
                         </div>
                         <div class="row">
-                            <div class="mb-1" v-for="tag in tags" v-bind:key="tag.id" style="width: fit-content; padding-left: 0; padding-right: 5px;">
-                                <input type="checkbox" class="btn-check" :id="'tag-checkbox-' + tag.id" autocomplete="off" v-on:click="addTagFilter(tag)">
-                                <label class="btn btn-outline-primary btn-sm" :for="'tag-checkbox-' + tag.id">{{ tag.tag }}</label>
-                            </div>
+                            <p>
+                                <div class="mb-1" v-for="tag in tags" v-bind:key="tag.id" style="width: fit-content; padding-left: 0; padding-right: 5px;">
+                                    <input type="checkbox" class="btn-check" :id="'tag-checkbox-' + tag.id" autocomplete="off" v-on:click="addTagFilter(tag)">
+                                    <label class="btn btn-outline-primary btn-sm" :for="'tag-checkbox-' + tag.id">{{ tag.tag }}</label>
+                                </div>
+                            </p>
                         </div>
                     </div>
                 </div>
