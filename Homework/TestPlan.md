@@ -65,6 +65,75 @@ For Codebase, our testing plan primarily focuses on initially testing each compo
 <br>**UIT-6.8**  - Functional
 <br>**UIT-6.9**  - Unit Test
 
+<br>**UIT-7.1**  - **API Test 1**
+<br>**UIT-7.2**  - Assure our indexing API properly indexes new data into the database
+<br>**UIT-7.3**  - Call the indexData API and ensure that the data is properly indexed into the data base and can be accessed
+<br>**UIT-7.4**  - JSON object: code snippet as a string, boolean for isPublic, and list of tags as strings
+<br>**UIT-7.5**  - 204 HTTP code
+<br>**UIT-7.6**  - Normal
+<br>**UIT-7.7**  - Blackbox
+<br>**UIT-7.8**  - Functional
+<br>**UIT-7.9**  - Unit Test
+
+<br>**UIT-8.1**  - **API Test 2**
+<br>**UIT-8.2**  - Assure our voting APIs properly add the vote objects to the database and increment the correct value
+<br>**UIT-8.3**  - Call the upVote API on a code snippet and check that the all values are properly updated
+<br>**UIT-8.4**  - Route variables: codeGuid (Unique ID for code snippets) and postType (whether the item being upvoted is a code snippet or a comment)
+<br>**UIT-8.5**  - 204 HTTP code
+<br>**UIT-8.6**  - Normal
+<br>**UIT-8.7**  - Blackbox
+<br>**UIT-8.8**  - Functional
+<br>**UIT-8.9**  - Unit Test
+
+<br>**UIT-9.1**  - **API Test 3**
+<br>**UIT-9.2**  - Assure our voting APIs propery add the vote objects to the database and decrement the correct value
+<br>**UIT-9.3**  - Call the downVote API on a code snippet and check that all values are properly updated
+<br>**UIT-9.4**  - Route variables: codeGuid (Unique ID for code snippets) and postType (whether the item being upvoted is a code snippet or a comment)
+<br>**UIT-9.5**  - 204 HTTP code
+<br>**UIT-9.6**  - Normal
+<br>**UIT-9.7**  - Blackbox
+<br>**UIT-9.8**  - Functional
+<br>**UIT-9.9**  - Unit Test
+
+<br>**UIT-10.1**  - **API Test 4**
+<br>**UIT-10.2**  - Assure the comment API adds a new user comment to the proper code snippet in the database
+<br>**UIT-10.3**  - Call the createComment API on a code snippet and check that all values are properly updated
+<br>**UIT-10.4**  - JSON object: comment text. Route variables: codeGuid
+<br>**UIT-10.5**  - 204 HTTP code
+<br>**UIT-10.6**  - Normal
+<br>**UIT-10.7**  - Blackbox
+<br>**UIT-10.8**  - Functional
+<br>**UIT-10.9**  - Unit Test
+
+<br>**UIT-11.1**  - **API Test 5**
+<br>**UIT-11.2**  - Assure the upvote API works for comments
+<br>**UIT-11.3**  - Call the upVote API on a comment and check that all values are properly updated
+<br>**UIT-11.4**  - Route variables: codeGuid and postType
+<br>**UIT-11.5**  - 204 HTTP code
+<br>**UIT-11.6**  - Normal
+<br>**UIT-11.7**  - Blackbox
+<br>**UIT-11.8**  - Functional
+<br>**UIT-11.9**  - Unit Test
+
+<br>**UIT-12.1**  - **API Test 6**
+<br>**UIT-12.2**  - Assure the downvote API works for comments
+<br>**UIT-12.3**  - Call the downVote API on a comment and check that all values are properly updated
+<br>**UIT-12.4**  - Route variables: codeGuid and postType
+<br>**UIT-12.5**  - 204 HTTP code
+<br>**UIT-12.6**  - Normal
+<br>**UIT-12.7**  - Blackbox
+<br>**UIT-12.8**  - Functional
+<br>**UIT-12.9**  - Unit Test
+
+<br>**UIT-13.1**  - **API Test 7**
+<br>**UIT-13.2**  - Assure the full text search API returns the proper results
+<br>**UIT-13.3**  - Call the search API and verify returned results are the desired results
+<br>**UIT-13.4**  - JSON object: search string, list of filters
+<br>**UIT-13.5**  - 200 HTTP code and search results
+<br>**UIT-13.6**  - Normal
+<br>**UIT-13.7**  - Blackbox
+<br>**UIT-13.8**  - Functional
+<br>**UIT-13.9**  - Unit Test
 ## Test Case Matrix
 
 |       | Normal/Abnormal | Blackbox/Whitebox | Functional/Performance | Unit/Integration |
@@ -75,3 +144,10 @@ For Codebase, our testing plan primarily focuses on initially testing each compo
 | UIT-4 | Normal          | Blackbox          | Functional             | Unit             |
 | UIT-5 | Normal          | Blackbox          | Functional             | Unit             |
 | UIT-6 | Normal          | Blackbox          | Functional             | Unit             |
+| UIT-7 | Normal          | Blackbox          | Functional             | Unit             |
+| UIT-8 | Normal          | Blackbox          | Functional             | Unit             |
+| UIT-9 | Normal          | Blackbox          | Functional             | Unit             |
+| UIT-10 | Normal          | Blackbox          | Functional             | Unit             |
+| UIT-11 | Normal          | Blackbox          | Functional             | Unit             |
+| UIT-12 | Normal          | Blackbox          | Functional             | Unit             |
+| UIT-13 | Normal          | Blackbox          | Functional             | Unit             |
