@@ -4,6 +4,8 @@
     {
         public string UserId { get; set; }
 
+        public string ParentGuid { get; set; }
+
         public string VoteGuid { get; set; }
 
         public string VoteType { get; set; }

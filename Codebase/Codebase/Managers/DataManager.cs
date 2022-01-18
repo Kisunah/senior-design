@@ -40,6 +40,7 @@ namespace Codebase.Managers
             if (!indexResponse.ToString().Contains("201")) throw new Exception("Error indexing the data.");
         }
 
+        #region privateMethods
         private Codeblock PrepareCodeblockForInsert(DataInput input)
         {
             Codeblock codeblock = new Codeblock
@@ -57,5 +58,7 @@ namespace Codebase.Managers
 
             return codeblock;
         }
+
+        #endregion
     }
 }

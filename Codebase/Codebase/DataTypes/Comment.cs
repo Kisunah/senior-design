@@ -6,6 +6,8 @@
 
         public string CommentGuid { get; set; }
 
+        public string ParentGuid { get; set; }
+
         public string UserId { get; set; }
 
         public int VoteCount { get; set; }
