@@ -8,16 +8,25 @@ html {
     position: relative;
     min-height: 100%;
     font-size: 14px;
-    background-color: #272727;
-}
-
-.nav {
-    background-color: #00000069;
-    color: white;
+    background-color: #1c1c1c;
 }
 
 body {
   margin-bottom: 60px;
+}
+
+.navbar {
+    background-color: #00000069 !important;
+    color: white !important;
+}
+
+.form-control {
+    background-color: #00000069;
+    color: white;
+}
+
+.table {
+    color: white;
 }
 
 .card {

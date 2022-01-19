@@ -6,7 +6,7 @@
     <div class="container-lg">
         <div class="row">
             <div class="col-10">
-                <div class="row hidescroll" style="overflow-y: scroll; height: 80vh;">
+                <div class="row hidescroll" style="overflow-y: scroll; height: 86vh;">
                     <div class="card shadow">
                         <div class="card-body">
 
@@ -53,18 +53,18 @@
                         </div>
                     </div>
 
-                    <div class="card shadow">
+                    <div class="card shadow mt-5">
                         <div class="card-body">
-                            <div class="media">
+                            <h1>Comments</h1>
+                            <div class="media mt-4" v-for="comment in comments" v-bind:key="comment.id">
                                 <div class="media-body">
-                                    <h5 class="mt-0">Media heading</h5>
-                                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                    <h5 class="mt-0">{{ comment.username }}</h5>
+                                    {{ comment.comment }}
 
-                                    <div class="media ml-3 mt-3">
-                        
+                                    <div class="media mt-3" style="margin-left: 5vh;" v-if="comment.replies.length > 0" v-for="reply in comment.replies" v-bind:key="reply.id">
                                         <div class="media-body">
-                                            <h5 class="mt-0">Media heading</h5>
-                                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                            <h5 class="mt-0">{{ reply.username }}</h5>
+                                            {{ reply.comment }}
                                         </div>
                                     </div>
                                 </div>
