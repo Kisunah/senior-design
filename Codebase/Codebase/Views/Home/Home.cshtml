@@ -10,26 +10,24 @@
                 <div class="card shadow">
                     <div class="card-body">
                         <div class="row">
-                            <H2>Tags</H2>
+                            <H4>Tags</H4>
                         </div>
-                        <div class="row">
-                            <p>
-                                <div class="mb-1" v-for="tag in tags" v-bind:key="tag.id" style="width: fit-content; padding-left: 0; padding-right: 5px;">
-                                    <input type="checkbox" class="btn-check" :id="'tag-checkbox-' + tag.id" autocomplete="off" v-on:click="addTagFilter(tag)">
-                                    <label class="btn btn-outline-primary btn-sm" :for="'tag-checkbox-' + tag.id">{{ tag.tag }}</label>
-                                </div>
-                            </p>
+                        <div class="row" style="padding-left: inherit !important;">
+                            <div class="mb-1" v-for="tag in tags" v-bind:key="tag.id" style="width: fit-content; padding-left: 0; padding-right: 5px;">
+                                <input type="checkbox" class="btn-check" :id="'tag-checkbox-' + tag.id" autocomplete="off" v-on:click="addTagFilter(tag)">
+                                <label class="btn btn-outline-primary btn-sm" :for="'tag-checkbox-' + tag.id">{{ tag.tag }}</label>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="card shadow mt-3">
                     <div class="card-body">
                         <div class="row">
-                            <H2>Langauges</H2>
+                            <H4>Langauges</H4>
                         </div>
-                        <div class="row">
+                        <div class="row" style="padding-left: inherit !important;">
                             <div class="mb-1" v-for="language in languages" v-bind:key="language.id" style="width: fit-content; padding-left: 0; padding-right: 5px;">
-                                <input type="checkbox" class="btn-check" :id="'language-checkbox-' + language.id" autocomplete="off" v-on:click="addLanguageFilter(language)">
+                                <input type="checkbox" class="btn-check mb-1" :id="'language-checkbox-' + language.id" autocomplete="off" v-on:click="addLanguageFilter(language)">
                                 <label class="btn btn-outline-primary btn-sm" :for="'language-checkbox-' + language.id">{{ language.language }}</label>
                             </div>
                         </div>
@@ -42,7 +40,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-3">
-                                    <h2>Snippets</h2>
+                                    <h4>Snippets</h4>
                                 </div>
                                 <div class="col-9" style="text-align: right; margin: auto;">
                                     <div class="btn-group btn-group-sm" role="group">
@@ -74,7 +72,7 @@
                                     <div class="row">
                                         <div class="col-8">
                                             <div class="row" v-on:click="navigateToSnippet(snippet)">
-                                                <h1>{{ snippet.title }}</h1>
+                                                <h4>{{ snippet.title }}</h4>
                                             </div>
                                         </div>
                                         <div class="col-4">
@@ -108,7 +106,7 @@
                 <div class="card shadow">
                     <div class="card-body">
                         <div class="row">
-                            <H2>Trending</H2>
+                            <H4>Trending</H4>
                         </div>
                         <div class="row">
                             <table class="table table-borderless">
