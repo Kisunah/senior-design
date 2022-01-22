@@ -6,7 +6,7 @@ For Codebase, our testing plan primarily focuses on initially testing each compo
 
 ## Test Case Descriptions
 <br>**UI-T1.1**  - **User Interface Test 1**
-<br>**UI-T1.2**  - This test will be used to assure a given users ability to sign-up/sign-in tot eh application.
+<br>**UI-T1.2**  - This test will be used to assure a given users ability to sign-up/sign-in to the application.
 <br>**UI-T1.3**  - This test will be carried out by navigating to the login page for the application. This page will be the redirect of any web page for on the site for an unauthenticated user. When on the login-in screen the user will be prompted for a username and password, they will provide valid credentials. From there they will be able to navigate the site freely.
 <br>**UI-T1.4**  - Inputs: Valid user credentials
 <br>**UI-T1.5**  - Output: Successful login
@@ -16,7 +16,7 @@ For Codebase, our testing plan primarily focuses on initially testing each compo
 <br>**UI-T1.9**  - Unit Test
 
 <br>**UI-T2.1**  - **User Interface Test 2**
-<br>**UI-T2.2**  - This test will be used to assure a given users ability to sign-up/sign-in tot eh application.
+<br>**UI-T2.2**  - This test will be used to assure a given users ability to sign-up/sign-in to the application.
 <br>**UI-T2.3**  - This test will be carried out by navigating to the login page for the application. This page will be the redirect of any web page for on the site for an unauthenticated user. When on the login-in screen the user will be prompted for a username and password, they will provide invalid credentials. This request will be denied and the user will be asked for correct credentials.
 <br>**UI-T2.4**  - Inputs: invalid user credentials
 <br>**UI-T2.5**  - Output: Unsuccessful login
@@ -134,6 +134,67 @@ For Codebase, our testing plan primarily focuses on initially testing each compo
 <br>**API-T7.7**  - Blackbox
 <br>**API-T7.8**  - Functional
 <br>**API-T7.9**  - Unit Test
+
+<br>**S-T1.1** - **Security Test 1**
+<br>**S-T1.2**  - Assure user credentials are encrypted in transit and storage
+<br>**S-T1.3**  - Register a new user and ensure that the provided credentials are properly encrypted and stored into the database as ciphertext
+<br>**S-T1.4**  - Plaintext user credentials
+<br>**S-T1.5**  - Encrypted credentials stored in the database
+<br>**S-T1.6**  - Normal
+<br>**S-T1.7**  - Blackbox
+<br>**S-T1.8**  - Functional
+<br>**S-T1.9**  - Unit Test
+
+<br>**S-T2.1** - **Security Test 2**
+<br>**S-T2.2**  - Assure user passwords are masked by default when displayed 
+<br>**S-T2.3**  - Register a new user and ensure that the provided password is masked when being typed into the password textbox
+<br>**S-T2.4**  - Alphanumeric plaintext password
+<br>**S-T2.5**  - Masked characters displayed in place of password
+<br>**S-T2.6**  - Normal
+<br>**S-T2.7**  - Blackbox
+<br>**S-T2.8**  - Functional
+<br>**S-T2.9**  - Unit Test
+
+<br>**S-T3.1** - **Security Test 3**
+<br>**S-T3.2**  - Lock out user after 10 failed login attempts
+<br>**S-T3.3**  - Attempt to log in as a user with the wrong password 10 times and then try again with the correct password
+<br>**S-T3.4**  - 10 failed login attempts, and then an additional attempt
+<br>**S-T3.5**  - A message informs the user that their account has been blocked until an hour passes or they reset their password.
+<br>**S-T3.6**  - Normal
+<br>**S-T3.7**  - Blackbox
+<br>**S-T3.8**  - Functional
+<br>**S-T3.9**  - Unit Test
+
+<br>**S-T4.1** - **Security Test 4**
+<br>**S-T4.2**  - Require passwords to be alphanumeric, > 5 characters, and contain a special character
+<br>**S-T4.3**  - Attempt to register a user with the password Test and verify that an error is displayed
+<br>**S-T4.4**  - Register user with password Test
+<br>**S-T4.5**  - A message informs the user that their password must be longer than 5 characters and contain a special character.
+<br>**S-T4.6**  - Normal
+<br>**S-T4.7**  - Blackbox
+<br>**S-T4.8**  - Functional
+<br>**S-T4.9**  - Unit Test
+
+<br>**S-T5.1** - **Security Test 5**
+<br>**S-T5.2**  - Require old password and challenge question answer to be provided when a user chooses to change their password
+<br>**S-T5.3**  - Attempt to change a user's password through the account management page 
+<br>**S-T5.4**  - Navigate to the change password page from the account management screen
+<br>**S-T5.5**  - Ensure all following prompts are displayed: Old Password, Challenge Question Answer, New Password
+<br>**S-T5.6**  - Normal
+<br>**S-T5.7**  - Blackbox
+<br>**S-T5.8**  - Functional
+<br>**S-T5.9**  - Unit Test
+
+<br>**S-T6.1** - **Security Test 6**
+<br>**S-T6.2**  - Ensure passwords can be reset via email
+<br>**S-T6.3**  - Use the forgot password link to navigate to the reset password page
+<br>**S-T6.4**  - Provide username and email
+<br>**S-T6.5**  - Ensure that an email is received that contains a temporary password and a link to a page that requests the temporary password, new password, and challenge question answer. Once that information is provided, ensure that the user can be logged in successfully with the new password they provided.
+<br>**S-T6.6**  - Normal
+<br>**S-T6.7**  - Blackbox
+<br>**S-T6.8**  - Functional
+<br>**S-T6.9**  - Unit Test
+
 ## Test Case Matrix
 
 |       | Normal/Abnormal | Blackbox/Whitebox | Functional/Performance | Unit/Integration |
@@ -151,3 +212,9 @@ For Codebase, our testing plan primarily focuses on initially testing each compo
 | API-T5 | Normal          | Blackbox          | Functional             | Unit             |
 | API-T6 | Normal          | Blackbox          | Functional             | Unit             |
 | API-T7 | Normal          | Blackbox          | Functional             | Unit             |
+| S-T1 | Normal          | Blackbox          | Functional             | Unit             |
+| S-T2 | Normal          | Blackbox          | Functional             | Unit             |
+| S-T3 | Normal          | Blackbox          | Functional             | Unit             |
+| S-T4 | Normal          | Blackbox          | Functional             | Unit             |
+| S-T5 | Normal          | Blackbox          | Functional             | Unit             |
+| S-T6 | Normal          | Blackbox          | Functional             | Unit             |
