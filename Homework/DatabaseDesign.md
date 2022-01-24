@@ -31,6 +31,7 @@
 | ID (Primary Key) | INT          |
 | CreationDate     | Datetime     |
 | Tag              | VARCHAR(100) |
+| Description      | VARCHAR(MAX) |
 
 ## SnippetTags
 
@@ -46,6 +47,7 @@
 | ---------------- | ------------ |
 | ID (Primary Key) | INT          |
 | Language         | VARCHAR(100) |
+| Description      | VARCHAR(MAX) |
 
 ## UserVotes
 
