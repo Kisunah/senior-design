@@ -70,7 +70,7 @@
                                     <div class="row">
                                         <div class="col-8">
                                             <div class="row">
-                                                <h4 v-on:click="navigateToSnippet(snippet)">{{ snippet.title }}</h4>
+                                                <a :href="'@Url.Action("Snippet", "c")?id=' + snippet.id"><h4>{{ snippet.title }}</h4></a>
                                             </div>
                                         </div>
                                         <div class="col-4">

@@ -10,14 +10,13 @@
                 <div class="row hidescroll" style="overflow-y: scroll; height: 86vh;">
                     <div class="card shadow">
                         <div class="card-body">
-
                             <div class="row">
                                 <div class="col-10">
                                     <div class="row">
                                         <h1>{{ snippet.title }}</h1>
                                     </div>
                                     <div class="row">
-                                        <h6>Posted: {{snippet.creationDate}}</h6>   <h6 v-on:click="navigateToUser(snippet)">Author: {{ snippet.username }}</h6>
+                                        <h6>Posted: {{snippet.creationDate}}</h6>   <a :href="'@Url.Action("User", "c")?id=' + snippet.userID"><h6>Author: {{ snippet.username }}</h6></a>
                                     </div>
                                 </div>
                                 <div class="col-2" style="text-align: right; margin: auto;">
@@ -58,15 +57,14 @@
                         <div class="card-body">
                             <h1>Comments</h1>
                             <div class="media mt-4" v-for="comment in comments" v-bind:key="comment.id">
-                                <div class="media-body">
-                                    <h5 class="mt-0"><div v-on:click="navigateToUser(comment.userId)">{{ comment.username }}</div></h5>
-                                    {{ comment.comment }}
+                                <a class="media-body">
+                                <h5 class="mt-0"><a :href="'@Url.Action("User", "c")?id=' + comment.userID">{{ comment.username }}</a></h5>
+                                {{ comment.comment }}
 
-                                    <div class="media mt-3" style="margin-left: 5vh;" v-if="comment.replies.length > 0" v-for="reply in comment.replies" v-bind:key="reply.id">
-                                        <div class="media-body">
-                                            <h5 class="mt-0"><div v-on:click="navigateToUser(reply.userId)">{{ snippet.username }}</div></h5>
-                                            {{ reply.comment }}
-                                        </div>
+                                <div class="media mt-3" style="margin-left: 5vh;" v-if="comment.replies.length > 0" v-for="reply in comment.replies" v-bind:key="reply.id">
+                                    <div class="media-body">
+                                        <a :href="'@Url.Action("User", "c")?id=' + reply.userID"><h5 class="mt-0">{{ reply.username }}</h5></a>
+                                        {{ reply.comment }}
                                     </div>
                                 </div>
                             </div>
@@ -74,7 +72,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-2">
+            <div class="col-2"  style="height: 88vh;">
                 <div class="card shadow">
                     <div class="card-body">
                         <div class="row">
@@ -82,8 +80,8 @@
                         </div>
                         <div class="row">
                             <div v-for="snip in relatedSnippets" v-bind:key="snip.id">
-                                <button type="button" class="btn btn-outline-info btn-sm" disabled>{{ snip.upvotes - snip.downvotes }}</button>
-                                <div v-on:click="navigateToSnippet(snip)">{{ snip.title }}</div>
+                                <button type="button" class="btn btn-outline-info btn-sm" disabled style="width: 5vh;">{{ snip.upvotes - snip.downvotes }}</button>
+                                <a :href="'@Url.Action("Snippet", "c")?id=' + snip.id">{{ snip.title }}</a>
                             </div>
                         </div>
                     </div>

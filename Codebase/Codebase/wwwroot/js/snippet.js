@@ -85,12 +85,6 @@
 
     methods: {
 
-        navigateToSnippet: function (snippet) {
-            let v = this;
-
-            alert("Go to Snippet: " + snippet.id);
-        },
-
         tagDetails: function () {
             let v = this;
 
@@ -108,12 +102,6 @@
 
             alert("Downvote: " + snippet.id);
         },
-
-        gotoUser: function (snippet) {
-            let v = this;
-
-            alert("Go to User: " + snippet.username);
-        }
 
     }
 

@@ -90,12 +90,6 @@
 
     methods: {
 
-        navigateToSnippet: function (snippet) {
-            let v = this;
-
-            location.replace("/c/Snippet?id=" + snippet.id);
-        },
-
         sortSnippets: function (id) {
             let v = this;
 

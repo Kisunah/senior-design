@@ -15,9 +15,13 @@ body {
   margin-bottom: 60px;
 }
 
-.navbar {
+a:link, a:visited, a:hover, a:active {
+    color: inherit;
+    text-decoration: none;
+}
+
+nav {
     background-color: #00000069 !important;
-    color: white !important;
 }
 
 .form-control {

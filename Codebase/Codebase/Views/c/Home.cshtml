@@ -9,7 +9,7 @@
                 <div class="card shadow">
                     <div class="card-body">
                         <div class="row">
-                            <H4 v-on:click="tagsDetails()">Tags</H4>
+                            <a href="#"><H4 v-on:click="tagsDetails()">Tags</H4></a>
                         </div>
                         <div class="row" style="padding-left: inherit !important;">
                             <div class="mb-1" v-for="tag in tags" v-bind:key="tag.id" style="width: fit-content; padding-left: 0; padding-right: 5px;">
@@ -22,7 +22,7 @@
                 <div class="card shadow mt-3">
                     <div class="card-body">
                         <div class="row">
-                            <H4 v-on:click="languagesDetails()">Languages</H4>
+                            <a href="#"><H4 v-on:click="languagesDetails()">Languages</H4></a>
                         </div>
                         <div class="row" style="padding-left: inherit !important;">
                             <div class="mb-1" v-for="language in languages" v-bind:key="language.id" style="width: fit-content; padding-left: 0; padding-right: 5px;">
@@ -70,13 +70,12 @@
                                 <div class="col-10">
                                     <div class="row">
                                         <div class="col-8">
-                                            <div class="row">
-                                               <h4 v-on:click="navigateToSnippet(snippet)">{{ snippet.title }}</h4>
+                                            <div class="row"><a :href="'@Url.Action("Snippet", "c")?id=' + snippet.id"><h4>{{ snippet.title }}</h4></a>
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="row">
-                                                <div v-on:click="navigateToUser(snippet)">Author: {{ snippet.username }}</div>
+                                                <a :href="'@Url.Action("User", "c")?id=' + snippet.userID">Author: {{ snippet.username }}</a>
                                             </div>
                                             <div class="row">
                                                 Created: {{snippet.creationDate}}
@@ -109,7 +108,8 @@
                         </div>
                         <div class="row">
                             <div v-for="snippet in topTenSnippets" v-bind:key="snippet.id">
-                                <button type="button" class="btn btn-outline-info btn-sm" disabled>{{ snippet.upvotes - snippet.downvotes }}</button><div v-on:click="navigateToSnippet(snippet)">{{ snippet.title }}</div>
+                                <button type="button" class="btn btn-outline-info btn-sm" disabled style="width: 5vh;">{{ snippet.upvotes - snippet.downvotes }}</button>
+                                <a :href="'@Url.Action("Snippet", "c")?id=' + snippet.id">{{ snippet.title }}</a>
                             </div>
                         </div>
                     </div>
