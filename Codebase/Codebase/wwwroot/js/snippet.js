@@ -79,6 +79,8 @@
             highlightMatches: true,
             readOnly: true,
         });
+
+        alert(snippetId);
     },
 
     methods: {
@@ -87,6 +89,12 @@
             let v = this;
 
             alert("Go to Snippet: " + snippet.id);
+        },
+
+        tagDetails: function () {
+            let v = this;
+
+            alert("Tag info...");
         },
 
         upvote: function (snippet) {

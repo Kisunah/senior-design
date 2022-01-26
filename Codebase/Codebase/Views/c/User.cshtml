@@ -57,20 +57,20 @@
                             <div class="row">
                                 <div class="col-2" style="margin: auto;">
                                     <div class="row">
-                                        <i class="fas fa-arrow-up" style="text-align: center;" v-on:click="upvote(snippet)"></i>
+                                        <i class="fas fa-arrow-up"  v-on:click="upvote(snippet)" style="text-align: center;"></i>
                                     </div>
                                     <div class="row">
                                         <h4 style="text-align: center; margin: auto;">{{ snippet.upvotes - snippet.downvotes }}</h4>
                                     </div>
                                     <div class="row">
-                                        <i class="fas fa-arrow-down" style="text-align: center;" v-on:click="downvote(snippet)"></i>
+                                        <i class="fas fa-arrow-down"  v-on:click="downvote(snippet)" style="text-align: center;"></i>
                                     </div>
                                 </div>
                                 <div class="col-10">
                                     <div class="row">
                                         <div class="col-8">
-                                            <div class="row" v-on:click="navigateToSnippet(snippet)">
-                                                <h4>{{ snippet.title }}</h4>
+                                            <div class="row">
+                                                <h4 v-on:click="navigateToSnippet(snippet)">{{ snippet.title }}</h4>
                                             </div>
                                         </div>
                                         <div class="col-4">
@@ -90,13 +90,13 @@
                                     <div class="row">
                                         Language:&nbsp;
                                         <div class="mb-1" style="width: fit-content; padding-left: 0; padding-right: 10px;">
-                                            <button type="button" :id="'language-button-' + snippet.languageID" class="btn btn-outline-primary btn-sm" disabled>{{ snippet.language }}</button>
+                                            <button type="button" :id="'language-button-' + snippet.languageID" class="btn btn-outline-primary btn-sm"  v-on:click="languageDetails(snippet.languageID)">{{ snippet.language }}</button>
                                         </div>
                                     </div>
                                     <div class="row" v-if="snippet.tags.length != 0">
                                         Tags:&nbsp;
                                         <div class="mb-1" v-for="tag in snippet.tags" v-bind:key="snippet.id + '-' + tag.id" style="width: fit-content; padding-left: 0; padding-right: 10px;">
-                                            <button type="button" :id="'tag-button-' + tag.id" class="btn btn-outline-primary btn-sm" disabled>{{ tag.tag }}</button>
+                                            <button type="button" :id="'tag-button-' + tag.id" class="btn btn-outline-primary btn-sm"  v-on:click="tagDetails(tag.id)">{{ tag.tag }}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -113,3 +113,5 @@
 {
   <script src="~/js/user.js" asp-append-version="true"></script>
 }
+
+<script>var userId = @ViewBag.Id;</script>

@@ -4,11 +4,11 @@ using System.Diagnostics;
 
 namespace Codebase.Controllers
 {
-    public class HomeController : Controller
+    public class cController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<cController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public cController(ILogger<cController> logger)
         {
             _logger = logger;
         }
@@ -18,13 +18,15 @@ namespace Codebase.Controllers
             return View();
         }
 
-        public IActionResult Snippet()
+        public IActionResult Snippet(int id)
         {
+            ViewBag.Id = id;
             return View();
         }
 
-        public IActionResult User()
+        public IActionResult User(int id)
         {
+            ViewBag.Id = id;
             return View();
         }
 

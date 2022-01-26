@@ -151,7 +151,13 @@
         navigateToSnippet: function (snippet) {
             let v = this;
 
-            alert("Go to Snippet: " + snippet.id);
+            location.replace("/c/Snippet?id=" + snippet.id);
+        },
+
+        navigateToUser: function (snippet) {
+            let v = this;
+
+            location.replace("/c/User?id=" + snippet.userID);
         },
 
         addTagFilter: function (tag) {
@@ -165,6 +171,18 @@
             }
         },
 
+        tagsDetails: function () {
+            let v = this;
+
+            alert("Tags info...");
+        },
+
+        tagDetails: function () {
+            let v = this;
+
+            alert("Tag info...");
+        },
+
         addLanguageFilter: function (language) {
             let v = this;
 
@@ -174,6 +192,18 @@
             else {
                 v.languageFilters.push(language.id);
             }
+        },
+
+        languagesDetails: function () {
+            let v = this;
+
+            alert("Langauages info...");
+        },
+
+        languageDetails: function (id) {
+            let v = this;
+
+            alert("Langauage info...");
         },
 
         sortSnippets: function (id) {
@@ -193,12 +223,6 @@
 
             alert("Downvote: " + snippet.id);
         },
-
-        gotoUser: function (snippet) {
-            let v = this;
-
-            alert("Go to User: " + snippet.username);
-        }
 
     }
 

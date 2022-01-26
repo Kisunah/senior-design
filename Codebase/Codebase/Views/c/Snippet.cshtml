@@ -1,4 +1,5 @@
-﻿@{
+﻿@ViewBag.Name
+@{
     ViewData["Title"] = "Snippet";
 }
 
@@ -16,18 +17,18 @@
                                         <h1>{{ snippet.title }}</h1>
                                     </div>
                                     <div class="row">
-                                        <h6>Posted: {{snippet.creationDate}}</h6>   <h6 v-on:click="gotoUser(snippet)">Author: {{snippet.username}}</h6>
+                                        <h6>Posted: {{snippet.creationDate}}</h6>   <h6 v-on:click="navigateToUser(snippet)">Author: {{ snippet.username }}</h6>
                                     </div>
                                 </div>
                                 <div class="col-2" style="text-align: right; margin: auto;">
                                     <div class="row">
-                                        <i class="fas fa-arrow-up" style="text-align: center;" v-on:click="upvote(snippet)"></i>
+                                        <i class="fas fa-arrow-up"  v-on:click="upvote(snippet)" style="text-align: center;"></i>
                                     </div>
                                     <div class="row">
                                         <h4 style="text-align: center; margin: auto;">{{ snippet.upvotes - snippet.downvotes }}</h4>
                                     </div>
                                     <div class="row">
-                                        <i class="fas fa-arrow-down" style="text-align: center;" v-on:click="downvote(snippet)"></i>
+                                        <i class="fas fa-arrow-down"  v-on:click="downvote(snippet)" style="text-align: center;"></i>
                                     </div>
                                 </div>
                             </div>
@@ -45,7 +46,7 @@
                                     <div class="row mt-3" v-if="snippet.tags.length != 0">
                                         Tags:&nbsp;
                                         <div class="mb-1" v-for="tag in snippet.tags" v-bind:key="snippet.id + '-' + tag.id" style="width: fit-content; padding-left: 0; padding-right: 10px;">
-                                            <button type="button" :id="'tag-button-' + tag.id" class="btn btn-outline-primary btn-sm" disabled>{{ tag.tag }}</button>
+                                            <button type="button" :id="'tag-button-' + tag.id" class="btn btn-outline-primary btn-sm"  v-on:click="tagDetails(tag.id)">{{ tag.tag }}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -58,12 +59,12 @@
                             <h1>Comments</h1>
                             <div class="media mt-4" v-for="comment in comments" v-bind:key="comment.id">
                                 <div class="media-body">
-                                    <h5 class="mt-0">{{ comment.username }}</h5>
+                                    <h5 class="mt-0"><div v-on:click="navigateToUser(comment.userId)">{{ comment.username }}</div></h5>
                                     {{ comment.comment }}
 
                                     <div class="media mt-3" style="margin-left: 5vh;" v-if="comment.replies.length > 0" v-for="reply in comment.replies" v-bind:key="reply.id">
                                         <div class="media-body">
-                                            <h5 class="mt-0">{{ reply.username }}</h5>
+                                            <h5 class="mt-0"><div v-on:click="navigateToUser(reply.userId)">{{ snippet.username }}</div></h5>
                                             {{ reply.comment }}
                                         </div>
                                     </div>
@@ -80,14 +81,10 @@
                             <H2>Related</H2>
                         </div>
                         <div class="row">
-                            <table class="table table-borderless">
-                                <tbody>
-                                    <tr v-for="snip in relatedSnippets" v-bind:key="snippet.id">
-                                        <td style="text-align: right;" scope="row">{{ snip.upvotes - snip.downvotes }}</td>
-                                        <td v-on:click="navigateToSnippet(snip)">{{ snip.title }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div v-for="snip in relatedSnippets" v-bind:key="snip.id">
+                                <button type="button" class="btn btn-outline-info btn-sm" disabled>{{ snip.upvotes - snip.downvotes }}</button>
+                                <div v-on:click="navigateToSnippet(snip)">{{ snip.title }}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -98,5 +95,7 @@
 
 @section Scripts
 {
-  <script src="~/js/snippet.js" asp-append-version="true"></script>
+    <script src="~/js/snippet.js" asp-append-version="true"></script>
 }
+
+<script>var snippetId = @ViewBag.Id;</script>

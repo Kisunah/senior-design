@@ -40,6 +40,12 @@
         hidePublic: false
     },
 
+    mounted: function() {
+        let v = this;
+
+        alert(userId);
+    },
+
     computed: {
         sortedSnippets: function () {
             let v = this;
@@ -87,7 +93,7 @@
         navigateToSnippet: function (snippet) {
             let v = this;
 
-            alert("Go to Snippet: " + snippet.id);
+            location.replace("/c/Snippet?id=" + snippet.id);
         },
 
         sortSnippets: function (id) {
@@ -105,6 +111,18 @@
             else {
                 v.hidePublic = true
             }
+        },
+
+        languageDetails: function (id) {
+            let v = this;
+
+            alert("Langauage info...");
+        },
+
+        tagDetails: function () {
+            let v = this;
+
+            alert("Tag info...");
         },
 
         upvote: function (snippet) {
