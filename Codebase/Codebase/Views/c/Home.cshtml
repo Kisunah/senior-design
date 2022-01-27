@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
 <div id="home" v-cloak>
@@ -106,9 +106,11 @@
                         <div class="row">
                             <H4>Trending</H4>
                         </div>
-                        <div class="row">
-                            <div v-for="snippet in topTenSnippets" v-bind:key="snippet.id">
-                                <button type="button" class="btn btn-outline-info btn-sm" disabled style="width: 5vh;">{{ snippet.upvotes - snippet.downvotes }}</button>
+                        <div class="row" v-for="snippet in topTenSnippets" v-bind:key="snippet.id">
+                            <div class="col-3" style="margin: auto;">
+                                <button type="button" class="btn btn-outline-primary btn-sm" disabled style="width: 5vh;">{{ snippet.upvotes - snippet.downvotes }}</button>
+                            </div>
+                            <div class="col-9">
                                 <a :href="'@Url.Action("Snippet", "c")?id=' + snippet.id">{{ snippet.title }}</a>
                             </div>
                         </div>
@@ -123,3 +125,5 @@
 {
   <script src="~/js/home.js" asp-append-version="true"></script>
 }
+
+<script>var searchTerm = @ViewBag.Search;</script>

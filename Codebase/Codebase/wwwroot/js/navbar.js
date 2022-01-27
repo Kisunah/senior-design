@@ -10,7 +10,9 @@
         search: function () {
             let v = this;
 
-            alert("Search " + v.searchTerm);
+            if (v.searchTerm) {
+                window.location = '/c/Home?search=' + v.searchTerm;
+            }
         }
     }
 

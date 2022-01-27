@@ -13,8 +13,9 @@ namespace Codebase.Controllers
             _logger = logger;
         }
 
-        public IActionResult Home()
+        public IActionResult Home(string? search = null)
         {
+            ViewBag.Search = search;
             return View();
         }
 
@@ -24,9 +25,14 @@ namespace Codebase.Controllers
             return View();
         }
 
-        public IActionResult User(int id)
+        public IActionResult User(int? id = null)
         {
             ViewBag.Id = id;
+            return View();
+        }
+
+        public IActionResult Create()
+        {
             return View();
         }
 

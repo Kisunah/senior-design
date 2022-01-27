@@ -20,7 +20,7 @@ a:link, a:visited, a:hover, a:active {
     text-decoration: none;
 }
 
-nav {
+.navbar {
     background-color: #00000069 !important;
 }
 

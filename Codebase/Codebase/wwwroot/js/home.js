@@ -90,6 +90,14 @@
         sortBy: 1
     },
 
+    mounted: function () {
+        let v = this;
+
+        if (searchTerm) {
+            alert(searchTerm);
+        }
+    },
+
     computed: {
 
         filteredSnippets: function () {

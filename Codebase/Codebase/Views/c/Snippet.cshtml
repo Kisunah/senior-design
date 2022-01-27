@@ -1,5 +1,4 @@
-﻿@ViewBag.Name
-@{
+﻿@{
     ViewData["Title"] = "Snippet";
 }
 
@@ -78,9 +77,11 @@
                         <div class="row">
                             <H2>Related</H2>
                         </div>
-                        <div class="row">
-                            <div v-for="snip in relatedSnippets" v-bind:key="snip.id">
-                                <button type="button" class="btn btn-outline-info btn-sm" disabled style="width: 5vh;">{{ snip.upvotes - snip.downvotes }}</button>
+                        <div class="row" v-for="snip in relatedSnippets" v-bind:key="snip.id">
+                            <div class="col-3" style="margin: auto;">
+                                <button type="button" class="btn btn-outline-primary btn-sm" disabled style="width: 5vh;">{{ snip.upvotes - snip.downvotes }}</button>
+                            </div>
+                            <div class="col-8">
                                 <a :href="'@Url.Action("Snippet", "c")?id=' + snip.id">{{ snip.title }}</a>
                             </div>
                         </div>
