@@ -25,7 +25,7 @@ namespace Codebase.Controllers
             return View();
         }
 
-        public IActionResult User(int? id = null)
+        public IActionResult User(int id = 0)
         {
             ViewBag.Id = id;
             return View();

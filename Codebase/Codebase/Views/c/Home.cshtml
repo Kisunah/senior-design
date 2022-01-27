@@ -35,6 +35,15 @@
             </div>
             <div class="col-8">
                 <div class="row hidescroll" style="overflow-y: scroll; height: 88vh;">
+                    <div class="card shadow mb-3" v-if="searchTerm">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5>Search: "{{ searchTerm }}"</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="card shadow">
                         <div class="card-body">
                             <div class="row">
@@ -85,7 +94,7 @@
                                     <div class="row">
                                         Language:&nbsp;
                                         <div class="mb-1" style="width: fit-content; padding-left: 0; padding-right: 10px;">
-                                            <button type="button" :id="'language-button-' + snippet.languageID" class="btn btn-outline-primary btn-sm"  v-on:click="languageDetails(snippet.languageID)">{{ snippet.language }}</button>
+                                            <button type="button" :id="'language-button-' + snippet.language.id" class="btn btn-outline-primary btn-sm"  v-on:click="languageDetails(snippet.language.id)">{{ snippet.language.language }}</button>
                                         </div>
                                     </div>
                                     <div class="row" v-if="snippet.tags.length != 0">
@@ -106,7 +115,7 @@
                         <div class="row">
                             <H4>Trending</H4>
                         </div>
-                        <div class="row" v-for="snippet in topTenSnippets" v-bind:key="snippet.id">
+                        <div class="row" v-for="snippet in trendingSnippets" v-bind:key="snippet.id">
                             <div class="col-3" style="margin: auto;">
                                 <button type="button" class="btn btn-outline-primary btn-sm" disabled style="width: 5vh;">{{ snippet.upvotes - snippet.downvotes }}</button>
                             </div>
@@ -126,4 +135,4 @@
   <script src="~/js/home.js" asp-append-version="true"></script>
 }
 
-<script>var searchTerm = @ViewBag.Search;</script>
+<script>var search = "@ViewBag.Search"</script>

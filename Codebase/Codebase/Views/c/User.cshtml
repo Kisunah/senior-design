@@ -7,25 +7,51 @@
         <div class="row" style="height: 88vh;">
             <div class="col-2">
                 <div class="row mt-5">
-                    <i class="fas fa-user fa-10x" style="text-align: center;"></i>
+                    <i class="fas fa-user fa-10x" style="color: white; text-align: center;"></i>
                 </div>
                 <div class="row mt-3">
-                    <h4 style="text-align: center;">{{ user.username }}</h4>
+                    <h4 style="text-align: center; color: white;">{{ user.username }}</h4>
                 </div>
                 <div class="row">
-                    <h6 style="text-align: center;">{{ user.creationDate }}</h6>
+                    <h6 style="text-align: center; color: white;">{{ user.creationDate }}</h6>
                 </div>
                 <div class="row">
-                    <div>{{ user.description }}</div>
+                    <div style="color: white;">{{ user.description }}</div>
                 </div>
                 <div class="row mt-3">
-                    <ul class="list-group shadow">
-                      <li class="list-group-item active" aria-current="true">Stats for Nerds</li>
-                      <li class="list-group-item">Number of Posts: {{ user.numberOfPosts }}</li>
-                      <li class="list-group-item">Upvotes: {{ user.upvotes }}</li>
-                      <li class="list-group-item">Downvotes: {{ user.downvotes }}</li>
-                      <li class="list-group-item">Comments: {{ user.comments }}</li>
-                    </ul>
+                    <h5 style="color: white;">Stats for Nerds</h5>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-3" style="margin: auto;">
+                        <button type="button" class="btn btn-outline-primary btn-sm" disabled style="width: 5vh;">{{ user.numberOfPosts }}</button>
+                    </div>
+                    <div class="col-8">
+                        <p style="color: white; margin: auto;">Number of Posts</a>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-3" style="margin: auto;">
+                        <button type="button" class="btn btn-outline-primary btn-sm" disabled style="width: 5vh;">{{ user.upvotes }}</button>
+                    </div>
+                    <div class="col-8">
+                        <p style="color: white; margin: auto;">Number of Upvotes</p>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-3" style="margin: auto;">
+                        <button type="button" class="btn btn-outline-primary btn-sm" disabled style="width: 5vh;">{{ user.downvotes }}</button>
+                    </div>
+                    <div class="col-8">
+                        <p style="color: white; margin: auto;">Number of Downvotes</p>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-3" style="margin: auto;">
+                        <button type="button" class="btn btn-outline-primary btn-sm" disabled style="width: 5vh;">{{ user.comments }}</button>
+                    </div>
+                    <div class="col-8">
+                        <p style="color: white; margin: auto;">Number of Comments</p>
+                    </div>
                 </div>
             </div>
             <div class="col-10" style="padding-right: 3vh;">
