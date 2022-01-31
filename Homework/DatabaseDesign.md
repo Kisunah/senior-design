@@ -16,6 +16,7 @@
 | ------------------------ | ------------- |
 | ID (Primary Key)         | INT           |
 | UserID (Foreign Key)     | INT           |
+| IsPublic                 | Bool          |
 | CreationDate             | Datetime      |
 | LanguageID (Foreign Key) | Datetime      |
 | Title                    | VARCHAR(100)  |
