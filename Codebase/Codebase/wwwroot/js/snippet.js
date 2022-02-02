@@ -6,6 +6,7 @@
     data: {
         snippet: {},
         relatedSnippets: [],
+        editor: null,
     },
 
     mounted: function() {
@@ -13,6 +14,24 @@
 
         v.getSnippet(snippetId);
         v.getRelated(snippetId);
+
+        var textarea_editor = document.getElementById("textarea_editor");
+        textarea_editor = "";
+
+        v.editor = CodeMirror.fromTextArea(textarea_editor, {
+            tabSize: 4,
+            mode: v.snippet.language.language,
+            value: v.snippet.code,
+            theme: '3024-night',
+            lineNumbers: true,
+            styleActiveSelected: true,
+            styleActiveLine: true,
+            indentWithTabs: true,
+            matchBrackets: true,
+            highlightMatches: true,
+            readOnly: true,
+        });
+        v.editor.setSize("100%", "100%");
     },
 
     methods: {
@@ -167,8 +186,6 @@
 
                 ]
             };
-
-            v.buildCodeBlock();
         },
 
         getRelated: async function (id) {
@@ -200,26 +217,6 @@
                 { id: 11, title: "Random Java Script", upvotes: 1000, downvotes: 78 },
                 { id: 12, title: "Random Java Script", upvotes: 1000, downvotes: 46 }
             ];
-        },
-
-        buildCodeBlock: function () {
-            let v = this;
-            
-            var textarea_editor = document.getElementById("textarea_editor");
-            textarea_editor.value = v.snippet.code;
-
-            v.editor = CodeMirror.fromTextArea(textarea_editor, {
-                tabSize: 4,
-                mode: v.snippet.language.language,
-                theme: '3024-night',
-                lineNumbers: true,
-                styleActiveSelected: true,
-                styleActiveLine: true,
-                indentWithTabs: true,
-                matchBrackets: true,
-                highlightMatches: true,
-                readOnly: true,
-            });
         },
 
         tagDetails: function () {

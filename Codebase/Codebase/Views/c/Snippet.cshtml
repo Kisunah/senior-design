@@ -41,9 +41,9 @@ ViewData["Title"] = "Snippet";
                         </div>
                         <div class="row">
                            <div class="row mt-3">
-                              <div id="textarea_editor"></div>
+                              <div id="textarea_editor" class="mb-2"></div>
                            </div>
-                           <div class="row mt-3" v-if="snippet.tags.length != 0">
+                           <div class="row mt-3" v-if="snippet.tags.length > 0">
                               Tags:&nbsp;
                               <div class="mb-1" v-for="tag in snippet.tags" v-bind:key="snippet.id + '-' + tag.id" style="width: fit-content; padding-left: 0; padding-right: 10px;">
                                  <button type="button" :id="'tag-button-' + tag.id" class="btn btn-outline-primary btn-sm"  v-on:click="tagDetails(tag.id)">{{ tag.tag }}</button>
