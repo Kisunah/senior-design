@@ -2,132 +2,131 @@
 ViewData["Title"] = "Snippet";
 }
 <div id="snippet" v-cloak>
-   <div class="container-lg">
-      <div class="row">
-         <div class="col-10">
-            <div class="row hidescroll" style="overflow-y: scroll; height: 86vh;">
-               <div class="card shadow">
-                  <div class="card-body">
-                     <div class="row">
-                        <div class="col-10">
-                           <div class="row">
-                              <h1>{{ snippet.title }}</h1>
-                           </div>
-                           <div class="row">
-                              <h6>Posted: {{snippet.creationDate}}</h6>
-                              <a :href="'@Url.Action("User", "c")?id=' + snippet.userID">
-                              <h6>Author: {{ snippet.username }}</h6>
-                              </a>
-                           </div>
-                        </div>
-                        <div class="col-2" style="text-align: right; margin: auto;">
-                           <div class="row">
-                              <i class="fas fa-arrow-up"  v-on:click="upvote(snippet)" style="text-align: center;"></i>
-                           </div>
-                           <div class="row">
-                              <h4 style="text-align: center; margin: auto;">{{ snippet.upvotes - snippet.downvotes }}</h4>
-                           </div>
-                           <div class="row">
-                              <i class="fas fa-arrow-down"  v-on:click="downvote(snippet)" style="text-align: center;"></i>
-                           </div>
-                        </div>
-                     </div>
-                     <hr class="mr-3 ml-3 mt-3 mb-3"/>
-                     <div class="row">
-                        <div style="white-space: pre-wrap;">
-                           <div class="row">
-                              <p>{{snippet.description}}</p>
-                           </div>
-                        </div>
-                        <div class="row">
-                           <div class="row mt-3">
-                              <div id="textarea_editor" class="mb-2"></div>
-                           </div>
-                           <div class="row mt-3">
-                              Tags:&nbsp;
-                              <div class="mb-1" v-for="tag in snippet.tags" v-bind:key="snippet.id + '-' + tag.id" style="width: fit-content; padding-left: 0; padding-right: 10px;">
-                                 <button type="button" :id="'tag-button-' + tag.id" class="btn btn-outline-primary btn-sm"  v-on:click="tagDetails(tag)">{{ tag.tag }}</button>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="card shadow mt-5">
-                  <div class="card-body">
-                     <h1>Comments</h1>
-                     <div class="media mt-4" v-for="comment in snippet.comments" v-bind:key="comment.id">
-                        <div class="media-body">
-                           <h5 class="mt-0"><a :href="'@Url.Action("User", "c")?id=' + comment.userID">{{ comment.username }}</a></h5>
-                        </div>
-                        {{ comment.comment }}
-                        <div class="media mt-3" style="margin-left: 5vh;" v-if="comment.replies.length > 0" v-for="reply in comment.replies" v-bind:key="reply.id">
-                           <div class="media-body">
-                              <a :href="'@Url.Action("User", "c")?id=' + reply.userID">
-                              <h5 class="mt-0">{{ reply.username }}</h5>
-                              </a>
-                              {{ reply.comment }}
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="col-2"  style="height: 88vh;">
-            <div class="card shadow">
-               <div class="card-body">
-                  <div class="row">
-                     <H2>Related</H2>
-                  </div>
-                  <div class="row" v-for="snip in relatedSnippets" v-bind:key="snip.id">
-                     <div class="col-3" style="margin: auto;">
-                        <button type="button" class="btn btn-outline-primary btn-sm" disabled style="width: 5vh;">{{ snip.upvotes - snip.downvotes }}</button>
-                     </div>
-                     <div class="col-8">
-                        <a :href="'@Url.Action("Snippet", "c")?id=' + snip.id">{{ snip.title }}</a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-       <info-modal id="info-modal" v-bind:type="infoModalType" v-bind:item="infoModalItem" v-bind:description="infoModalDescription" style="display: none"></info-modal>
-
+	<div class="container-lg">
+		<div class="row">
+			<div class="col-10">
+				<div class="row hidescroll" style="overflow-y: scroll; height: 86vh;">
+					<div class="card shadow">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-10">
+									<div class="row">
+										<h1>{{ snippet.title }}</h1>
+									</div>
+									<div class="row">
+										<h6>Posted: {{snippet.creationDate}}</h6>
+										<a :href="'@Url.Action("User", "c")?id=' + snippet.userID">
+										<h6>Author: {{ snippet.username }}</h6>
+										</a>
+									</div>
+								</div>
+								<div class="col-2" style="text-align: right; margin: auto;">
+									<div class="row">
+										<i class="fas fa-arrow-up"  v-on:click="upvote(snippet)" style="text-align: center;"></i>
+									</div>
+									<div class="row">
+										<h4 style="text-align: center; margin: auto;">{{ snippet.upvotes - snippet.downvotes }}</h4>
+									</div>
+									<div class="row">
+										<i class="fas fa-arrow-down"  v-on:click="downvote(snippet)" style="text-align: center;"></i>
+									</div>
+								</div>
+							</div>
+							<hr class="mr-3 ml-3 mt-3 mb-3"/>
+							<div class="row">
+								<div style="white-space: pre-wrap;">
+									<div class="row">
+										<p>{{snippet.description}}</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="row mt-3">
+										<div id="textarea_editor" class="mb-2"></div>
+									</div>
+									<div class="row mt-3">
+										Tags:&nbsp;
+										<div class="mb-1" v-for="tag in snippet.tags" v-bind:key="snippet.id + '-' + tag.id" style="width: fit-content; padding-left: 0; padding-right: 10px;">
+											<button type="button" :id="'tag-button-' + tag.id" class="btn btn-outline-primary btn-sm"  v-on:click="tagDetails(tag)">{{ tag.tag }}</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card shadow mt-5">
+						<div class="card-body">
+							<h1>Comments</h1>
+							<div class="media mt-4" v-for="comment in snippet.comments" v-bind:key="comment.id">
+								<div class="media-body">
+									<h5 class="mt-0"><a :href="'@Url.Action("User", "c")?id=' + comment.userID">{{ comment.username }}</a></h5>
+								</div>
+								{{ comment.comment }}
+								<div class="media mt-3" style="margin-left: 5vh;" v-if="comment.replies.length > 0" v-for="reply in comment.replies" v-bind:key="reply.id">
+									<div class="media-body">
+										<a :href="'@Url.Action("User", "c")?id=' + reply.userID">
+										<h5 class="mt-0">{{ reply.username }}</h5>
+										</a>
+										{{ reply.comment }}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-2"  style="height: 88vh;">
+				<div class="card shadow">
+					<div class="card-body">
+						<div class="row">
+							<H2>Related</H2>
+						</div>
+						<div class="row" v-for="snip in relatedSnippets" v-bind:key="snip.id">
+							<div class="col-3" style="margin: auto;">
+								<button type="button" class="btn btn-outline-primary btn-sm" disabled style="width: 5vh;">{{ snip.upvotes - snip.downvotes }}</button>
+							</div>
+							<div class="col-8">
+								<a :href="'@Url.Action("Snippet", "c")?id=' + snip.id">{{ snip.title }}</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<info-modal id="info-modal" v-bind:type="infoModalType" v-bind:item="infoModalItem" v-bind:description="infoModalDescription" style="display: none"></info-modal>
 </div>
 @section Scripts
 {
-      <script src="~/js/infoModal.js" asp-append-version="true"></script>
+<script src="~/js/infoModal.js" asp-append-version="true"></script>
 <script src="~/js/snippet.js" asp-append-version="true"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/asciiarmor/asciiarmor.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/clike/clike.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/clojure/clojure.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/cmake/cmake.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/css/css.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/go/go.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/haskell/haskell.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/htmlembedded/htmlembedded.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/javascript/javascript.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/markdown/markdown.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/mathematica/mathematica.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/pascal/pascal.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/perl/perl.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/php/php.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/powershell/powershell.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/properties/properties.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/python/python.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/q/q.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/r/r.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/ruby/ruby.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/sas/sas.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/sass/sass.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/scheme/scheme.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/shell/shell.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/spreadsheet/spreadsheet.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/sql/sql.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/swift/swift.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/vb/vb.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/yaml/yaml.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/asciiarmor/asciiarmor.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/clike/clike.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/clojure/clojure.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/cmake/cmake.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/css/css.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/go/go.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/haskell/haskell.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/htmlembedded/htmlembedded.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/javascript/javascript.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/markdown/markdown.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/mathematica/mathematica.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/pascal/pascal.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/perl/perl.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/php/php.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/powershell/powershell.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/properties/properties.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/python/python.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/q/q.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/r/r.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/ruby/ruby.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/sas/sas.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/sass/sass.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/scheme/scheme.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/shell/shell.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/spreadsheet/spreadsheet.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/sql/sql.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/swift/swift.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/vb/vb.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/yaml/yaml.js"></script>
 }
 <script>var snippetId = @ViewBag.Id;</script>

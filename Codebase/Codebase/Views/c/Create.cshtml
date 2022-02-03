@@ -1,102 +1,97 @@
 ﻿@{
 ViewData["Title"] = "Create";
 }
-
 <div id="create" v-cloak>
-   <div class="container-lg" style="position: fixed;">
-      <div class="row hidescroll" style="overflow-y: scroll; height: 86vh;">
-         <div class="col-2"></div>
-         <div class="col-8">
-            <form>
-               <div class="form-group row mb-2">
-                  <label class="col-sm-2 col-form-label">Snippet Title</label>
-                  <div class="col-sm-10">
-                    <input class="form-control" placeholder="My Snippet" v-model="title">
-                  </div>
-               </div>
-               <div class="form-group row mb-2">
-                  <label class="col-sm-2 col-form-label">Language</label>
-                  <div class="col-sm-10">
-                      <select class="form-control" v-model="language" >
-                         <option v-for="language in languages" :id="language.id" :value="language">{{ language.language }}</option>
-                      </select>
-                  </div>
-               </div>
-               <div class="form-group row mb-2">
-                  <label class="col-sm-2 col-form-label">Description</label>
-                  <div class="col-sm-10">
-                      <textarea v-model="description"></textarea>
-                  </div>
-               </div>
-               <fieldset class="form-group row mb-2">
-                  <label class="col-sm-2 col-form-label">Is Private</label>
-                     <div class="col-sm-10">
-                        <div class="form-check">
-                           <input class="form-check-input" type="radio" v-model="isPrivate" name="gridRadios" id="gridRadios1" value="true" checked>
-                           <label class="form-check-label">
-                           Private
-                           </label>
-                        </div>
-                        <div class="form-check">
-                           <input class="form-check-input" type="radio" v-model="isPrivate" name="gridRadios" id="gridRadios2" value="false">
-                           <label class="form-check-label">
-                           Public
-                           </label>
-                        </div>
-                     </div>
-               </fieldset>
-               <div id="textarea_editor" class="mb-2"></div>
-               <div class="form-group row  mt-2 mb-2">
-                  <label class="col-sm-2 col-form-label">Tags</label>
-                  <div class="col-sm-10">
-                     <button type="button" v-if="selectedTags.length > 0" v-for="tag in selectedTags" :id="'tag-button-' + tag.id" class="btn btn-outline-primary btn-sm mr-2"  disabled>{{ tag.tag }}</button>
-                     <button type="button" class="btn btn-outline-primary btn-sm"  v-on:click="addTags()"><i class="fas fa-plus" style="color: white;"></i></button>
-                  </div>
-               </div>
-               <button type="button" class="btn btn-outline-primary" v-on:click="returnHome()">Discard</button>
-               <button type="submit" class="btn btn-outline-primary" v-on:click="saveSnippet()">Submit</button>
-            </form>
-         </div>
-         <div class="col-2"></div>
-      </div>
-   </div>
-
-       <filter-modal id="filter-modal" v-bind:type="filterModalType" v-bind:data="filterModalData" v-bind:selected="filterModalSelected" v-on:clicked="editFromModal" style="display: none"></filter-modal>
-
+	<div class="container-lg" style="position: fixed;">
+		<div class="row hidescroll" style="overflow-y: scroll; height: 86vh;">
+			<div class="col-2"></div>
+			<div class="col-8">
+				<form>
+					<div class="form-group row mb-2">
+						<label class="col-sm-2 col-form-label">Snippet Title</label>
+						<div class="col-sm-10">
+							<input class="form-control" placeholder="My Snippet" v-model="title">
+						</div>
+					</div>
+					<div class="form-group row mb-2">
+						<label class="col-sm-2 col-form-label">Language</label>
+						<div class="col-sm-10">
+							<select class="form-control" v-model="language" >
+								<option v-for="language in languages" :id="language.id" :value="language">{{ language.language }}</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group row mb-2">
+						<label class="col-sm-2 col-form-label">Description</label>
+						<div class="col-sm-10">
+							<textarea v-model="description"></textarea>
+						</div>
+					</div>
+					<fieldset class="form-group row mb-2">
+						<label class="col-sm-2 col-form-label">Is Private</label>
+						<div class="col-sm-10">
+							<div class="form-check">
+								<input class="form-check-input" type="radio" v-model="isPrivate" name="gridRadios" id="gridRadios1" value="true" checked>
+								<label class="form-check-label">
+								Private
+								</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" v-model="isPrivate" name="gridRadios" id="gridRadios2" value="false">
+								<label class="form-check-label">
+								Public
+								</label>
+							</div>
+						</div>
+					</fieldset>
+					<div id="textarea_editor" class="mb-2"></div>
+					<div class="form-group row  mt-2 mb-2">
+						<label class="col-sm-2 col-form-label">Tags</label>
+						<div class="col-sm-10">
+							<button type="button" v-if="selectedTags.length > 0" v-for="tag in selectedTags" :id="'tag-button-' + tag.id" class="btn btn-outline-primary btn-sm mr-2"  disabled>{{ tag.tag }}</button>
+							<button type="button" class="btn btn-outline-primary btn-sm"  v-on:click="addTags()"><i class="fas fa-plus" style="color: white;"></i></button>
+						</div>
+					</div>
+					<button type="button" class="btn btn-outline-primary" v-on:click="returnHome()">Discard</button>
+					<button type="submit" class="btn btn-outline-primary" v-on:click="saveSnippet()">Submit</button>
+				</form>
+			</div>
+			<div class="col-2"></div>
+		</div>
+	</div>
+	<filter-modal id="filter-modal" v-bind:type="filterModalType" v-bind:data="filterModalData" v-bind:selected="filterModalSelected" v-on:clicked="editFromModal" style="display: none"></filter-modal>
 </div>
-
 @section Scripts
 {
-    
-  <script src="~/js/filterModal.js" asp-append-version="true"></script>
-    <script src="~/js/create.js" asp-append-version="true"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/asciiarmor/asciiarmor.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/clike/clike.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/clojure/clojure.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/cmake/cmake.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/css/css.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/go/go.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/haskell/haskell.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/htmlembedded/htmlembedded.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/javascript/javascript.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/markdown/markdown.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/mathematica/mathematica.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/pascal/pascal.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/perl/perl.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/php/php.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/powershell/powershell.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/properties/properties.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/python/python.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/q/q.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/r/r.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/ruby/ruby.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/sas/sas.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/sass/sass.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/scheme/scheme.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/shell/shell.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/spreadsheet/spreadsheet.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/sql/sql.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/swift/swift.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/vb/vb.js"></script>
-    <script src="~/lib/codemirror-5.65.0/mode/yaml/yaml.js"></script>
+<script src="~/js/filterModal.js" asp-append-version="true"></script>
+<script src="~/js/create.js" asp-append-version="true"></script>
+<script src="~/lib/codemirror-5.65.0/mode/asciiarmor/asciiarmor.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/clike/clike.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/clojure/clojure.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/cmake/cmake.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/css/css.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/go/go.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/haskell/haskell.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/htmlembedded/htmlembedded.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/javascript/javascript.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/markdown/markdown.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/mathematica/mathematica.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/pascal/pascal.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/perl/perl.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/php/php.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/powershell/powershell.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/properties/properties.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/python/python.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/q/q.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/r/r.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/ruby/ruby.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/sas/sas.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/sass/sass.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/scheme/scheme.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/shell/shell.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/spreadsheet/spreadsheet.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/sql/sql.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/swift/swift.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/vb/vb.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/yaml/yaml.js"></script>
 }

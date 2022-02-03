@@ -1,73 +1,72 @@
 ﻿var filterModal = Vue.component('filter-modal', {
 
-    props: {
-        type: String,
-        data: Array,
-        selected: Array
-    },
+	props: {
+		type: String,
+		data: Array,
+		selected: Array
+	},
 
-    data: function () {
-        return {
-            search: "",
-        }
-    },
+	data: function () {
+		return {
+			search: "",
+		}
+	},
 
-    computed: {
+	computed: {
 
-        items: function () {
-            let v = this;
+		items: function () {
+			let v = this;
 
-            _.forEach(v.data, function (d) {
-                if (v.selected.includes(d.id)) {
-                    d.checked = true;
-                } else {
-                    d.checked = false;
-                }
-            });
+			_.forEach(v.data, function (d) {
+				if (v.selected.includes(d.id)) {
+					d.checked = true;
+				} else {
+					d.checked = false;
+				}
+			});
 
-            if (v.search === "") {
-                return v.data;
-            }
+			if (v.search === "") {
+				return v.data;
+			}
 
-            if (v.type === "Tag") {
-                return _.filter(v.data, function (d) {
-                    if (d.tag.includes(v.search)) {
-                        return d;
-                    }
-                });
-            } else {
-                return _.filter(v.data, function (d) {
-                    if (d.language.includes(v.search)) {
-                        return d;
-                    }
-                });
-            }
-        }
+			if (v.type === "Tag") {
+				return _.filter(v.data, function (d) {
+					if (d.tag.includes(v.search)) {
+						return d;
+					}
+				});
+			} else {
+				return _.filter(v.data, function (d) {
+					if (d.language.includes(v.search)) {
+						return d;
+					}
+				});
+			}
+		}
 
-    },
+	},
 
-    methods: {
+	methods: {
 
-        editItem: function (item) {
-            let v = this;
+		editItem: function (item) {
+			let v = this;
 
-            _.forEach(v.data, function (d) {
-                if (item.id === d.id) {
-                    if (d.checked === true) {
-                        d.checked = false;
-                        v.$emit('clicked', v.type, 'removed', item.id);
-                    } else {
-                        d.checked = true;
-                        v.$emit('clicked', v.type, 'added', item.id);
-                    }
-                }
-            });
-        },
+			_.forEach(v.data, function (d) {
+				if (item.id === d.id) {
+					if (d.checked === true) {
+						d.checked = false;
+						v.$emit('clicked', v.type, 'removed', item.id);
+					} else {
+						d.checked = true;
+						v.$emit('clicked', v.type, 'added', item.id);
+					}
+				}
+			});
+		},
 
-    },
+	},
 
-    template:
-        `<div id="filterModal" class="modal bd-example-modal-lg" tabindex="-1" role="dialog">
+	template: `<div id="filterModal" class="modal bd-example-modal-lg" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="container-lg mr-2 ml-2">

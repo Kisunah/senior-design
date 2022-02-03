@@ -6,8 +6,7 @@
         description: String,
     },
 
-    template:
-        `<div id="infoModal" class="modal" tabindex="-1" role="dialog">
+    template: `<div id="infoModal" class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="container-lg mr-2 ml-2">
