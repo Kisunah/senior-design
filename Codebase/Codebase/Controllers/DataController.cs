@@ -16,6 +16,25 @@ namespace Codebase.Controllers
             dataManager = new DataManager();
         }
 
+        [HttpPost]
+        [Route("/codebase/createIndex")]
+        [ProducesResponseType(typeof(void), 201)]
+        [Produces("application/json")]
+        public async Task<IActionResult> CreateIndex()
+        {
+            IActionResult actionResult;
+            try
+            {
+                await dataManager.CreateIndex();
+                actionResult = new NoContentResult();
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw new Exception(ex.Message);
+            }
+            return actionResult;
+        }
 
         [HttpPost]
         [Route("/codebase/indexData")]
@@ -39,18 +58,62 @@ namespace Codebase.Controllers
         }
 
         [HttpPost]
-        [Route("/codebase/createIndex")]
-        [ProducesResponseType(typeof(void), 201)]
+        [Route("/codebase/{codeblockGuid}/createComment")]
+        [ProducesResponseType(typeof(void), 204)]
         [Produces("application/json")]
-        public async Task<IActionResult> CreateIndex()
+        public async Task<IActionResult> createCommentAsync(
+            [FromBody] CreateCommentInput input,
+            [FromRoute] string codeblockGuid)
         {
             IActionResult actionResult;
             try
             {
-                await dataManager.CreateIndex();
+                await dataManager.CreateComment(input, codeblockGuid);
                 actionResult = new NoContentResult();
             }
-            catch(Exception ex)
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw new Exception(ex.Message);
+            }
+            return actionResult;
+        }
+
+        [HttpPost]
+        [Route("/codebase/{codeblockGuid}/upVote")]
+        [ProducesResponseType(typeof(void), 204)]
+        [Produces("application/json")]
+        public async Task<IActionResult> upVoteAsync(
+            [FromRoute] string codeblockGuid)
+        {
+            IActionResult actionResult;
+            try
+            {
+                await dataManager.UpVote(codeblockGuid);
+                actionResult = new NoContentResult();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw new Exception(ex.Message);
+            }
+            return actionResult;
+        }
+
+        [HttpPost]
+        [Route("/codebase/{codeblockGuid}/downVote")]
+        [ProducesResponseType(typeof(void), 204)]
+        [Produces("application/json")]
+        public async Task<IActionResult> downVoteAsync(
+            [FromRoute] string codeblockGuid)
+        {
+            IActionResult actionResult;
+            try
+            {
+                await dataManager.DownVote(codeblockGuid);
+                actionResult = new NoContentResult();
+            }
+            catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
                 throw new Exception(ex.Message);

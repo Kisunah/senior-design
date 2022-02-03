@@ -8,4 +8,9 @@
 
         public List<string> tags { get; set; }
     }
+
+    public class CreateCommentInput
+    {
+        public string comment { get; set; }
+    }
 }

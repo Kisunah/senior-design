@@ -63,6 +63,105 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "createComment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"comment\": \"comment string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{codebaseEndpoint}}/codebase/{{codeblockGuid}}/createComment",
+					"host": [
+						"{{codebaseEndpoint}}"
+					],
+					"path": [
+						"codebase",
+						"{{codeblockGuid}}",
+						"createComment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upVote",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{codebaseEndpoint}}/codebase/{{codeblockGuid}}/upVote",
+					"host": [
+						"{{codebaseEndpoint}}"
+					],
+					"path": [
+						"codebase",
+						"{{codeblockGuid}}",
+						"upVote"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "downVote",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{codebaseEndpoint}}/codebase/{{codeblockGuid}}/downVote",
+					"host": [
+						"{{codebaseEndpoint}}"
+					],
+					"path": [
+						"codebase",
+						"{{codeblockGuid}}",
+						"downVote"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
