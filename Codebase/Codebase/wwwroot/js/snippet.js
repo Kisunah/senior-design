@@ -7,6 +7,10 @@
         snippet: {},
         relatedSnippets: [],
         editor: null,
+
+        infoModalType: null,
+        infoModalItem: null,
+        infoModalDescription: null,
     },
 
     mounted: function() {
@@ -15,23 +19,25 @@
         v.getSnippet(snippetId);
         v.getRelated(snippetId);
 
-        var textarea_editor = document.getElementById("textarea_editor");
-        textarea_editor = "";
+        setTimeout(function () {
+            var textarea_editor = document.getElementById("textarea_editor");
+            textarea_editor.value = v.snippet.code;
 
-        v.editor = CodeMirror.fromTextArea(textarea_editor, {
-            tabSize: 4,
-            mode: v.snippet.language.language,
-            value: v.snippet.code,
-            theme: '3024-night',
-            lineNumbers: true,
-            styleActiveSelected: true,
-            styleActiveLine: true,
-            indentWithTabs: true,
-            matchBrackets: true,
-            highlightMatches: true,
-            readOnly: true,
-        });
-        v.editor.setSize("100%", "100%");
+            v.editor = CodeMirror.fromTextArea(textarea_editor, {
+                tabSize: 4,
+                mode: v.snippet.language.language,
+                theme: '3024-night',
+                lineNumbers: true,
+                styleActiveSelected: true,
+                styleActiveLine: true,
+                indentWithTabs: true,
+                matchBrackets: true,
+                highlightMatches: true,
+                readOnly: true,
+            });
+            v.editor.setSize("100%", "100%");
+        }, 500);
+
     },
 
     methods: {
@@ -219,10 +225,14 @@
             ];
         },
 
-        tagDetails: function () {
+        tagDetails: function (tag) {
             let v = this;
 
-            alert("Tag info...");
+            v.infoModalType = "Tag";
+            v.infoModalItem = tag.tag;
+            v.infoModalDescription = "temp";
+
+            $('#info-modal').modal('show');
         },
 
         upvote: function (snippet) {

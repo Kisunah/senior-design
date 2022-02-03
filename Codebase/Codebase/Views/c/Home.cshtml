@@ -94,13 +94,13 @@
                                     <div class="row">
                                         Language:&nbsp;
                                         <div class="mb-1" style="width: fit-content; padding-left: 0; padding-right: 10px;">
-                                            <button type="button" :id="'language-button-' + snippet.language.id" class="btn btn-outline-primary btn-sm"  v-on:click="languageDetails(snippet.language.id)">{{ snippet.language.language }}</button>
+                                            <button type="button" :id="'language-button-' + snippet.language.id" class="btn btn-outline-primary btn-sm"  v-on:click="languageDetails(snippet.language)">{{ snippet.language.language }}</button>
                                         </div>
                                     </div>
                                     <div class="row" v-if="snippet.tags.length != 0">
                                         Tags:&nbsp;
                                         <div class="mb-1" v-for="tag in snippet.tags" v-bind:key="snippet.id + '-' + tag.id" style="width: fit-content; padding-left: 0; padding-right: 10px;">
-                                            <button type="button" :id="'tag-button-' + tag.id" class="btn btn-outline-primary btn-sm"  v-on:click="tagDetails(tag.id)">{{ tag.tag }}</button>
+                                            <button type="button" :id="'tag-button-' + tag.id" class="btn btn-outline-primary btn-sm"  v-on:click="tagDetails(tag)">{{ tag.tag }}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -128,10 +128,12 @@
             </div>
         </div>
     </div>
+    <info-modal id="info-modal" v-bind:type="infoModalType" v-bind:item="infoModalItem" v-bind:description="infoModalDescription" style="display: none"></info-modal>
 </div>
 
 @section Scripts
 {
+  <script src="~/js/infoModal.js" asp-append-version="true"></script>
   <script src="~/js/home.js" asp-append-version="true"></script>
 }
 

@@ -12,7 +12,7 @@
         isPrivate: true,
         title: null,
         language: null,
-
+        description: "",
     },
 
     watch: {
@@ -20,7 +20,7 @@
         language: function (val) {
             let v = this;
 
-            v.editor.setOption("mode", val);
+            v.editor.setOption("mode", val.language);
         }
 
     },
@@ -114,33 +114,35 @@
             //});
 
             v.languages = [
-                { id: 1, description: "This is a test to see what a language description would look like!", language: "Python" },
-                { id: 2, description: "This is a test to see what a language description would look like!", language: "cmake" },
-                { id: 3, description: "This is a test to see what a language description would look like!", language: "JavaScript" },
-                { id: 4, description: "This is a test to see what a language description would look like!", language: "C, C++, C#" },
-                { id: 5, description: "This is a test to see what a language description would look like!", language: "c / c++" },
-                { id: 6, description: "This is a test to see what a language description would look like!", language: "PHP" },
-                { id: 7, description: "This is a test to see what a language description would look like!", language: "R" },
-                { id: 8, description: "This is a test to see what a language description would look like!", language: "Swift" },
-                { id: 9, description: "This is a test to see what a language description would look like!", language: "Objective" },
-                { id: 10, description: "This is a test to see what a language description would look like!", language: "Matlab" },
-                { id: 11, description: "This is a test to see what a language description would look like!", language: "TypeScript" },
-                { id: 12, description: "This is a test to see what a language description would look like!", language: "Go" },
-                { id: 13, description: "This is a test to see what a language description would look like!", language: "Kotlin" },
-                { id: 14, description: "This is a test to see what a language description would look like!", language: "VBA" },
-                { id: 15, description: "This is a test to see what a language description would look like!", language: "Rust" },
-                { id: 16, description: "This is a test to see what a language description would look like!", language: "Ruby" },
-                { id: 17, description: "This is a test to see what a language description would look like!", language: "Ada" },
-                { id: 18, description: "This is a test to see what a language description would look like!", language: "Scala" },
-                { id: 19, description: "This is a test to see what a language description would look like!", language: "Dart" },
-                { id: 20, description: "This is a test to see what a language description would look like!", language: "Abap" },
-                { id: 21, description: "This is a test to see what a language description would look like!", language: "Visual Basic" },
-                { id: 22, description: "This is a test to see what a language description would look like!", language: "Groovy" },
-                { id: 23, description: "This is a test to see what a language description would look like!", language: "Lua" },
-                { id: 24, description: "This is a test to see what a language description would look like!", language: "Julia" },
-                { id: 25, description: "This is a test to see what a language description would look like!", language: "Perl" },
-                { id: 26, description: "This is a test to see what a language description would look like!", language: "Haskell" },
-                { id: 27, description: "This is a test to see what a language description would look like!", language: "Cobol" }
+                { id: 1, description: "This is a test to see what a language description would look like!", language: "asciiarmor" },
+                { id: 2, description: "This is a test to see what a language description would look like!", language: "clike" },
+                { id: 3, description: "This is a test to see what a language description would look like!", language: "clojure" },
+                { id: 4, description: "This is a test to see what a language description would look like!", language: "cmake" },
+                { id: 5, description: "This is a test to see what a language description would look like!", language: "css" },
+                { id: 7, description: "This is a test to see what a language description would look like!", language: "go" },
+                { id: 8, description: "This is a test to see what a language description would look like!", language: "haskell" },
+                { id: 9, description: "This is a test to see what a language description would look like!", language: "htmlembedded" },
+                { id: 10, description: "This is a test to see what a language description would look like!", language: "javascript" },
+                { id: 12, description: "This is a test to see what a language description would look like!", language: "markdown" },
+                { id: 13, description: "This is a test to see what a language description would look like!", language: "mathematica" },
+                { id: 14, description: "This is a test to see what a language description would look like!", language: "pascal" },
+                { id: 15, description: "This is a test to see what a language description would look like!", language: "perl" },
+                { id: 16, description: "This is a test to see what a language description would look like!", language: "php" },
+                { id: 17, description: "This is a test to see what a language description would look like!", language: "powershell" },
+                { id: 18, description: "This is a test to see what a language description would look like!", language: "properties" },
+                { id: 19, description: "This is a test to see what a language description would look like!", language: "python" },
+                { id: 20, description: "This is a test to see what a language description would look like!", language: "q" },
+                { id: 21, description: "This is a test to see what a language description would look like!", language: "r" },
+                { id: 22, description: "This is a test to see what a language description would look like!", language: "ruby" },
+                { id: 24, description: "This is a test to see what a language description would look like!", language: "sas" },
+                { id: 25, description: "This is a test to see what a language description would look like!", language: "sass" },
+                { id: 26, description: "This is a test to see what a language description would look like!", language: "scheme" },
+                { id: 27, description: "This is a test to see what a language description would look like!", language: "shell" },
+                { id: 28, description: "This is a test to see what a language description would look like!", language: "spreadsheet" },
+                { id: 29, description: "This is a test to see what a language description would look like!", language: "sql" },
+                { id: 30, description: "This is a test to see what a language description would look like!", language: "swift" },
+                { id: 31, description: "This is a test to see what a language description would look like!", language: "vb" },
+                { id: 32, description: "This is a test to see what a language description would look like!", language: "yaml" }
             ];
         },
 
@@ -155,6 +157,36 @@
 
             
         },
+
+        saveSnippet: function () {
+            let v = this;
+
+            //$.ajax({
+            //    url: /*API ENDPOINT*/,
+            //    type: "POST",
+            //    data: {
+            //        "UserID": v.userID,
+            //        "Title": v.title,
+            //        "IsPrivate": v.isPrivate === "true" ? true : false,
+            //        "LangaugeID": v.language.id,
+            //        "Dexcription": v.description,
+            //        "TagIDs": v.selectedTags.map(function (t) { return t.id;}),
+            //        "Code": v.editor.getValue()
+            //    },
+            //    success: function () {
+            //        v.returnHome();
+            //    },
+            //    error: function (error) {
+            //        console.log(error);
+            //    }
+            //});
+        },
+
+        returnHome: function () {
+            let v = this;
+
+            window.location = '/c/Home';
+        }
 
     }
 

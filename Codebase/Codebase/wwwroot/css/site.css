@@ -11,6 +11,18 @@ html {
     background-color: #1c1c1c;
 }
 
+.modal-content {
+    background-color: #1c1c1c;
+}
+
+.modal-header {
+    border-bottom: 1px solid white;
+}
+
+.modal-footer {
+    border-top: 1px solid white;
+}
+
 body {
     margin-bottom: 60px;
     background-color: inherit;
@@ -31,6 +43,18 @@ a:link, a:visited, a:hover, a:active {
     color: white;
 }
 
+.navbar-nav > li > .dropdown-menu {
+    background-color: #FF0000;
+    color: white;
+}
+
+textarea {
+    background-color: #00000069;
+    color: white;
+    height: 20vh;
+    width: 100%;
+}
+
 .table {
     color: white;
 }
@@ -46,7 +70,7 @@ a:link, a:visited, a:hover, a:active {
 
 .btn-sm {
     padding: 0.2rem 0.25rem rem !important;
-    font-size: .6rem !important;
+    font-size: .8rem !important;
     border-radius: 0.1rem !important;
 }
 

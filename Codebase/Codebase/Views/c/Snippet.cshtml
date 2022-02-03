@@ -43,10 +43,10 @@ ViewData["Title"] = "Snippet";
                            <div class="row mt-3">
                               <div id="textarea_editor" class="mb-2"></div>
                            </div>
-                           <div class="row mt-3" v-if="snippet.tags.length > 0">
+                           <div class="row mt-3">
                               Tags:&nbsp;
                               <div class="mb-1" v-for="tag in snippet.tags" v-bind:key="snippet.id + '-' + tag.id" style="width: fit-content; padding-left: 0; padding-right: 10px;">
-                                 <button type="button" :id="'tag-button-' + tag.id" class="btn btn-outline-primary btn-sm"  v-on:click="tagDetails(tag.id)">{{ tag.tag }}</button>
+                                 <button type="button" :id="'tag-button-' + tag.id" class="btn btn-outline-primary btn-sm"  v-on:click="tagDetails(tag)">{{ tag.tag }}</button>
                               </div>
                            </div>
                         </div>
@@ -93,9 +93,42 @@ ViewData["Title"] = "Snippet";
          </div>
       </div>
    </div>
+       <info-modal id="info-modal" v-bind:type="infoModalType" v-bind:item="infoModalItem" v-bind:description="infoModalDescription" style="display: none"></info-modal>
+
 </div>
 @section Scripts
 {
+      <script src="~/js/infoModal.js" asp-append-version="true"></script>
+
 <script src="~/js/snippet.js" asp-append-version="true"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/asciiarmor/asciiarmor.js"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/clike/clike.js"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/clojure/clojure.js"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/cmake/cmake.js"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/css/css.js"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/go/go.js"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/haskell/haskell.js"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/htmlembedded/htmlembedded.js"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/javascript/javascript.js"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/markdown/markdown.js"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/mathematica/mathematica.js"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/pascal/pascal.js"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/perl/perl.js"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/php/php.js"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/powershell/powershell.js"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/properties/properties.js"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/python/python.js"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/q/q.js"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/r/r.js"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/ruby/ruby.js"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/sas/sas.js"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/sass/sass.js"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/scheme/scheme.js"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/shell/shell.js"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/spreadsheet/spreadsheet.js"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/sql/sql.js"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/swift/swift.js"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/vb/vb.js"></script>
+    <script src="~/lib/codemirror-5.65.0/mode/yaml/yaml.js"></script>
 }
 <script>var snippetId = @ViewBag.Id;</script>

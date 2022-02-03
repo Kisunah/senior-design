@@ -7,7 +7,11 @@
         user: {},
         snippets: [],
         sortBy: 1,
-        hidePublic: false
+        hidePublic: false,
+
+        infoModalType: null,
+        infoModalItem: null,
+        infoModalDescription: null,
     },
 
     mounted: function() {
@@ -148,16 +152,24 @@
             }
         },
 
-        languageDetails: function (id) {
+        languageDetails: function (lang) {
             let v = this;
 
-            alert("Langauage info...");
+            v.infoModalType = "Language";
+            v.infoModalItem = lang.language;
+            v.infoModalDescription = "temp";
+
+            $('#info-modal').modal('show');
         },
 
-        tagDetails: function () {
+        tagDetails: function (tag) {
             let v = this;
 
-            alert("Tag info...");
+            v.infoModalType = "Tag";
+            v.infoModalItem = tag.tag;
+            v.infoModalDescription = "temp";
+
+            $('#info-modal').modal('show');
         },
 
         upvote: function (snippet) {

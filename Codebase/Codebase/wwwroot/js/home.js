@@ -13,6 +13,10 @@
         languageFilters: [],
         sortBy: 1,
         searchTerm: "",
+
+        infoModalType: null,
+        infoModalItem: null,
+        infoModalDescription: null,
     },
 
     mounted: function () {
@@ -187,23 +191,23 @@
 
             v.snippets = [
                 { id: 1, userID: 1, username: "Username1", creationDate: "2021-12-08", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "Python"}, title: "Random Python Script", upvotes: 1000, downvotes: 20 },
-                { id: 1, userID: 1, username: "Username1", creationDate: "2021-12-09", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "Python"}, title: "Random Python Script", upvotes: 1000, downvotes: 21 },
-                { id: 1, userID: 1, username: "Username1", creationDate: "2021-12-10", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "Python"}, title: "Random Python Script", upvotes: 1000, downvotes: 22 },
-                { id: 1, userID: 1, username: "Username1", creationDate: "2021-12-11", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "Python"}, title: "Random Python Script", upvotes: 1000, downvotes: 24 },
-                { id: 1, userID: 1, username: "Username1", creationDate: "2021-12-12", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "Python"}, title: "Random Python Script", upvotes: 1000, downvotes: 26 },
-                { id: 1, userID: 1, username: "Username1", creationDate: "2021-12-13", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "Java"}, title: "Random Java Script", upvotes: 1000, downvotes: 22 },
-                { id: 1, userID: 1, username: "Username1", creationDate: "2021-12-14", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "Java"}, title: "Random Java Script", upvotes: 1000, downvotes: 45 },
-                { id: 1, userID: 1, username: "Username1", creationDate: "2021-12-15", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "Java"}, title: "Random Java Script", upvotes: 1000, downvotes: 92 },
-                { id: 1, userID: 1, username: "Username1", creationDate: "2021-12-16", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "Java"}, title: "Random Java Script", upvotes: 1000, downvotes: 56 },
-                { id: 1, userID: 1, username: "Username1", creationDate: "2021-12-17", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "Java"}, title: "Random Java Script", upvotes: 1000, downvotes: 78 },
-                { id: 1, userID: 1, username: "Username1", creationDate: "2021-12-18", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "Java"}, title: "Random Java Script", upvotes: 1000, downvotes: 78 },
-                { id: 1, userID: 1, username: "Username1", creationDate: "2021-12-19", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "Java"}, title: "Random Java Script", upvotes: 1000, downvotes: 46 },
-                { id: 1, userID: 1, username: "Username1", creationDate: "2021-12-20", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "C++"}, title: "Random C++ Script", upvotes: 1000, downvotes: 74 },
-                { id: 1, userID: 1, username: "Username1", creationDate: "2021-12-21", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "C++"}, title: "Random C++ Script", upvotes: 1000, downvotes: 89 },
-                { id: 1, userID: 1, username: "Username1", creationDate: "2021-12-21", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "C++"}, title: "Random C++ Script", upvotes: 1000, downvotes: 27 },
-                { id: 1, userID: 1, username: "Username1", creationDate: "2021-12-21", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "C++"}, title: "Random C++ Script", upvotes: 1000, downvotes: 32 },
-                { id: 1, userID: 1, username: "Username1", creationDate: "2021-12-23", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "C++"}, title: "Random C++ Script", upvotes: 1000, downvotes: 76 },
-                { id: 1, userID: 1, username: "Username1", creationDate: "2021-12-25", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "C++"}, title: "Random C++ Script", upvotes: 1000, downvotes: 67 }
+                { id: 2, userID: 1, username: "Username1", creationDate: "2021-12-09", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "Python"}, title: "Random Python Script", upvotes: 1000, downvotes: 21 },
+                { id: 3, userID: 1, username: "Username1", creationDate: "2021-12-10", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "Python"}, title: "Random Python Script", upvotes: 1000, downvotes: 22 },
+                { id: 4, userID: 1, username: "Username1", creationDate: "2021-12-11", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "Python"}, title: "Random Python Script", upvotes: 1000, downvotes: 24 },
+                { id: 5, userID: 1, username: "Username1", creationDate: "2021-12-12", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "Python"}, title: "Random Python Script", upvotes: 1000, downvotes: 26 },
+                { id: 6, userID: 1, username: "Username1", creationDate: "2021-12-13", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "Java"}, title: "Random Java Script", upvotes: 1000, downvotes: 22 },
+                { id: 7, userID: 1, username: "Username1", creationDate: "2021-12-14", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "Java"}, title: "Random Java Script", upvotes: 1000, downvotes: 45 },
+                { id: 8, userID: 1, username: "Username1", creationDate: "2021-12-15", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "Java"}, title: "Random Java Script", upvotes: 1000, downvotes: 92 },
+                { id: 9, userID: 1, username: "Username1", creationDate: "2021-12-16", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "Java"}, title: "Random Java Script", upvotes: 1000, downvotes: 56 },
+                { id: 10, userID: 1, username: "Username1", creationDate: "2021-12-17", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "Java"}, title: "Random Java Script", upvotes: 1000, downvotes: 78 },
+                { id: 11, userID: 1, username: "Username1", creationDate: "2021-12-18", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "Java"}, title: "Random Java Script", upvotes: 1000, downvotes: 78 },
+                { id: 12, userID: 1, username: "Username1", creationDate: "2021-12-19", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "Java"}, title: "Random Java Script", upvotes: 1000, downvotes: 46 },
+                { id: 13, userID: 1, username: "Username1", creationDate: "2021-12-20", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "C++"}, title: "Random C++ Script", upvotes: 1000, downvotes: 74 },
+                { id: 14, userID: 1, username: "Username1", creationDate: "2021-12-21", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "C++"}, title: "Random C++ Script", upvotes: 1000, downvotes: 89 },
+                { id: 15, userID: 1, username: "Username1", creationDate: "2021-12-21", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "C++"}, title: "Random C++ Script", upvotes: 1000, downvotes: 27 },
+                { id: 16, userID: 1, username: "Username1", creationDate: "2021-12-21", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "C++"}, title: "Random C++ Script", upvotes: 1000, downvotes: 32 },
+                { id: 17, userID: 1, username: "Username1", creationDate: "2021-12-23", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "C++"}, title: "Random C++ Script", upvotes: 1000, downvotes: 76 },
+                { id: 18, userID: 1, username: "Username1", creationDate: "2021-12-25", tags: [{id: 1, tag: "Tag1"}], language: {id: 1, language: "C++"}, title: "Random C++ Script", upvotes: 1000, downvotes: 67 }
             ];
         },
 
@@ -223,17 +227,17 @@
 
             v.trendingSnippets = [
                 { id: 1, title: "Random Python Script", upvotes: 1000, downvotes: 20 },
-                { id: 1, title: "Random Python Script", upvotes: 1000, downvotes: 21 },
-                { id: 1, title: "Random Python Script", upvotes: 1000, downvotes: 22 },
-                { id: 1, title: "Random Python Script", upvotes: 1000, downvotes: 24 },
-                { id: 1, title: "Random Python Script", upvotes: 1000, downvotes: 26 },
-                { id: 1, title: "Random Java Script", upvotes: 1000, downvotes: 22 },
-                { id: 1, title: "Random Java Script", upvotes: 1000, downvotes: 45 },
-                { id: 1, title: "Random Java Script", upvotes: 1000, downvotes: 92 },
-                { id: 1, title: "Random Java Script", upvotes: 1000, downvotes: 56 },
-                { id: 1, title: "Random Java Script", upvotes: 1000, downvotes: 78 },
-                { id: 1, title: "Random Java Script", upvotes: 1000, downvotes: 78 },
-                { id: 1, title: "Random Java Script", upvotes: 1000, downvotes: 46 },
+                { id: 2, title: "Random Python Script", upvotes: 1000, downvotes: 21 },
+                { id: 3, title: "Random Python Script", upvotes: 1000, downvotes: 22 },
+                { id: 4, title: "Random Python Script", upvotes: 1000, downvotes: 24 },
+                { id: 5, title: "Random Python Script", upvotes: 1000, downvotes: 26 },
+                { id: 6, title: "Random Java Script", upvotes: 1000, downvotes: 22 },
+                { id: 8, title: "Random Java Script", upvotes: 1000, downvotes: 45 },
+                { id: 9, title: "Random Java Script", upvotes: 1000, downvotes: 92 },
+                { id: 10, title: "Random Java Script", upvotes: 1000, downvotes: 56 },
+                { id: 11, title: "Random Java Script", upvotes: 1000, downvotes: 78 },
+                { id: 12, title: "Random Java Script", upvotes: 1000, downvotes: 78 },
+                { id: 13, title: "Random Java Script", upvotes: 1000, downvotes: 46 },
             ];
         },
 
@@ -250,14 +254,16 @@
 
         tagsDetails: function () {
             let v = this;
-
-            alert("Tags info...");
         },
 
-        tagDetails: function () {
+        tagDetails: function (tag) {
             let v = this;
 
-            alert("Tag info...");
+            v.infoModalType = "Tag";
+            v.infoModalItem = tag.tag;
+            v.infoModalDescription = "temp";
+
+            $('#info-modal').modal('show');
         },
 
         addLanguageFilter: function (language) {
@@ -277,10 +283,14 @@
             alert("Langauages info...");
         },
 
-        languageDetails: function (id) {
+        languageDetails: function (lang) {
             let v = this;
 
-            alert("Langauage info...");
+            v.infoModalType = "Language";
+            v.infoModalItem = lang.language;
+            v.infoModalDescription = "temp";
+
+            $('#info-modal').modal('show');
         },
 
         sortSnippets: function (id) {
@@ -304,4 +314,3 @@
     }
 
 })
-
