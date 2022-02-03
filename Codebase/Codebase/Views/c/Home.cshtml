@@ -129,11 +129,13 @@
         </div>
     </div>
     <info-modal id="info-modal" v-bind:type="infoModalType" v-bind:item="infoModalItem" v-bind:description="infoModalDescription" style="display: none"></info-modal>
+    <filter-modal id="filter-modal" v-bind:type="filterModalType" v-bind:data="filterModalData" v-bind:selected="filterModalSelected" v-on:clicked="editFromModal" style="display: none"></filter-modal>
 </div>
 
 @section Scripts
 {
   <script src="~/js/infoModal.js" asp-append-version="true"></script>
+  <script src="~/js/filterModal.js" asp-append-version="true"></script>
   <script src="~/js/home.js" asp-append-version="true"></script>
 }
 

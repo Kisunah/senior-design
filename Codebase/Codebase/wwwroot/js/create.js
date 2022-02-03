@@ -13,6 +13,10 @@
         title: null,
         language: null,
         description: "",
+
+        filterModalType: null,
+        filterModalData: null,
+        filterModalSelected: null,
     },
 
     watch: {
@@ -146,16 +150,32 @@
             ];
         },
 
-        tagDetails: function () {
+        addTags: function () {
             let v = this;
 
-            alert("Tag info...");
+            v.filterModalType = "Tag";
+            v.filterModalData = v.tags;
+            v.filterModalSelected = v.selectedTags.map(function (t) { return t.id; });
+
+            $('#filter-modal').modal('show');
         },
 
-        addTag: function () {
+        editFromModal: function (type, action, id) {
             let v = this;
 
-            
+            _.forEach(v.tags, function (t) {
+                if (t.id === id) {
+                    if (action === "added") {
+                        v.selectedTags.push(t);
+                    } else {
+                        v.selectedTags = _.filter(v.selectedTags, function (t) {
+                            if (t.id !== id) {
+                                return t;
+                            }
+                        });
+                    }
+                }
+            });
         },
 
         saveSnippet: function () {

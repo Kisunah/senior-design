@@ -49,7 +49,7 @@ ViewData["Title"] = "Create";
                <div class="form-group row  mt-2 mb-2">
                   <label class="col-sm-2 col-form-label">Tags</label>
                   <div class="col-sm-10">
-                     <button type="button" v-if="selectedTags.length > 0" v-for="tag in selectedTags" :id="'tag-button-' + tag.id" class="btn btn-outline-primary btn-sm"  v-on:click="tagDetails(tag.id)">{{ tag.tag }}</button>
+                     <button type="button" v-if="selectedTags.length > 0" v-for="tag in selectedTags" :id="'tag-button-' + tag.id" class="btn btn-outline-primary btn-sm mr-2"  disabled>{{ tag.tag }}</button>
                      <button type="button" class="btn btn-outline-primary btn-sm"  v-on:click="addTags()"><i class="fas fa-plus" style="color: white;"></i></button>
                   </div>
                </div>
@@ -60,10 +60,15 @@ ViewData["Title"] = "Create";
          <div class="col-2"></div>
       </div>
    </div>
+
+       <filter-modal id="filter-modal" v-bind:type="filterModalType" v-bind:data="filterModalData" v-bind:selected="filterModalSelected" v-on:clicked="editFromModal" style="display: none"></filter-modal>
+
 </div>
 
 @section Scripts
 {
+    
+  <script src="~/js/filterModal.js" asp-append-version="true"></script>
     <script src="~/js/create.js" asp-append-version="true"></script>
     <script src="~/lib/codemirror-5.65.0/mode/asciiarmor/asciiarmor.js"></script>
     <script src="~/lib/codemirror-5.65.0/mode/clike/clike.js"></script>

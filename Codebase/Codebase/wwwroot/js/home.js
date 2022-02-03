@@ -17,6 +17,10 @@
         infoModalType: null,
         infoModalItem: null,
         infoModalDescription: null,
+
+        filterModalType: null,
+        filterModalData: null,
+        filterModalSelected: null,
     },
 
     mounted: function () {
@@ -254,6 +258,12 @@
 
         tagsDetails: function () {
             let v = this;
+
+            v.filterModalType = "Tag";
+            v.filterModalData = v.tags;
+            v.filterModalSelected = v.tagFilters;
+
+            $('#filter-modal').modal('show');
         },
 
         tagDetails: function (tag) {
@@ -280,7 +290,11 @@
         languagesDetails: function () {
             let v = this;
 
-            alert("Langauages info...");
+            v.filterModalType = "Language";
+            v.filterModalData = v.languages;
+            v.filterModalSelected = v.languageFilters;
+
+            $('#filter-modal').modal('show');
         },
 
         languageDetails: function (lang) {
@@ -291,6 +305,29 @@
             v.infoModalDescription = "temp";
 
             $('#info-modal').modal('show');
+        },
+
+        editFromModal: function (type, action, id) {
+            let v = this;
+
+            if (type === "Tag") {
+                if (action === "added") {
+                    document.getElementById("tag-checkbox-" + id).checked = true;
+                    v.tagFilters.push(id);
+                    
+                } else {
+                    document.getElementById("tag-checkbox-" + id).checked = false;
+                    v.tagFilters.splice(v.tagFilters.indexOf(id), 1);
+                }
+            } else {
+                if (action === "added") {
+                    document.getElementById("language-checkbox-" + id).checked = true;
+                    v.languageFilters.push(id);
+                } else {
+                    document.getElementById("language-checkbox-" + id).checked = false;
+                    v.languageFilters.splice(v.tagFilters.indexOf(id), 1);
+                }
+            }
         },
 
         sortSnippets: function (id) {
