@@ -16,6 +16,7 @@
 | ------------------------ | ------------- |
 | ID (Primary Key)         | INT           |
 | UserID (Foreign Key)     | INT           |
+| IsPublic                 | Bool          |
 | CreationDate             | Datetime      |
 | LanguageID (Foreign Key) | Datetime      |
 | Title                    | VARCHAR(100)  |
@@ -31,6 +32,7 @@
 | ID (Primary Key) | INT          |
 | CreationDate     | Datetime     |
 | Tag              | VARCHAR(100) |
+| Description      | VARCHAR(MAX) |
 
 ## SnippetTags
 
@@ -46,6 +48,7 @@
 | ---------------- | ------------ |
 | ID (Primary Key) | INT          |
 | Language         | VARCHAR(100) |
+| Description      | VARCHAR(MAX) |
 
 ## UserVotes
 
