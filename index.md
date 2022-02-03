@@ -108,3 +108,12 @@ The other half of the page is dedicated to displaying the users’ snippets, bot
 1. To edit a published snippet, the user must go to their user page and click the edit icon next to the desired snippet.
 
 ## 3. FAQ <a name="3"></a>
+
+1. What is Codebase?
+    - Codebase is a service that allows users to store blocks of code that they can easily come back to for later use. Users can also choose to post their code publicly to allow sharing, discussion, and voting. We are not the same as Github, which is for maintaining larger repositories;  we are meant to store small to medium blocks of code such as a function, algorithm, or skeleton code.
+
+2. Who can see my code blocks?
+    - You decide when you upload or edit your code block to make it public or private. If you set your code to be public, it will be able to be viewed by anyone and other users will be able to comment and vote on your code blocks, but if you set it to private, you will be the only user able to view your code. 
+
+3. How do I search on Codebase?
+    - Searching is very simple, you enter yor query in the search bar on the page and the results returned to you will be based on the titles and descriptions of public code blocks. You can also filter your results based on our list of tags like language or purpose.
