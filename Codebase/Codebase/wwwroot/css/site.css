@@ -8,11 +8,11 @@ html {
     position: relative;
     min-height: 100%;
     font-size: 14px;
-    background-color: #1c1c1c;
+    background-color: #0a0c10;
 }
 
 .modal-content {
-    background-color: #1c1c1c;
+    background-color: #0a0c10;
 }
 
 .modal-header {
@@ -60,7 +60,7 @@ textarea {
 }
 
 .card {
-    background-color: #00000069;
+    background-color: inherit;
     color: white;
 }
 

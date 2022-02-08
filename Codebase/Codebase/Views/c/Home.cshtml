@@ -5,7 +5,7 @@ ViewData["Title"] = "Home";
 	<div class="container-lg" style="position: fixed;">
 		<div class="row" style="height: 88vh;">
 			<div class="col-2">
-				<div class="card shadow">
+				<div class="card">
 					<div class="card-body">
 						<div class="row">
 							<a href="#">
@@ -17,10 +17,13 @@ ViewData["Title"] = "Home";
 								<input type="checkbox" class="btn-check" :id="'tag-checkbox-' + tag.id" autocomplete="off" v-on:click="addTagFilter(tag)">
 								<label class="btn btn-outline-primary btn-sm" :for="'tag-checkbox-' + tag.id">{{ tag.tag }}</label>
 							</div>
+							<div class="mb-1" style="width: fit-content; padding-left: 0; padding-right: 10px;">
+								<button type="button" class="btn btn-outline-primary btn-sm"  v-on:click="">Clear</button>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div class="card shadow mt-3">
+				<div class="card mt-3">
 					<div class="card-body">
 						<div class="row">
 							<a href="#">
@@ -32,13 +35,16 @@ ViewData["Title"] = "Home";
 								<input type="checkbox" class="btn-check mb-1" :id="'language-checkbox-' + language.id" autocomplete="off" v-on:click="addLanguageFilter(language)">
 								<label class="btn btn-outline-primary btn-sm" :for="'language-checkbox-' + language.id">{{ language.language }}</label>
 							</div>
+							<div class="mb-1" style="width: fit-content; padding-left: 0; padding-right: 10px;">
+								<button type="button" class="btn btn-outline-primary btn-sm"  v-on:click="">Clear</button>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-8">
 				<div class="row hidescroll" style="overflow-y: scroll; height: 88vh;">
-					<div class="card shadow mb-3" v-if="searchTerm">
+					<div class="card mb-3" v-if="searchTerm">
 						<div class="card-body">
 							<div class="row">
 								<div class="col-12">
@@ -47,7 +53,7 @@ ViewData["Title"] = "Home";
 							</div>
 						</div>
 					</div>
-					<div class="card shadow">
+					<div class="card" style="border-bottom: 1px #333;">
 						<div class="card-body">
 							<div class="row">
 								<div class="col-3">
@@ -65,7 +71,7 @@ ViewData["Title"] = "Home";
 							</div>
 						</div>
 					</div>
-					<div class="card shadow mt-3" v-for="snippet in filteredSnippets" v-bind:key="snippet.id">
+					<div class="card mt-3" v-for="snippet in filteredSnippets" v-bind:key="snippet.id">
 						<div class="card-body">
 							<div class="row">
 								<div class="col-2" style="margin: auto;">
@@ -116,7 +122,7 @@ ViewData["Title"] = "Home";
 				</div>
 			</div>
 			<div class="col-2" style="height: 88vh;">
-				<div class="card shadow">
+				<div class="card">
 					<div class="card-body">
 						<div class="row">
 							<H4>Trending</H4>
