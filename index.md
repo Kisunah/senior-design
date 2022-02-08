@@ -49,42 +49,58 @@ This section is dedicated to simple walk throughs of the basic features within C
 ### 2.3 Logging Out <a name="2-3"></a>
 
 1. To logout of an account the user only needs to click the door icon in the upper right hand of the web page.
+![image](Pictures/2.3a.png)
 
 ### 2.4 Navigating the Home Page <a name="2-4"></a>
 
 This section will break down the primary parts of the home screen that can be interacted with by the user.
+![image](Pictures/2.4a.png)
 
 #### 2.4.1 Tags <a name="2-4-1"></a>
 
 The tags section can be used to learn about the most common tags that people are associating with their snippets. This helps users to better find relevant pieces of code. 
 
-1. To filter a search or the home page by a tag, simply press the tag itself.
+1. To filter a search or the home page by a tag, simply press the tag itself.<br>
+![image](Pictures/2.4.1a.png)
+![image](Pictures/2.4.1b.png)
+
 2. If you want to filter by something not listed, click the tag header.
 3. This bring up a model listing all the tags in the system along with a search bar.
+![image](Pictures/2.4.1c.png)
+
 4. Select the tags and close the model, these will be applied to the search results or home page snippets.
-5. To clear these selections, click the "clear" button at the end of the tags list.
+5. To clear these selections, click the "clear" button at the end of the tags list.<br>
+![image](Pictures/2.4.1d.png)
 
 #### 2.4.2 Languages <a name="2-4-2"></a>
 
 The languages section can be used to learn about the most common languages that people are using for their snippets. This helps users to better find relevant pieces of code. 
 
-1. To filter a search or the home page by a language, simply press the language itself.
+1. To filter a search or the home page by a language, simply press the language itself.<br>
+![image](Pictures/2.4.2a.png)
+
 2. If you want to filter by something not listed, click the language header.
 3. This bring up a model listing all the languages in the system along with a search bar.
+![image](Pictures/2.4.2b.png)
+
 4. Select the languages and close the model, these will be applied to the search results or home page snippets.
-5. To clear these selections, click the "clear" button at the end of the languages list.
+5. To clear these selections, click the "clear" button at the end of the languages list.<br>
+![image](Pictures/2.4.2c.png)
 
 #### 2.4.3 Searching <a name="2-4-3"></a>
 
 The search bar allows users to do an elastic search of all the public snippets in the CodeBase system.
+![image](Pictures/2.4.3.png)
 
 **INSERT WHAT WORKS BEST WITH THE SEARCH (IE BITS OF CODE OR KEYWORDS)**
 
 ### 2.5 Snippets <a name="2-5"></a>
 
 Each snippet listed on the home page can be selected and viewed in its own web page. From the home page snippets can be voted upon using the two arrows to the left of the title.
+![image](Pictures/2.5a.png)
 
 On the snippet page, users can see the title, author, publish date, description, tags, and snippet itself.
+![image](Pictures/2.5b.png)
 
 Below the snippet users can copy the code or open it into another page that enables users to edit and play with the code.
 
@@ -101,7 +117,10 @@ The other half of the page is dedicated to displaying the users’ snippets, bot
 ### 2.7 Creating Snippets <a name="2-7"></a>
 
 1. To create a code snippet, a logged in user must click the plus icon to the right of the search bar.
+![image](Pictures/2.7a.png)
+
 2. This will bring up a new web page with inputs required for a snippet.
+![image](Pictures/2.7b.png)
 
 ### 2.8 Editing a Snippet <a name="2-8"></a>
 
