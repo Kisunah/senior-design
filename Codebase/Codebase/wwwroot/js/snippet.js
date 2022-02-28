@@ -7,6 +7,8 @@
 		snippet: {},
 		relatedSnippets: [],
 		editor: null,
+		comment: null,
+		reply: null,
 
 		infoModalType: null,
 		infoModalItem: null,
@@ -84,85 +86,85 @@
 				comments: [{
 					id: 1,
 					userID: 1,
-					username: "Darth Sidious",
+					username: "Username 1",
 					creationDate: "2022-01-01",
-					comment: "Did you ever hear the tragedy of Darth Plagueis The Wise?",
+					comment: "Comment 1",
 					replies: [{
 						id: 1,
 						userID: 1,
-						username: "Darth Sidious",
+						username: "Username 1",
 						creationDate: "2022-01-01",
-						comment: "I thought not. It’s not a story the Jedi would tell you. It’s a Sith legend. Darth Plagueis was a Dark Lord of the Sith, so powerful and so wise he could use the Force to influence the midichlorians to create life… He had such a knowledge of the dark side that he could even keep the ones he cared about from dying. The dark side of the Force is a pathway to many abilities some consider to be unnatural. ",
+						comment: "Reply 1",
 						replies: []
 					}, {
 						id: 1,
 						userID: 1,
-						username: "Darth Sidious",
+						username: "Username 1",
 						creationDate: "2022-01-01",
-						comment: "He became so powerful… the only thing he was afraid of was losing his power, which eventually, of course, he did. Unfortunately, he taught his apprentice everything he knew, then his apprentice killed him in his sleep. Ironic. He could save others from death, but not himself.",
+						comment: "Reply 2",
 						replies: []
 					}]
 				},
 				{
 					id: 1,
 					userID: 1,
-					username: "Obi-wan Kenobi",
+					username: "Username 2",
 					creationDate: "2022-01-01",
-					comment: "You have allowed this Dark Lord to twist your mind until now . . . until now you have become the very thing you swore to destroy.They circle each other until OBI- WAN is near PADME.He places his hand on her.",
+					comment: "Comment 1",
 					replies: [{
 						id: 1,
 						userID: 1,
-						username: "Anakin Skywalker",
+						username: "Username 3",
 						creationDate: "2022-01-01",
-						comment: "Don't lecture me, Obi-Wan. I see through the lies of the Jedi. I do not fear the dark side as you do. I have brought peace, justice, freedom, and security to my new Empire.",
+						comment: "Reply 1",
 						replies: []
 					},
 					{
 						id: 1,
 						userID: 1,
-						username: "Obi-wan Kenobi",
+						username: "Username 2",
 						creationDate: "2022-01-01",
-						comment: "Your new Empire?",
+						comment: "Reply 3",
 						replies: []
 					},
 					{
 						id: 1,
 						userID: 1,
-						username: "Anakin Skywalker",
+						username: "Username 3",
 						creationDate: "2022-01-01",
-						comment: "Don't make me kill you.",
+						comment: "Reply 4",
 						replies: []
 					},
 					{
 						id: 1,
 						userID: 1,
-						username: "Obi-wan Kenobi",
+						username: "Username 2",
 						creationDate: "2022-01-01",
-						comment: "Anakin, my allegiance is to the Republic ... to democracy.",
+						comment: "Reply 5",
 						replies: []
 					},
 					{
 						id: 1,
 						userID: 1,
-						username: "Anakin Skywalker",
+						username: "Username 3",
 						creationDate: "2022-01-01",
-						comment: "If you're not with me, you're my enemy.",
+						comment: "Reply 6",
 						replies: []
 					},
 					{
 						id: 1,
 						userID: 1,
-						username: "Obi-wan Kenobi",
+						username: "Username 2",
 						creationDate: "2022-01-01",
-						comment: "Only a Sith Lord deals in absolutes. I will do what I must.",
+						comment: "Reply 7",
 						replies: []
 					},
 					{
 						id: 1,
 						userID: 1,
-						username: "Anakin Skywalker",
+						username: "Username 3",
 						creationDate: "2022-01-01",
-						comment: "You will try.",
+						comment: "Reply 8",
 						replies: []
 					}
 					]
@@ -170,22 +172,22 @@
 				{
 					id: 1,
 					userID: 1,
-					username: "Yoda",
+					username: "Username 4",
 					creationDate: "2022-01-01",
-					comment: "I hear a new apprentice, you have. Emperor, or should I call you Darth Sidious.",
+					comment: "Comment 1",
 					replies: [{
 						id: 1,
 						userID: 1,
-						username: "Darth Sidious",
+						username: "Username 1",
 						creationDate: "2022-01-01",
-						comment: "Master Yoda, you survived.",
+						comment: "Reply 1",
 						replies: []
 					}, {
 						id: 1,
 						userID: 1,
-						username: "Darth Sidious",
+						username: "Username 1",
 						creationDate: "2022-01-01",
-						comment: "The Dark Lord raises his arms, and LIGHTNING BOLTS shoot out, surrounding YODA.YODA is picked up and thrown across the room, hitting the wall and sliding down in a crumpled heap.DARTH SIDIOUS chuckles.",
+						comment: "Reply 2",
 						replies: []
 					}]
 				},
@@ -325,6 +327,46 @@
 
 			alert("Downvote: " + snippet.id);
 		},
+
+		postComment: function () {
+			let v = this;
+
+			//$.ajax({
+			//    url: /*API ENDPOINT*/,
+			//    type: "GET",
+			//    success: function (data) {
+			//    },
+			//    error: function (error) {
+			//        console.log(error);
+			//    }
+			//});
+		},
+
+		postReply: function () {
+			let v = this;
+
+			//$.ajax({
+			//    url: /*API ENDPOINT*/,
+			//    type: "GET",
+			//    success: function (data) {
+			//    },
+			//    error: function (error) {
+			//        console.log(error);
+			//    }
+			//});
+		},
+
+		copy: function () {
+			let v = this;
+
+
+		},
+
+		editor: function () {
+			let v = this;
+
+
+        },
 
 	}
 
