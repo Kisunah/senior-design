@@ -1,0 +1,16 @@
+[
+    {
+        "title": "sample title",
+        "description": "sample description",
+        "code": "sample code",
+        "isPublic": true,
+        "tags": ["sampleTag"]
+    },
+    {
+        "title": "sample title",
+        "description": "sample description",
+        "code": "[HttpMethod]\n[Route(\"/url\")]\n[ProducesResponseType(typeof(output), 200)]\n[Produces(\"application/json\")]\npublic async Task<IActionResult> FunctionName()\n{\n\tIActionResult actionResult;\n\ttry\n\t{\n\t\tvar result;\n\t\tactionResult = Ok(result);\n\t}\n\tcatch (Exception ex)\n\t{\n\t\t_logger.LogError(ex.Message);\n\t\tthrow new Exception(ex.Message);\n\t}\n\treturn actionResult;\n}",
+        "isPublic": true,
+        "tags": ["sampleTag"]
+    }
+]
