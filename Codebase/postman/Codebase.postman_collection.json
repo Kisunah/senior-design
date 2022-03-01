@@ -33,7 +33,7 @@
 			"response": []
 		},
 		{
-			"name": "indexData",
+			"name": "createCodeblock",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -44,7 +44,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"code\": \"test codeBlock\",\r\n    \"isPublic\": true,\r\n    \"tags\": [\"tag1\", \"tag2\"]\r\n}",
+					"raw": "{\r\n    \"title\": \"test title\",\r\n    \"description\": \"test description\",\r\n    \"code\": \"test codeBlock\",\r\n    \"isPublic\": true,\r\n    \"tags\": [\"tag1\", \"tag2\"]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -52,13 +52,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{codebaseEndpoint}}/codebase/indexData",
+					"raw": "{{codebaseEndpoint}}/codebase/createCodeblock",
 					"host": [
 						"{{codebaseEndpoint}}"
 					],
 					"path": [
 						"codebase",
-						"indexData"
+						"createCodeblock"
 					]
 				}
 			},
@@ -158,6 +158,72 @@
 						"codebase",
 						"{{codeblockGuid}}",
 						"downVote"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "removeVote",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{codebaseEndpoint}}/codebase/{{codeblockGuid}}/removeVote",
+					"host": [
+						"{{codebaseEndpoint}}"
+					],
+					"path": [
+						"codebase",
+						"{{codeblockGuid}}",
+						"removeVote"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteComment",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{codebaseEndpoint}}/codebase/{{codeblockGuid}}/deleteComment",
+					"host": [
+						"{{codebaseEndpoint}}"
+					],
+					"path": [
+						"codebase",
+						"{{codeblockGuid}}",
+						"deleteComment"
 					]
 				}
 			},

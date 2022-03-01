@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Codebase.Managers;
 using Codebase.InputOutput;
+using System.Web;
 
 namespace Codebase.Controllers
 {
-    public class DataController
+    public class DataController : ControllerBase
     {
         private readonly ILogger<DataController> _logger;
 
@@ -37,17 +38,17 @@ namespace Codebase.Controllers
         }
 
         [HttpPost]
-        [Route("/codebase/indexData")]
-        [ProducesResponseType(typeof(void), 204)]
+        [Route("/codebase/createCodeblock")]
+        [ProducesResponseType(typeof(CreateCodeblockOutput), 200)]
         [Produces("application/json")]
         public async Task<IActionResult> InsertDataAsync(
-            [FromBody] DataInput input)
+            [FromBody] CreateCodeblockInput input)
         {
             IActionResult actionResult;
             try
             {
-                await dataManager.InsertData(input);
-                actionResult = new NoContentResult();
+                CreateCodeblockOutput result = await dataManager.CreateCodeblock(input);
+                actionResult = Ok(result);
             }
             catch (Exception ex)
             {
@@ -79,17 +80,18 @@ namespace Codebase.Controllers
             return actionResult;
         }
 
-        [HttpPost]
-        [Route("/codebase/{codeblockGuid}/upVote")]
+        [HttpDelete]
+        [Route("/codebase/{codeblockGuid}/deleteComment")]
         [ProducesResponseType(typeof(void), 204)]
         [Produces("application/json")]
-        public async Task<IActionResult> upVoteAsync(
-            [FromRoute] string codeblockGuid)
+        public async Task<IActionResult> deleteCommentAsync(
+            [FromRoute] string codeblockGuid    
+        )
         {
             IActionResult actionResult;
             try
             {
-                await dataManager.UpVote(codeblockGuid);
+                await dataManager.DeleteComment(codeblockGuid);
                 actionResult = new NoContentResult();
             }
             catch (Exception ex)
@@ -101,8 +103,29 @@ namespace Codebase.Controllers
         }
 
         [HttpPost]
+        [Route("/codebase/{codeblockGuid}/upVote")]
+        [ProducesResponseType(typeof(CreateVoteOutput), 200)]
+        [Produces("application/json")]
+        public async Task<IActionResult> upVoteAsync(
+            [FromRoute] string codeblockGuid)
+        {
+            IActionResult actionResult;
+            try
+            {
+                CreateVoteOutput result = await dataManager.UpVote(codeblockGuid);
+                actionResult = Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw new Exception(ex.Message);
+            }
+            return actionResult;
+        }
+
+        [HttpPost]
         [Route("/codebase/{codeblockGuid}/downVote")]
-        [ProducesResponseType(typeof(void), 204)]
+        [ProducesResponseType(typeof(CreateVoteOutput), 200)]
         [Produces("application/json")]
         public async Task<IActionResult> downVoteAsync(
             [FromRoute] string codeblockGuid)
@@ -110,7 +133,28 @@ namespace Codebase.Controllers
             IActionResult actionResult;
             try
             {
-                await dataManager.DownVote(codeblockGuid);
+                CreateVoteOutput result = await dataManager.DownVote(codeblockGuid);
+                actionResult = Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw new Exception(ex.Message);
+            }
+            return actionResult;
+        }
+
+        [HttpDelete]
+        [Route("/codebase/{codeblockGuid}/removeVote")]
+        [ProducesResponseType(typeof(void), 204)]
+        [Produces("application/json")]
+        public async Task<IActionResult> removeVoteAsync(
+            [FromRoute] string codeblockGuid)
+        {
+            IActionResult actionResult;
+            try
+            {
+                await dataManager.RemoveVote(codeblockGuid);
                 actionResult = new NoContentResult();
             }
             catch (Exception ex)
