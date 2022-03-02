@@ -29,7 +29,7 @@ namespace Codebase.Controllers
                 await dataManager.CreateIndex();
                 actionResult = new NoContentResult();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
                 throw new Exception(ex.Message);
@@ -85,7 +85,7 @@ namespace Codebase.Controllers
         [ProducesResponseType(typeof(void), 204)]
         [Produces("application/json")]
         public async Task<IActionResult> deleteCommentAsync(
-            [FromRoute] string codeblockGuid    
+            [FromRoute] string codeblockGuid
         )
         {
             IActionResult actionResult;
@@ -156,6 +156,66 @@ namespace Codebase.Controllers
             {
                 await dataManager.RemoveVote(codeblockGuid);
                 actionResult = new NoContentResult();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw new Exception(ex.Message);
+            }
+            return actionResult;
+        }
+
+        [HttpPost]
+        [Route("/codebase/getLanguages")]
+        [ProducesResponseType(typeof(List<string>), 200)]
+        [Produces("application/json")]
+        public IActionResult getLanguages()
+        {
+            IActionResult actionResult;
+            try
+            {
+                List<string> result = dataManager.GetLanguages();
+                actionResult = Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw new Exception(ex.Message);
+            }
+            return actionResult;
+        }
+
+        [HttpPost]
+        [Route("/codebase/getTags")]
+        [ProducesResponseType(typeof(List<string>), 200)]
+        [Produces("application/json")]
+        public IActionResult getTags()
+        {
+            IActionResult actionResult;
+            try
+            {
+                List<string> result = dataManager.GetTags();
+                actionResult = Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw new Exception(ex.Message);
+            }
+            return actionResult;
+        }
+
+        [HttpPost]
+        [Route("/codebase/getCodeblocks")]
+        [ProducesResponseType(typeof(void), 200)]
+        [Produces("application/json")]
+        public async Task<IActionResult> getCodeblocksAsync([FromBody]  GetCodeblocksInput input)
+        {
+            IActionResult actionResult;
+            try
+            {
+                GetCodeblocksOutput result = await dataManager.GetCodeblocks(input);
+                actionResult = Ok(result);
             }
             catch (Exception ex)
             {
