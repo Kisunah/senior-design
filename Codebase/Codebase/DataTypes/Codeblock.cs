@@ -12,6 +12,8 @@
 
         public bool IsPublic { get; set; }
 
+        public string Language { get; set; }
+
         public List<string> Tags { get; set; }
 
         public int VoteCount { get; set; }
