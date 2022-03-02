@@ -179,33 +179,35 @@ namespace Codebase.Managers
         {
             List<string> validLanguages = new List<string>
             {
-                "Java",
-                "C",
-                "Python",
-                "C++",
-                "C#",
-                "Visual Basic",
-                "JavaScript",
-                "PHP",
-                "Swift",
-                "SQL",
-                "Ruby",
-                "Objective-C",
-                "Pascal",
-                "Go",
-                "R",
-                "Perl",
-                "TypeScript",
-                "MATLAB",
-                "HTML",
-                "CSS",
-                "Rust",
-                "Kotlin",
-                "Assembly",
-                "Prolog",
-                "Scala",
-                "Scheme",
-                "JSON"
+                "asciiarmor"
+                ,"clike"
+                ,"clojure"
+                ,"cmake"
+                ,"css"
+                ,"go"
+                ,"haskell"
+                ,"htmlembedded"
+                ,"javascript"
+                ,"markdown"
+                ,"mathematica"
+                ,"pascal"
+                ,"perl"
+                ,"php"
+                ,"powershell"
+                ,"properties"
+                ,"python"
+                ,"q"
+                ,"r"
+                ,"ruby"
+                ,"sas"
+                ,"sass"
+                ,"scheme"
+                ,"shell"
+                ,"spreadsheet"
+                ,"sql"
+                ,"swift"
+                ,"vb"
+                ,"yaml"
             };
 
             validLanguages.Sort();

@@ -19,13 +19,13 @@ namespace Codebase.Controllers
             return View();
         }
 
-        public IActionResult Snippet(int id)
+        public IActionResult Snippet(Guid id)
         {
             ViewBag.Id = id;
             return View();
         }
 
-        public IActionResult User(int id = 0)
+        public IActionResult User(Guid? id = null)
         {
             ViewBag.Id = id;
             return View();

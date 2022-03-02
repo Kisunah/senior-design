@@ -18,7 +18,7 @@
 			let v = this;
 
 			_.forEach(v.data, function (d) {
-				if (v.selected.includes(d.id)) {
+				if (v.selected.includes(d)) {
 					d.checked = true;
 				} else {
 					d.checked = false;
@@ -52,13 +52,13 @@
 			let v = this;
 
 			_.forEach(v.data, function (d) {
-				if (item.id === d.id) {
+				if (item === d) {
 					if (d.checked === true) {
 						d.checked = false;
-						v.$emit('clicked', v.type, 'removed', item.id);
+						v.$emit('clicked', v.type, 'removed', item);
 					} else {
 						d.checked = true;
-						v.$emit('clicked', v.type, 'added', item.id);
+						v.$emit('clicked', v.type, 'added', item);
 					}
 				}
 			});
@@ -85,9 +85,9 @@
                                 <div class="col-12">
                                     <div class="card mb-2" v-for="item in items" style="width: 32%; float: left;margin-left: 1vh;">
                                         <div class="card-body">
-                                            <h6 class="card-title" v-if="type === 'Tag'">{{ item.tag }}</h6>
-                                            <h6 class="card-title" v-else>{{ item.language }}</h6>
-                                            <p class="card-text">{{ item.description }}</p>
+                                            <h6 class="card-title" v-if="type === 'Tag'">{{ item }}</h6>
+                                            <h6 class="card-title" v-else>{{ item }}</h6>
+                                            <p class="card-text">No implimentation yet</p>
                                             <input type="checkbox"  v-if="item.checked === true" @click="editItem(item)" style="float: right;" checked>
                                             <input type="checkbox"  v-else style="float: right;" @click="editItem(item)">
                                         </div>
