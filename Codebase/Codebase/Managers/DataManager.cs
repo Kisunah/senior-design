@@ -54,7 +54,7 @@ namespace Codebase.Managers
         {
             Codeblock codeblock = PrepareCodeblockForInsert(input);
             var indexResponse = await client.IndexDocumentAsync(codeblock);
-            
+
             if (!indexResponse.ToString().Contains("201")) throw new Exception("Error indexing the codeblock.");
 
             CreateCodeblockOutput output = mapper.Map<CreateCodeblockOutput>(codeblock);
@@ -173,6 +173,98 @@ namespace Codebase.Managers
             {
                 throw new BadHttpRequestException("No vote found for this user");
             }
+        }
+
+        public List<string> GetLanguages()
+        {
+            List<string> validLanguages = new List<string>
+            {
+                "Java",
+                "C",
+                "Python",
+                "C++",
+                "C#",
+                "Visual Basic",
+                "JavaScript",
+                "PHP",
+                "Swift",
+                "SQL",
+                "Ruby",
+                "Objective-C",
+                "Pascal",
+                "Go",
+                "R",
+                "Perl",
+                "TypeScript",
+                "MATLAB",
+                "HTML",
+                "CSS",
+                "Rust",
+                "Kotlin",
+                "Assembly",
+                "Prolog",
+                "Scala",
+                "Scheme",
+                "JSON"
+            };
+
+            validLanguages.Sort();
+
+            return validLanguages;
+        }
+
+        public List<string> GetTags()
+        {
+            List<string> validTags = new List<string>
+            {
+                "function",
+                "algorithm",
+                "testing",
+                "skeleton-code",
+                "script",
+                "query",
+                "class"
+            };
+
+            validTags.Sort();
+
+            return validTags;
+        }
+
+        public async Task<GetCodeblocksOutput> GetCodeblocks(GetCodeblocksInput input)
+        {
+            ISearchResponse<Codeblock> response = new SearchResponse<Codeblock>();
+            if (input.filter == null || input.filter.Count == 0)
+            {
+                response = await client.SearchAsync<Codeblock>(s => s
+                    .Index(indexName)
+                    .MatchAll());
+            }
+            else
+            {
+                response = await client.SearchAsync<Codeblock>(s => s
+                    .Index(indexName)
+                    .Query(q => q
+                        .Match(m => m
+                            .Field(f => f.Id)
+                            .Query(input.filter["id"])
+                        )
+                    )
+                );
+            }
+
+            List<Codeblock> codeblocks = new List<Codeblock>();
+            for (int i = 0; i < response.Documents.Count; i++)
+            {
+                codeblocks.Add(response.Documents.ElementAt(i));
+            }
+
+            GetCodeblocksOutput output = new GetCodeblocksOutput
+            {
+                codeblocks = codeblocks
+            };
+
+            return output;
         }
 
         #region privateMethods

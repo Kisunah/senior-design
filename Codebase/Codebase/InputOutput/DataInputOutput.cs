@@ -1,4 +1,6 @@
-﻿namespace Codebase.InputOutput
+﻿using Codebase.DataTypes;
+
+namespace Codebase.InputOutput
 {
     public class CreateCodeblockInput
     {
@@ -10,6 +12,8 @@
 
         public bool isPublic { get; set; }
 
+        public string language { get; set; }
+
         public List<string> tags { get; set; }
     }
 
@@ -20,12 +24,22 @@
         public string description { get; set; }
 
         public string code { get; set; }
-        
+
         public bool isPublic { get; set; }
 
         public List<string> tags { get; set; }
 
         public string codeblockGuid { get; set; }
+    }
+
+    public class GetCodeblocksInput
+    {
+        public Dictionary<string, string> filter { get; set; }
+    }
+
+    public class GetCodeblocksOutput
+    {
+        public List<Codeblock> codeblocks { get; set; }
     }
 
     public class CreateCommentInput
