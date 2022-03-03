@@ -100,7 +100,7 @@
 			let v = this;
 
 			$.ajax({
-				url: document.location.href + "codebase/getTags",
+				url: document.location.origin + "/codebase/getTags",
 			    type: "POST",
 			    success: function (data) {
 			        v.tags = data
@@ -115,7 +115,7 @@
 			let v = this;
 
 			$.ajax({
-				url: document.location.href + "codebase/getLanguages",
+				url: document.location.origin + "/codebase/getLanguages",
 			    type: "POST",
 			    success: function (data) {
 			        v.languages = data
@@ -130,12 +130,19 @@
 			let v = this;
 
 			$.ajax({
-				url: document.location.href + "codebase/getCodeblocks",
-				/*data: search,*/
+				url: document.location.origin + "/codebase/getCodeblocks",
 				contentType: "application/json; charset=utf-8",
+				data: {
+					filter: {
+						id: ""
+					}
+				},
 			    type: "POST",
 			    success: function (data) {
-					v.snippets = data
+					v.snippets = data.codeblocks
+					_.forEach(v.snippets, (s) => {
+						s.creationDate = moment(s.creationDate).format("MM/DD/YYYY");
+					});
 			    },
 			    error: function (error) {
 			        console.log(error);
@@ -147,11 +154,16 @@
 			let v = this;
 
 			$.ajax({
-				url: document.location.href + "codebase/getCodeblocks",
+				url: document.location.origin + "/codebase/getCodeblocks",
 				contentType: "application/json; charset=utf-8",
+				data: {
+					filter: {
+						id: ""
+					}
+				},
 				type: "POST",
 				success: function (data) {
-					v.trendingSnippets = data
+					v.trendingSnippets = data.codeblocks
 				},
 				error: function (error) {
 					console.log(error);

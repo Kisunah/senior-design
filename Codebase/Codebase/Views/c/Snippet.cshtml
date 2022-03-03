@@ -1,7 +1,4 @@
-﻿@{
-ViewData["Title"] = "Snippet";
-}
-<div id="snippet" v-cloak>
+﻿<div id="snippet" v-cloak>
 	<div class="container-lg">
 		<div class="row">
 			<div class="col-10">
@@ -15,8 +12,8 @@ ViewData["Title"] = "Snippet";
 									</div>
 									<div class="row">
 										<h6>Posted: {{snippet.creationDate}}</h6>
-										<a :href="'@Url.Action("User", "c")?id=' + snippet.userID">
-										<h6>Author: {{ snippet.username }}</h6>
+										<a :href="'@Url.Action("User", "c")?id=' + snippet.userId">
+										<h6>Author: {{ snippet.userId }}</h6>
 										</a>
 									</div>
 								</div>
@@ -51,14 +48,14 @@ ViewData["Title"] = "Snippet";
 										</div>
 										<div class="col-6">
 											<div class="mb-1" style="width: 100%; padding-left: 0; padding-right: 10px;">
-												<button type="button" style="width: 100%;" class="btn btn-outline-primary btn-sm"  v-on:click="editor()"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+												<button type="button" style="width: 100%;" class="btn btn-outline-primary btn-sm"  v-on:click="openEditor()"><i class="fa fa-pencil" aria-hidden="true"></i></button>
 											</div>
 										</div>
 									</div>
 									<div class="row mt-3">
 										Tags:&nbsp;
-										<div class="mb-1" v-for="tag in snippet.tags" v-bind:key="snippet.id + '-' + tag.id" style="width: fit-content; padding-left: 0; padding-right: 10px;">
-											<button type="button" :id="'tag-button-' + tag.id" class="btn btn-outline-primary btn-sm"  v-on:click="tagDetails(tag)">{{ tag.tag }}</button>
+										<div class="mb-1" v-for="tag in snippet.tags" v-bind:key="snippet.id + '-' + tag" style="width: fit-content; padding-left: 0; padding-right: 10px;">
+											<button type="button" :id="'tag-button-' + tag" class="btn btn-outline-primary btn-sm"  v-on:click="tagDetails(tag)">{{ tag }}</button>
 										</div>
 									</div>
 								</div>
@@ -74,24 +71,15 @@ ViewData["Title"] = "Snippet";
 									<button class="btn btn-outline-light" v-on:click="postComment()" type="button"><i class="fas fa-reply" style="color: white;"></i></button>
 								</div>
 							</div>
-							<div class="media mt-4" v-for="comment in snippet.comments" v-bind:key="comment.id">
-								<div class="media-body">
-									<h5 class="mt-0"><a :href="'@Url.Action("User", "c")?id=' + comment.userID">{{ comment.username }}</a></h5>
-								</div>
-								{{ comment.comment }}
-								<div class="media mt-3" style="margin-left: 5vh;" v-if="comment.replies.length > 0" v-for="reply in comment.replies" v-bind:key="reply.id">
-									<div class="media-body">
-										<a :href="'@Url.Action("User", "c")?id=' + reply.userID">
-										<h5 class="mt-0">{{ reply.username }}</h5>
-										</a>
-										{{ reply.comment }}
+							<div class="card mt-4" v-for="comment in snippet.comments" v-bind:key="comment.id">
+								<div class="card-body">
+									<h5 class="mt-0"><a style="padding: 0;" :href="'@Url.Action("User", "c")?id=' + comment.userId">{{ comment.userId }}</a></h5>
+									<div style="white-space: pre-wrap;">
+										<div class="row">
+											<p>{{comment.commentString}}</p>
+										</div>
 									</div>
-								</div>
-								<div class="input-group mt-3" style="margin-left: 5vh;">
-									<input type="text" class="form-control" v-model="reply"  placeholder="Reply...">
-									<div class="input-group-append">
-										<button class="btn btn-outline-light" v-on:click="postReply()" type="button"><i class="fas fa-reply" style="color: white;"></i></button>
-									</div>
+									<i>Posted: {{comment.creationDate}}</i>
 								</div>
 							</div>
 						</div>
@@ -106,7 +94,7 @@ ViewData["Title"] = "Snippet";
 						</div>
 						<div class="row" v-for="snip in relatedSnippets" v-bind:key="snip.id">
 							<div class="col-3" style="margin: auto;">
-								<button type="button" class="btn btn-outline-primary btn-sm" disabled style="width: 5vh;">{{ snip.upvotes - snip.downvotes }}</button>
+								<button type="button" class="btn btn-outline-primary btn-sm" disabled style="width: 5vh;">{{ snip.voteCount }}</button>
 							</div>
 							<div class="col-8">
 								<a :href="'@Url.Action("Snippet", "c")?id=' + snip.id">{{ snip.title }}</a>
@@ -153,4 +141,4 @@ ViewData["Title"] = "Snippet";
 <script src="~/lib/codemirror-5.65.0/mode/vb/vb.js"></script>
 <script src="~/lib/codemirror-5.65.0/mode/yaml/yaml.js"></script>
 }
-<script>var snippetId = @ViewBag.Id;</script>
+<script>var snippetId = "@ViewBag.Id"</script>
