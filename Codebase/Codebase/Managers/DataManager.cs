@@ -13,7 +13,7 @@ namespace Codebase.Managers
     {
         public ElasticClient client;
 
-        public const string indexName = "codebase-020422";
+        public const string indexName = "codebase-030222";
 
         public static MapperConfiguration mapperConfig = new MapperConfiguration(cfg =>
             {
@@ -179,33 +179,35 @@ namespace Codebase.Managers
         {
             List<string> validLanguages = new List<string>
             {
-                "Java",
-                "C",
-                "Python",
-                "C++",
-                "C#",
-                "Visual Basic",
-                "JavaScript",
-                "PHP",
-                "Swift",
-                "SQL",
-                "Ruby",
-                "Objective-C",
-                "Pascal",
-                "Go",
-                "R",
-                "Perl",
-                "TypeScript",
-                "MATLAB",
-                "HTML",
-                "CSS",
-                "Rust",
-                "Kotlin",
-                "Assembly",
-                "Prolog",
-                "Scala",
-                "Scheme",
-                "JSON"
+                "asciiarmor"
+                ,"clike"
+                ,"clojure"
+                ,"cmake"
+                ,"css"
+                ,"go"
+                ,"haskell"
+                ,"htmlembedded"
+                ,"javascript"
+                ,"markdown"
+                ,"mathematica"
+                ,"pascal"
+                ,"perl"
+                ,"php"
+                ,"powershell"
+                ,"properties"
+                ,"python"
+                ,"q"
+                ,"r"
+                ,"ruby"
+                ,"sas"
+                ,"sass"
+                ,"scheme"
+                ,"shell"
+                ,"spreadsheet"
+                ,"sql"
+                ,"swift"
+                ,"vb"
+                ,"yaml"
             };
 
             validLanguages.Sort();
@@ -223,7 +225,16 @@ namespace Codebase.Managers
                 "skeleton-code",
                 "script",
                 "query",
-                "class"
+                "class",
+                "Sort",
+                "Python3",
+                "Selection",
+                "Bubble",
+                "Bad",
+                "Help",
+                "Python2.7",
+                "Insertion",
+                "Recursive"
             };
 
             validTags.Sort();
@@ -234,7 +245,7 @@ namespace Codebase.Managers
         public async Task<GetCodeblocksOutput> GetCodeblocks(GetCodeblocksInput input)
         {
             ISearchResponse<Codeblock> response = new SearchResponse<Codeblock>();
-            if (input.filter == null || input.filter.Count == 0)
+            if (input == null || input.filter == null || input.filter.Count == 0)
             {
                 response = await client.SearchAsync<Codeblock>(s => s
                     .Index(indexName)
@@ -275,13 +286,14 @@ namespace Codebase.Managers
                 Title = input.title,
                 Description = input.description,
                 Code = input.code,
+                Language = input.language,
                 Id = Guid.NewGuid().ToString(),
                 IsPublic = input.isPublic,
                 Tags = input.tags,
                 VoteCount = 0,
                 Votes = new List<Vote>(),
                 Comments = new List<Comment>(),
-                UserId = "test", // will need to be populated with unique user identifier that is created on user creating an account
+                UserId = input.userId ?? "test", // will need to be populated with unique user identifier that is created on user creating an account
                 CreationDate = DateTime.UtcNow
             };
 

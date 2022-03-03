@@ -14,6 +14,8 @@ namespace Codebase.InputOutput
 
         public string language { get; set; }
 
+        public string userId { get; set; }
+
         public List<string> tags { get; set; }
     }
 

@@ -1,0 +1,141 @@
+﻿<div id="user" v-cloak>
+	<div class="container-lg" style="position: fixed;">
+		<div class="row" style="height: 88vh;">
+			<div class="col-2">
+				<div class="row mt-5">
+					<i class="fas fa-user fa-10x" style="color: white; text-align: center;"></i>
+				</div>
+				<div class="row mt-3">
+					<h4 style="text-align: center; color: white;">{{ user.username }}</h4>
+				</div>
+				<div class="row">
+					<h6 style="text-align: center; color: white;">{{ user.creationDate }}</h6>
+				</div>
+				<div class="row">
+					<div style="color: white;">{{ user.description }}</div>
+				</div>
+				<div class="row mt-3">
+					<h5 style="color: white;">Stats for Nerds</h5>
+				</div>
+				<div class="row mt-2">
+					<div class="col-3" style="margin: auto;">
+						<button type="button" class="btn btn-outline-primary btn-sm" disabled style="width: 5vh;">{{ user.numberOfPosts }}</button>
+					</div>
+					<div class="col-8">
+						<p style="color: white; margin: auto;">Number of Posts</a>
+					</div>
+				</div>
+				<div class="row mt-2">
+					<div class="col-3" style="margin: auto;">
+						<button type="button" class="btn btn-outline-primary btn-sm" disabled style="width: 5vh;">{{ user.upvotes }}</button>
+					</div>
+					<div class="col-8">
+						<p style="color: white; margin: auto;">Number of Upvotes</p>
+					</div>
+				</div>
+				<div class="row mt-2">
+					<div class="col-3" style="margin: auto;">
+						<button type="button" class="btn btn-outline-primary btn-sm" disabled style="width: 5vh;">{{ user.downvotes }}</button>
+					</div>
+					<div class="col-8">
+						<p style="color: white; margin: auto;">Number of Downvotes</p>
+					</div>
+				</div>
+				<div class="row mt-2">
+					<div class="col-3" style="margin: auto;">
+						<button type="button" class="btn btn-outline-primary btn-sm" disabled style="width: 5vh;">{{ user.comments }}</button>
+					</div>
+					<div class="col-8">
+						<p style="color: white; margin: auto;">Number of Comments</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-10" style="padding-right: 3vh;">
+				<div class="row hidescroll" style="overflow-y: scroll; height: 88vh;">
+					<div class="card shadow">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-3">
+									<h4>Snippets</h4>
+								</div>
+								<div class="col-9" style="text-align: right; margin: auto;">
+									<div class="custom-control custom-switch mr-3" style="position: relative; display: inline-flex;">
+										<input type="checkbox" class="custom-control-input" id="customSwitch1" v-on:click="filterLock">
+										<label class="custom-control-label" for="customSwitch1"><i class="fas fa-lock"></i></label>
+									</div>
+									<div class="btn-group btn-group-sm" role="group">
+										<button type="button" class="btn btn-primary" v-on:click="sortSnippets(1)">Hot</button>
+										<button type="button" class="btn btn-primary" v-on:click="sortSnippets(2)">Popular</button>
+										<button type="button" class="btn btn-primary" v-on:click="sortSnippets(3)">Contraversial</button>
+										<button type="button" class="btn btn-primary" v-on:click="sortSnippets(4)">Week</button>
+										<button type="button" class="btn btn-primary" v-on:click="sortSnippets(5)">Month</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card shadow mt-3" v-for="snippet in sortedSnippets" v-bind:key="snippet.id">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-2" style="margin: auto;">
+									<div class="row">
+										<i class="fas fa-arrow-up"  v-on:click="upvote(snippet)" style="text-align: center;"></i>
+									</div>
+									<div class="row">
+										<h4 style="text-align: center; margin: auto;">{{ snippet.upvotes - snippet.downvotes }}</h4>
+									</div>
+									<div class="row">
+										<i class="fas fa-arrow-down"  v-on:click="downvote(snippet)" style="text-align: center;"></i>
+									</div>
+								</div>
+								<div class="col-10">
+									<div class="row">
+										<div class="col-8">
+											<div class="row">
+												<a :href="'@Url.Action("Snippet", "c")?id=' + snippet.id">
+												<h4>{{ snippet.title }}</h4>
+												</a>
+											</div>
+										</div>
+										<div class="col-4">
+											<div class="row">
+												Created: {{snippet.creationDate}}
+											</div>
+											<div class="row">
+												<div v-if="snippet.isPrivate">
+													<i class="fas fa-lock" style="text-align: center;" v-on:click="setPrivate(snippet)"></i>
+												</div>
+												<div v-else>
+													<i class="fas fa-lock-open" style="text-align: center;" v-on:click="setPrivate(snippet)"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										Language:&nbsp;
+										<div class="mb-1" style="width: fit-content; padding-left: 0; padding-right: 10px;">
+											<button type="button" :id="'language-button-' + snippet.language.id" class="btn btn-outline-primary btn-sm"  v-on:click="languageDetails(snippet.language)">{{ snippet.language.language }}</button>
+										</div>
+									</div>
+									<div class="row" v-if="snippet.tags.length != 0">
+										Tags:&nbsp;
+										<div class="mb-1" v-for="tag in snippet.tags" v-bind:key="snippet.id + '-' + tag.id" style="width: fit-content; padding-left: 0; padding-right: 10px;">
+											<button type="button" :id="'tag-button-' + tag.id" class="btn btn-outline-primary btn-sm"  v-on:click="tagDetails(tag)">{{ tag.tag }}</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<info-modal id="info-modal" v-bind:type="infoModalType" v-bind:item="infoModalItem" v-bind:description="infoModalDescription" style="display: none"></info-modal>
+</div>
+@section Scripts
+{
+<script src="~/js/infoModal.js" asp-append-version="true"></script>
+<script src="~/js/user.js" asp-append-version="true"></script>
+}
+<script>var userId = @ViewBag.Id;</script>

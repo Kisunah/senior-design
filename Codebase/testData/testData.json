@@ -1,16 +1,56 @@
 [
     {
-        "title": "sample title",
-        "description": "sample description",
-        "code": "sample code",
+        "title": "Selection Sort",
+        "description": "\nThe selection sort algorithm sorts an array by repeatedly finding the minimum element (considering ascending order) from unsorted part and putting it at the beginning. The algorithm maintains two subarrays in a given array.\n1) The subarray which is already sorted. \n2) Remaining subarray which is unsorted.\nIn every iteration of selection sort, the minimum element (considering ascending order) from the unsorted subarray is picked and moved to the sorted subarray.\n",
+		"language":"python",
+        "code": "# Python program for implementation of Selection\n# Sort\nimport sys\nA = [64, 25, 12, 22, 11]\n  \n# Traverse through all array elements\nfor i in range(len(A)):\n      \n    # Find the minimum element in remaining \n    # unsorted array\n    min_idx = i\n    for j in range(i+1, len(A)):\n        if A[min_idx] > A[j]:\n            min_idx = j\n              \n    # Swap the found minimum element with \n    # the first element        \n    A[i], A[min_idx] = A[min_idx], A[i]\n  \n# Driver code to test above\nprint (\"Sorted array\")\nfor i in range(len(A)):\n    print(\"%d\" %A[i],end=\" \")",
+		"userId":"CodeBaseDev",
         "isPublic": true,
-        "tags": ["sampleTag"]
+        "tags": ["Sort","Python3","Selection"]
     },
     {
-        "title": "sample title",
-        "description": "sample description",
-        "code": "[HttpMethod]\n[Route(\"/url\")]\n[ProducesResponseType(typeof(output), 200)]\n[Produces(\"application/json\")]\npublic async Task<IActionResult> FunctionName()\n{\n\tIActionResult actionResult;\n\ttry\n\t{\n\t\tvar result;\n\t\tactionResult = Ok(result);\n\t}\n\tcatch (Exception ex)\n\t{\n\t\t_logger.LogError(ex.Message);\n\t\tthrow new Exception(ex.Message);\n\t}\n\treturn actionResult;\n}",
+        "title": "Bubble Sort",
+        "description": "Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in wrong order.\nExample: \nFirst Pass: \n( 5 1 4 2 8 ) –> ( 1 5 4 2 8 ), Here, algorithm compares the first two elements, and swaps since 5 > 1. \n( 1 5 4 2 8 ) –>  ( 1 4 5 2 8 ), Swap since 5 > 4 \n( 1 4 5 2 8 ) –>  ( 1 4 2 5 8 ), Swap since 5 > 2 \n( 1 4 2 5 8 ) –> ( 1 4 2 5 8 ), Now, since these elements are already in order (8 > 5), algorithm does not swap them.\nSecond Pass: \n( 1 4 2 5 8 ) –> ( 1 4 2 5 8 ) \n( 1 4 2 5 8 ) –> ( 1 2 4 5 8 ), Swap since 4 > 2 \n( 1 2 4 5 8 ) –> ( 1 2 4 5 8 ) \n( 1 2 4 5 8 ) –>  ( 1 2 4 5 8 ) \nNow, the array is already sorted, but our algorithm does not know if it is completed. The algorithm needs one whole pass without any swap to know it is sorted.\nThird Pass: \n( 1 2 4 5 8 ) –> ( 1 2 4 5 8 ) \n( 1 2 4 5 8 ) –> ( 1 2 4 5 8 ) \n( 1 2 4 5 8 ) –> ( 1 2 4 5 8 ) \n( 1 2 4 5 8 ) –> ( 1 2 4 5 8 )\n",
+		"language":"python",
+        "code": "# Python program for implementation of Bubble Sort\n  \ndef bubbleSort(arr):\n    n = len(arr)\n  \n    # Traverse through all array elements\n    for i in range(n):\n  \n        # Last i elements are already in place\n        for j in range(0, n-i-1):\n  \n            # traverse the array from 0 to n-i-1\n            # Swap if the element found is greater\n            # than the next element\n            if arr[j] > arr[j+1] :\n                arr[j], arr[j+1] = arr[j+1], arr[j]\n  \n# Driver code to test above\narr = [64, 34, 25, 12, 22, 11, 90]\n  \nbubbleSort(arr)\n  \nprint (\"Sorted array is:\")\nfor i in range(len(arr)):\n    print (\"%d\" %arr[i])",
+		"userId":"CodeBaseDev",
         "isPublic": true,
-        "tags": ["sampleTag"]
-    }
+        "tags": ["Sort","Python3","Bubble","Bad","Help","Python2.7"]
+    },
+    {
+        "title": "Recursive Bubble Sort",
+        "description": "Background : \nBubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in wrong order.\nExample: \nFirst Pass: \n( 5 1 4 2 8 ) –> ( 1 5 4 2 8 ), Here, algorithm compares the first two elements, and swaps since 5 > 1. \n( 1 5 4 2 8 ) –> ( 1 4 5 2 8 ), Swap since 5 > 4 \n( 1 4 5 2 8 ) –> ( 1 4 2 5 8 ), Swap since 5 > 2 \n( 1 4 2 5 8 ) –> ( 1 4 2 5 8 ), Now, since these elements are already in order (8 > 5), algorithm does not swap them.\nSecond Pass: \n( 1 4 2 5 8 ) –> ( 1 4 2 5 8 ) \n( 1 4 2 5 8 ) –> ( 1 2 4 5 8 ), Swap since 4 > 2 \n( 1 2 4 5 8 ) –> ( 1 2 4 5 8 ) \n( 1 2 4 5 8 ) –> ( 1 2 4 5 8 ) \nNow, the array is already sorted, but our algorithm does not know if it is completed. The algorithm needs one whole pass without any swap to know it is sorted.\nThird Pass: \n( 1 2 4 5 8 ) –> ( 1 2 4 5 8 ) \n( 1 2 4 5 8 ) –> ( 1 2 4 5 8 ) \n( 1 2 4 5 8 ) –> ( 1 2 4 5 8 ) \n( 1 2 4 5 8 ) –> ( 1 2 4 5 8 )",
+		"language":"python",
+        "code": "# Python Program for implementation of\n# Recursive Bubble sort\nclass bubbleSort:\n    \"\"\"\n     bubbleSort:\n          function:\n              bubbleSortRecursive : recursive\n                  function to sort array\n              __str__ : format print of array\n              __init__ : constructor\n                  function in python\n          variables:\n              self.array = contains array\n              self.length = length of array\n    \"\"\"\n \n    def __init__(self, array):\n        self.array = array\n        self.length = len(array)\n \n    def __str__(self):\n        return " ".join([str(x)\n                        for x in self.array])\n \n    def bubbleSortRecursive(self, n=None):\n        if n is None:\n            n = self.length\n \n        # Base case\n        if n == 1:\n            return\n \n        # One pass of bubble sort. After\n        # this pass, the largest element\n        # is moved (or bubbled) to end.\n        for i in range(n - 1):\n            if self.array[i] > self.array[i + 1]:\n                self.array[i], self.array[i +\n                1] = self.array[i + 1], self.array[i]\n \n        # Largest element is fixed,\n        #  recur for remaining array\n        self.bubbleSortRecursive(n - 1)\n \n# Driver Code\ndef main():\n    array = [64, 34, 25, 12, 22, 11, 90]\n     \n    # Creating object for class\n    sort = bubbleSort(array)\n     \n    # Sorting array\n    sort.bubbleSortRecursive()\n    print(\"Sorted array :\\n\", sort)\n \n \nif __name__ == \"__main__\":\n    main()",
+		"userId":"TestUser1",
+        "isPublic": true,
+        "tags": ["Sort","Python3"]
+    },
+    {
+        "title": "Insertion Sort",
+        "description": "Insertion sort is a simple sorting algorithm that works similar to the way you sort playing cards in your hands. The array is virtually split into a sorted and an unsorted part. Values from the unsorted part are picked and placed at the correct position in the sorted part.\nAlgorithm \nTo sort an array of size n in ascending order: \n1: Iterate from arr[1] to arr[n] over the array. \n2: Compare the current element (key) to its predecessor. \n3: If the key element is smaller than its predecessor, compare it to the elements before. Move the greater elements one position up to make space for the swapped element.",
+		"language":"python",
+        "code": "# Python program for implementation of Insertion Sort\n \n# Function to do insertion sort\ndef insertionSort(arr):\n \n    # Traverse through 1 to len(arr)\n    for i in range(1, len(arr)):\n \n        key = arr[i]\n \n        # Move elements of arr[0..i-1], that are\n        # greater than key, to one position ahead\n        # of their current position\n        j = i-1\n        while j >= 0 and key < arr[j] :\n                arr[j + 1] = arr[j]\n                j -= 1\n        arr[j + 1] = key\n \n \n# Driver code to test above\narr = [12, 11, 13, 5, 6]\ninsertionSort(arr)\nfor i in range(len(arr)):\n    print (\"% d\" % arr[i])",
+		"userId":"CodeBaseDev",
+        "isPublic": true,
+        "tags": ["Sort","Python3","Insertion"]
+    },
+    {
+        "title": "Recursive Insertion Sort",
+        "description": "How to implement it recursively? \nRecursive Insertion Sort has no performance/implementation advantages, but can be a good question to check one’s understanding of Insertion Sort and recursion.\nIf we take a closer look at Insertion Sort algorithm, we keep processed elements sorted and insert new elements one by one in the inserted array.\nRecursion Idea. \n \n\nBase Case: If array size is 1 or smaller, return.\nRecursively sort first n-1 elements.\nInsert last element at its correct position in sorted array.",
+		"language":"python",
+        "code": "# Recursive Python program for insertion sort\n# Recursive function to sort an array using insertion sort\n \ndef insertionSortRecursive(arr,n):\n    # base case\n    if n<=1:\n        return\n     \n    # Sort first n-1 elements\n    insertionSortRecursive(arr,n-1)\n    '''Insert last element at its correct position\n        in sorted array.'''\n    last = arr[n-1]\n    j = n-2\n     \n      # Move elements of arr[0..i-1], that are\n      # greater than key, to one position ahead\n      # of their current position\n    while (j>=0 and arr[j]>last):\n        arr[j+1] = arr[j]\n        j = j-1\n \n    arr[j+1]=last\n     \n# A utility function to print an array of size n\ndef printArray(arr,n):\n    for i in range(n):\n        print(arr[i],end=" ")\n \n# Driver program to test insertion sort\narr = [12,11,13,5,6]\nn = len(arr)\ninsertionSortRecursive(arr, n)\nprintArray(arr, n)",
+		"userId":"TestUser2",
+        "isPublic": true,
+        "tags": ["Sort","Python3","Recursive", "Insertion"]
+    },
+    {
+        "title": "Merge Sort",
+        "description": "Like QuickSort, Merge Sort is a Divide and Conquer algorithm. It divides the input array into two halves, calls itself for the two halves, and then merges the two sorted halves. The merge() function is used for merging two halves. The merge(arr, l, m, r) is a key process that assumes that arr[l..m] and arr[m+1..r] are sorted and merges the two sorted sub-arrays into one. See the following C implementation for details.",
+		"language":"python",
+        "code": "# Python program for implementation of MergeSort\ndef mergeSort(arr):\n    if len(arr) > 1:\n  \n         # Finding the mid of the array\n        mid = len(arr)//2\n  \n        # Dividing the array elements\n        L = arr[:mid]\n  \n        # into 2 halves\n        R = arr[mid:]\n  \n        # Sorting the first half\n        mergeSort(L)\n  \n        # Sorting the second half\n        mergeSort(R)\n  \n        i = j = k = 0\n  \n        # Copy data to temp arrays L[] and R[]\n        while i < len(L) and j < len(R):\n            if L[i] < R[j]:\n                arr[k] = L[i]\n                i += 1\n            else:\n                arr[k] = R[j]\n                j += 1\n            k += 1\n  \n        # Checking if any element was left\n        while i < len(L):\n            arr[k] = L[i]\n            i += 1\n            k += 1\n  \n        while j < len(R):\n            arr[k] = R[j]\n            j += 1\n            k += 1\n  \n# Code to print the list\n  \n  \ndef printList(arr):\n    for i in range(len(arr)):\n        print(arr[i], end=" ")\n    print()\n  \n  \n# Driver Code\nif __name__ == '__main__':\n    arr = [12, 11, 13, 5, 6, 7]\n    print(\"Given array is\", end=\"\\n\")\n    printList(arr)\n    mergeSort(arr)\n    print(\"Sorted array is: \", end=\"\\n\")\n    printList(arr)",
+		"userId":"TestUser3",
+        "isPublic": true,
+        "tags": ["Sort"]
+    },
 ]
