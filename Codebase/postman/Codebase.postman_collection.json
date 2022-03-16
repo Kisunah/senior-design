@@ -324,6 +324,38 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "searchCodeblocks",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"search\": \"sort\",\r\n    \"filters\": {\r\n        \"isPublic\": \"true\",\r\n        \"language\": \"python\"\r\n    },\r\n    \"tags\": [\"Python3\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{codebaseEndpoint}}/codebase/searchCodeblocks",
+					"host": [
+						"{{codebaseEndpoint}}"
+					],
+					"path": [
+						"codebase",
+						"searchCodeblocks"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

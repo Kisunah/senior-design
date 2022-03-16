@@ -61,4 +61,18 @@ namespace Codebase.InputOutput
 
         public string codeblockGuid { get; set; }
     }
+
+    public class SearchCodeblocksInput
+    {
+        public string search { get; set; } = null;
+
+        public Dictionary<string, string> filters { get; set; }
+
+        public List<string> tags { get; set; }
+    }
+
+    public class SearchCodeblocksOutput
+    {
+        public List<Codeblock> codeblocks { get; set; }
+    }
 }
