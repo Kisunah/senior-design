@@ -22,7 +22,7 @@
 										<i class="fas fa-arrow-up"  v-on:click="upvote(snippet)" style="text-align: center;"></i>
 									</div>
 									<div class="row">
-										<h4 style="text-align: center; margin: auto;">{{ snippet.upvotes - snippet.downvotes }}</h4>
+										<h4 style="text-align: center; margin: auto;">{{ snippet.voteCount }}</h4>
 									</div>
 									<div class="row">
 										<i class="fas fa-arrow-down"  v-on:click="downvote(snippet)" style="text-align: center;"></i>
@@ -114,31 +114,25 @@
 <script src="~/lib/codemirror-5.65.0/mode/asciiarmor/asciiarmor.js"></script>
 <script src="~/lib/codemirror-5.65.0/mode/clike/clike.js"></script>
 <script src="~/lib/codemirror-5.65.0/mode/clojure/clojure.js"></script>
-<script src="~/lib/codemirror-5.65.0/mode/cmake/cmake.js"></script>
 <script src="~/lib/codemirror-5.65.0/mode/css/css.js"></script>
-<script src="~/lib/codemirror-5.65.0/mode/go/go.js"></script>
 <script src="~/lib/codemirror-5.65.0/mode/haskell/haskell.js"></script>
 <script src="~/lib/codemirror-5.65.0/mode/htmlembedded/htmlembedded.js"></script>
 <script src="~/lib/codemirror-5.65.0/mode/javascript/javascript.js"></script>
 <script src="~/lib/codemirror-5.65.0/mode/markdown/markdown.js"></script>
-<script src="~/lib/codemirror-5.65.0/mode/mathematica/mathematica.js"></script>
-<script src="~/lib/codemirror-5.65.0/mode/pascal/pascal.js"></script>
 <script src="~/lib/codemirror-5.65.0/mode/perl/perl.js"></script>
 <script src="~/lib/codemirror-5.65.0/mode/php/php.js"></script>
 <script src="~/lib/codemirror-5.65.0/mode/powershell/powershell.js"></script>
 <script src="~/lib/codemirror-5.65.0/mode/properties/properties.js"></script>
 <script src="~/lib/codemirror-5.65.0/mode/python/python.js"></script>
-<script src="~/lib/codemirror-5.65.0/mode/q/q.js"></script>
-<script src="~/lib/codemirror-5.65.0/mode/r/r.js"></script>
 <script src="~/lib/codemirror-5.65.0/mode/ruby/ruby.js"></script>
 <script src="~/lib/codemirror-5.65.0/mode/sas/sas.js"></script>
 <script src="~/lib/codemirror-5.65.0/mode/sass/sass.js"></script>
 <script src="~/lib/codemirror-5.65.0/mode/scheme/scheme.js"></script>
-<script src="~/lib/codemirror-5.65.0/mode/shell/shell.js"></script>
 <script src="~/lib/codemirror-5.65.0/mode/spreadsheet/spreadsheet.js"></script>
 <script src="~/lib/codemirror-5.65.0/mode/sql/sql.js"></script>
 <script src="~/lib/codemirror-5.65.0/mode/swift/swift.js"></script>
 <script src="~/lib/codemirror-5.65.0/mode/vb/vb.js"></script>
-<script src="~/lib/codemirror-5.65.0/mode/yaml/yaml.js"></script>
+
+<script src="~/lib/codemirror-5.65.0/mode/shell/shell.js"></script>
 }
 <script>var snippetId = "@ViewBag.Id"</script>

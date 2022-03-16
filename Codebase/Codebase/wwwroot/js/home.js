@@ -263,32 +263,37 @@
 		upvote: function (snippet) {
 			let v = this;
 
-			//$.ajax({
-			//    url: /*API ENDPOINT*/,
-			//    type: "GET",
-			//    success: function (data) {
-			//    },
-			//    error: function (error) {
-			//    }
-			//});
-
-			alert("Upvote: " + snippet.id);
+			$.ajax({
+				url: document.location.origin + "/codebase/" + snippet.id + "/upVote",
+			    type: "POST",
+				success: function (data) {
+					_.forEach(v.snippets, (s) => {
+						if (s.id === snippet.id) {
+							snippet.voteCount = snippet.voteCount + 1;
+                        }
+					});
+			    },
+			    error: function (error) {
+			    }
+			});
 		},
 
 		downvote: function (snippet) {
 			let v = this;
 
-			//$.ajax({
-			//    url: /*API ENDPOINT*/,
-			//    type: "GET",
-			//    success: function (data) {
-			//    },
-			//    error: function (error) {
-			//        console.log(error);
-			//    }
-			//});
-
-			alert("Downvote: " + snippet.id);
+			$.ajax({
+				url: document.location.origin + "/codebase/" + snippet.id + "/downVote",
+				type: "POST",
+				success: function (data) {
+					_.forEach(v.snippets, (s) => {
+						if (s.id === snippet.id) {
+							snippet.voteCount = snippet.voteCount - 1;
+						}
+					});
+				},
+				error: function (error) {
+				}
+			});
 		},
 
 	}

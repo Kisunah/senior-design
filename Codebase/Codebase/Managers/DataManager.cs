@@ -13,7 +13,7 @@ namespace Codebase.Managers
     {
         public ElasticClient client;
 
-        public const string indexName = "codebase-030222";
+        public const string indexName = "codebase-031622";
 
         public static MapperConfiguration mapperConfig = new MapperConfiguration(cfg =>
             {
@@ -180,16 +180,15 @@ namespace Codebase.Managers
             List<string> validLanguages = new List<string>
             {
                 "asciiarmor"
-                ,"clike"
+                ,"c"
+                ,"c++"
+                ,"c#"
                 ,"clojure"
-                ,"cmake"
                 ,"css"
-                ,"go"
                 ,"haskell"
                 ,"htmlembedded"
                 ,"javascript"
                 ,"markdown"
-                ,"mathematica"
                 ,"pascal"
                 ,"perl"
                 ,"php"
@@ -207,7 +206,6 @@ namespace Codebase.Managers
                 ,"sql"
                 ,"swift"
                 ,"vb"
-                ,"yaml"
             };
 
             validLanguages.Sort();
