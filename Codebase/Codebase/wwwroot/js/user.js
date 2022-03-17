@@ -34,7 +34,7 @@
 
 			if (v.hidePublic) {
 				results = _.filter(results, (s) => {
-					if (s.isPrivate) {
+					if (s.isPublic) {
 						return s;
 					}
 				});
@@ -119,7 +119,7 @@
 				creationDate: "2022-02-22",
 				description: "Hello, I am a student at the University of Cincinnati",
 				numberOfPosts: 15,
-				upvotes: 10000,s
+				upvotes: 10000,
 				downvotes: 676,
 				comments: 57
 			};
@@ -180,10 +180,10 @@
 
 			//_.forEach(v.snippets, (s) => {
 			//	if (s.id === snippet.id) {
-			//		if (s.isPrivate) {
-			//			s.isPrivate = false;
+			//		if (s.isPublic) {
+			//			s.isPublic = false;
 			//		} else {
-			//			s.isPrivate = true;
+			//			s.isPublic = true;
 			//		}
 			//	}
 			//});

@@ -126,7 +126,7 @@
 						</div>
 						<div class="row" v-for="snippet in trendingSnippets" v-bind:key="snippet.id">
 							<div class="col-3" style="margin: auto;">
-								<button type="button" class="btn btn-outline-primary btn-sm" disabled style="width: 5vh;">{{ snippet.voteCount }}</button>
+								<button type="button" class="btn btn-outline-primary btn-sm" style="width: 5vh;">{{ snippet.voteCount }}</button>
 							</div>
 							<div class="col-9">
 								<a :href="'@Url.Action("Snippet", "c")?id=' + snippet.id">{{ snippet.title }}</a>
