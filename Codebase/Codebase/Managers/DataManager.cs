@@ -187,6 +187,7 @@ namespace Codebase.Managers
                 ,"css"
                 ,"haskell"
                 ,"htmlembedded"
+                ,"java"
                 ,"javascript"
                 ,"markdown"
                 ,"pascal"
@@ -224,15 +225,15 @@ namespace Codebase.Managers
                 "script",
                 "query",
                 "class",
-                "Sort",
-                "Python3",
-                "Selection",
-                "Bubble",
-                "Bad",
-                "Help",
-                "Python2.7",
-                "Insertion",
-                "Recursive"
+                "sort",
+                "python3",
+                "selection",
+                "bubble",
+                "bad",
+                "help",
+                "python2.7",
+                "insertion",
+                "recursive"
             };
 
             validTags.Sort();
@@ -248,6 +249,34 @@ namespace Codebase.Managers
                 response = await client.SearchAsync<Codeblock>(s => s
                     .Index(indexName)
                     .MatchAll());
+            }
+            else if (input.filter.Count == 1)
+            {
+                if (input.filter.ContainsKey("id"))
+                {
+                    response = await client.SearchAsync<Codeblock>(s => s
+                        .Index(indexName)
+                        .Query(q => q
+                            .Match(m => m
+                                .Field(f => f.Id)
+                                .Query(input.filter["id"])
+                            )
+                        )
+                    );
+                }
+                else
+                {
+                    var test = bool.Parse(input.filter["isPublic"]);
+                    response = await client.SearchAsync<Codeblock>(s => s
+                        .Index(indexName)
+                        .Query(q => q
+                            .Match(m => m
+                                .Field(f => f.IsPublic)
+                                .Query((input.filter["isPublic"]))
+                            )
+                        )
+                    );
+                }
             }
             else
             {
@@ -276,9 +305,81 @@ namespace Codebase.Managers
             return output;
         }
 
+        public async Task<SearchCodeblocksOutput> SearchCodeblocks(SearchCodeblocksInput input)
+        {
+            var container = new QueryContainer();
+            if (input.filters != null)
+            {
+                foreach (var filter in input.filters)
+                {
+                    // This handles filters that aren't tags
+                    var query = +new TermQuery
+                    {
+                        Field = filter.Key,
+                        Value = filter.Value
+                    };
+
+                    container &= +query;
+                }
+            }
+
+            var tagsContainer = new NamedFiltersContainer();
+            ITermsQuery tagsQuery = new TermsQuery();
+            if (input.tags != null)
+            {
+                tagsQuery = new TermsQuery
+                {
+                    Field = "tags",
+                    Terms = input.tags
+                };
+            }
+
+            var response = await client.SearchAsync<Codeblock>(s => s
+                .Index(indexName)
+                .Query(q => q
+                    .Bool(b => b
+                        .Must(m => m
+                            .QueryString(c => c
+                                .Query(input.search)
+                                .DefaultOperator(Operator.Or)
+                                .Fields(f => f.Field(p => p.Title).Field("description"))
+                            )
+                        )
+                        .Filter(f => container, f => new TermsQuery
+                        {
+                            Field = "tags",
+                            Terms = input.tags
+                        })
+                    )
+                )
+            );
+
+
+            List<Codeblock> codeblocks = new List<Codeblock>();
+            for (int i = 0; i < response.Documents.Count; i++)
+            {
+                codeblocks.Add(response.Documents.ElementAt(i));
+            }
+
+            return new SearchCodeblocksOutput
+            {
+                codeblocks = codeblocks
+            };
+        }
+
         #region privateMethods
         private Codeblock PrepareCodeblockForInsert(CreateCodeblockInput input)
         {
+            // Checks to make sure tags and language being passed in are supported
+            var tags = GetTags();
+            foreach(var tag in input.tags)
+            {
+                if (tags.IndexOf(tag) == -1) throw new BadHttpRequestException(tag + " is not supported.");
+            }
+
+            var languages = GetLanguages();
+            if (languages.IndexOf(input.language) == -1) throw new BadHttpRequestException(input.language + " is not supported.");
+
             Codeblock codeblock = new Codeblock
             {
                 Title = input.title,

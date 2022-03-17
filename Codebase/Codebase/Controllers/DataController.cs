@@ -50,10 +50,10 @@ namespace Codebase.Controllers
                 CreateCodeblockOutput result = await dataManager.CreateCodeblock(input);
                 actionResult = Ok(result);
             }
-            catch (Exception ex)
+            catch (HttpRequestException ex)
             {
                 _logger.LogError(ex.Message);
-                throw new Exception(ex.Message);
+                throw new HttpRequestException(ex.Message, ex.InnerException, ex.StatusCode);
             }
             return actionResult;
         }
@@ -207,14 +207,36 @@ namespace Codebase.Controllers
 
         [HttpPost]
         [Route("/codebase/getCodeblocks")]
-        [ProducesResponseType(typeof(void), 200)]
+        [ProducesResponseType(typeof(GetCodeblocksOutput), 200)]
         [Produces("application/json")]
-        public async Task<IActionResult> getCodeblocksAsync([FromBody]  GetCodeblocksInput input)
+        public async Task<IActionResult> getCodeblocksAsync(
+            [FromBody] GetCodeblocksInput input)
         {
             IActionResult actionResult;
             try
             {
                 GetCodeblocksOutput result = await dataManager.GetCodeblocks(input);
+                actionResult = Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw new Exception(ex.Message);
+            }
+            return actionResult;
+        }
+
+        [HttpPost]
+        [Route("/codebase/searchCodeblocks")]
+        [ProducesResponseType(typeof(List<SearchCodeblocksOutput>), 200)]
+        [Produces("application/json")]
+        public async Task<IActionResult> searchCodeblocksAsync(
+            [FromBody] SearchCodeblocksInput input)
+        {
+            IActionResult actionResult;
+            try
+            {
+                SearchCodeblocksOutput result = await dataManager.SearchCodeblocks(input);
                 actionResult = Ok(result);
             }
             catch (Exception ex)
