@@ -11,7 +11,7 @@
 
 		tagFilters: [],
 		languageFilters: [],
-		sortBy: 1,
+		sortBy: 2,
 		searchTerm: "",
 
 		infoModalType: null,
@@ -23,6 +23,22 @@
 		filterModalSelected: null,
 	},
 
+	computed:{
+
+		tagsLimited: function () {
+			var list = [];
+			_.forEach(v.snippets, (s) => {
+				_.forEach(s.tags, (t) => {
+					if (!list.includes(t)) {
+						list.push(t);
+                    }
+				});
+			});
+			return list;
+        }
+
+    },
+
 	mounted: function () {
 		let v = this;
 
@@ -31,7 +47,7 @@
 		v.getTags();
 		v.getLangauges();
 		v.getSnippets(v.searchTerm);
-		v.getTrending();
+		//v.getTrending();
 	},
 
 	computed: {
@@ -62,17 +78,13 @@
 			}
 
 			if (v.sortBy === 1) {
-				//results = _.orderBy(results, (s) => {
-				//	return s.upvotes / (s.upvotes + s.downvotes);
-				//}, 'desc');
+				results = _.orderBy(results, (s) => {
+					return moment(s.creationDate);
+				}, 'asc');
 			} else if (v.sortBy === 2) {
-				//results = _.orderBy(results, (s) => {
-				//	return s.upvotes + s.downvotes;
-				//}, 'desc');
-			} else if (v.sortBy === 3) {
-				//results = _.orderBy(results, (s) => {
-				//	return Math.abs((s.upvotes / (s.upvotes + s.downvotes)) - .5);
-				//}, 'asc');
+				results = _.orderBy(results, (s) => {
+					return s.voteCount;
+				}, 'desc');
 			} else if (v.sortBy === 4 || v.sortBy === 5) {
 				results = _.orderBy(results, (s) => {
 					return s.voteCount;
@@ -175,7 +187,7 @@
 		addTagFilter: function (tag) {
 			let v = this;
 
-			if (v.tagFilters.includes(tag.id)) {
+			if (v.tagFilters.includes(tag)) {
 				v.tagFilters.splice(v.tagFilters.indexOf(tag), 1);
 			} else {
 				v.tagFilters.push(tag);

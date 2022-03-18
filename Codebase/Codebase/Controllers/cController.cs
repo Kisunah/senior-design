@@ -31,7 +31,7 @@ namespace Codebase.Controllers
             return View();
         }
 
-        public IActionResult User(string id = null)
+        public IActionResult User(string id = "CodeBaseDev")
         {
             ViewBag.Id = id;
             return View();

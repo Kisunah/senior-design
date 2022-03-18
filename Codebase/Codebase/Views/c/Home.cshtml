@@ -10,7 +10,7 @@
 							</a>
 						</div>
 						<div class="row" style="padding-left: inherit !important;">
-							<div class="mb-1" v-for="tag in tags" v-bind:key="tag" style="width: fit-content; padding-left: 0; padding-right: 5px;">
+							<div class="mb-1" v-for="tag in tagsLimited" v-bind:key="tag" style="width: fit-content; padding-left: 0; padding-right: 5px;">
 								<input type="checkbox" class="btn-check" :id="'tag-checkbox-' + tag" autocomplete="off" v-on:click="addTagFilter(tag)">
 								<label class="btn btn-outline-primary btn-sm" :for="'tag-checkbox-' + tag">{{ tag }}</label>
 							</div>
@@ -39,7 +39,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-8">
+			<div class="col-10">
 				<div class="row hidescroll" style="overflow-y: scroll; height: 88vh;">
 					<div class="card mb-3" v-if="searchTerm">
 						<div class="card-body">
@@ -50,7 +50,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="card" style="border-bottom: 1px #333;">
+					<div class="card">
 						<div class="card-body">
 							<div class="row">
 								<div class="col-3">
@@ -58,9 +58,8 @@
 								</div>
 								<div class="col-9" style="text-align: right; margin: auto;">
 									<div class="btn-group btn-group-sm" role="group">
-										<button type="button" class="btn btn-primary" v-on:click="sortSnippets(1)">Hot</button>
+										<button type="button" class="btn btn-primary" v-on:click="sortSnippets(1)">New</button>
 										<button type="button" class="btn btn-primary" v-on:click="sortSnippets(2)">Popular</button>
-										<button type="button" class="btn btn-primary" v-on:click="sortSnippets(3)">Contraversial</button>
 										<button type="button" class="btn btn-primary" v-on:click="sortSnippets(4)">Week</button>
 										<button type="button" class="btn btn-primary" v-on:click="sortSnippets(5)">Month</button>
 									</div>
@@ -118,7 +117,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-2" style="height: 88vh;">
+			@*<div class="col-2" style="height: 88vh;">
 				<div class="card">
 					<div class="card-body">
 						<div class="row">
@@ -128,13 +127,13 @@
 							<div class="col-3" style="margin: auto;">
 								<button type="button" class="btn btn-outline-primary btn-sm" style="width: 5vh;">{{ snippet.voteCount }}</button>
 							</div>
-							<div class="col-9">
+							<div class="col-8">
 								<a :href="'@Url.Action("Snippet", "c")?id=' + snippet.id">{{ snippet.title }}</a>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</div>*@
 		</div>
 	</div>
 	<info-modal id="info-modal" v-bind:type="infoModalType" v-bind:item="infoModalItem" v-bind:description="infoModalDescription" style="display: none"></info-modal>

@@ -13,7 +13,7 @@ namespace Codebase.Managers
     {
         public ElasticClient client;
 
-        public const string indexName = "codebase-031622";
+        public const string indexName = "codebase-031822";
 
         public static MapperConfiguration mapperConfig = new MapperConfiguration(cfg =>
             {
@@ -218,22 +218,16 @@ namespace Codebase.Managers
         {
             List<string> validTags = new List<string>
             {
-                "function",
-                "algorithm",
-                "testing",
-                "skeleton-code",
-                "script",
-                "query",
-                "class",
-                "sort",
-                "python3",
-                "selection",
-                "bubble",
-                "bad",
-                "help",
-                "python2.7",
-                "insertion",
-                "recursive"
+                "function","algorithm","testing","skeleton-code","script","query","class","selection","help","python2.7","insertion",
+                "recursive","javascript","python","java","c#","php","android","html","jquery","c++","css","sql","r","node.js",
+                "arrays","c","reactjs","asp.net","json",".net","sql-server","swift","python-3.x","objective-c","angular","angularjs",
+                "regex","pandas","ruby","ajax","xml","asp.net-mvc","vba","spring","laravel","database","wordpress","typescript","string",
+                "windows","xcode","postgresql","bash","git","vb.net","multithreading","list","dataframe","react-native","algorithm",
+                "docker","forms","image","scala","visual-studio","twitter-bootstrap","function","powershell","numpy","api","performance",
+                "python-2.7","winforms","selenium","matlab","sqlite","vue.js","apache","hibernate","entity-framework","rest",
+                "loops","shell","facebook","android-studio","express","linq","csv","maven","swing","unit-testing","file","class",
+                "date","sorting","kotlin","symfony","tsql","dictionary","google-chrome","codeigniter","asp.net-core","perl",
+                "dart","opencv","google-maps","datetime","http","for-loop","validation"
             };
 
             validTags.Sort();

@@ -75,4 +75,12 @@ namespace Codebase.InputOutput
     {
         public List<Codeblock> codeblocks { get; set; }
     }
+
+    public class compileCodeblockInput
+    {
+        public string language { get; set; }
+        public string code { get; set; }
+        public string versionIndex { get; set; }
+
+    }
 }

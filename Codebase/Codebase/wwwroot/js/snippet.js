@@ -28,7 +28,7 @@
 			v.editor = CodeMirror.fromTextArea(textarea_editor, {
 				tabSize: 4,
 				mode: v.realLanguageCode,
-				theme: '3024-night',
+				theme: 'xq-light',
 				lineNumbers: true,
 				styleActiveSelected: true,
 				styleActiveLine: true,

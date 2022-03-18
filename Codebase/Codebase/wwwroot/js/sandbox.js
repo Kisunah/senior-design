@@ -10,6 +10,23 @@
 		realLanguageCode: null,
 	},
 
+	computed: {
+
+		compilable: function () {
+			let v = this;
+
+			var languages = ["c","c++","php","perl","python","ruby","go","c#","r","clojure"]
+
+			if (languages.includes(v.snippet.language)) {
+				return true;
+			}
+			else {
+				return false;
+            }
+		}
+
+    },
+
 	mounted: function () {
 		let v = this;
 
@@ -30,7 +47,7 @@
 			v.editor = CodeMirror.fromTextArea(textarea_editor, {
 				tabSize: 4,
 				mode: lang,
-				theme: '3024-night',
+				theme: 'xq-light',
 				lineNumbers: true,
 				styleActiveSelected: true,
 				styleActiveLine: true,
@@ -42,11 +59,12 @@
 			v.editor.setSize("100%", "100%");
 
 			var textarea_output = document.getElementById("textarea_output");
+			textarea_output.value ="output...";
 
 			v.output = CodeMirror.fromTextArea(textarea_output, {
 				tabSize: 4,
-				mode: 'shell',
-				theme: '3024-night',
+				mode: 'text',
+				theme: 'xq-light',
 				lineNumbers: true,
 				styleActiveSelected: true,
 				styleActiveLine: true,
@@ -96,7 +114,7 @@
 			navigator.clipboard.writeText(v.editor.getValue());
 		},
 
-		compile: function () {
+		compile: async function () {
 			let v = this;
 
 			var langcode = null;
@@ -135,22 +153,19 @@
 			}
 
 			$.ajax({
-				url: "https://api.jdoodle.com/v1/execute",
+				url: document.location.origin + "/codebase/compileCodeblock",
 				contentType: "application/json; charset=utf-8",
-				type: "json",
-				data: {
-					clientId: "a7c32c59a02db14c68f27b026c75e6b6",
-					clientSecret: "fac2276dcb1d21eb57450fee25566108916fc6611e9e21ab1fc10509f84a2da6",
-					script: v.editor.getValue(),
+				data: JSON.stringify({
+					code: v.editor.getValue(),
 					language: langcode,
 					versionIndex: versionindex
-				},
+				}),
 				type: "POST",
 				success: function (data) {
-					v.output.setValue(data.output)
+					var jsonObject = JSON.parse(data);
+					v.output.getDoc().setValue(jsonObject.output);
 				},
 				error: function (error) {
-					v.output.setValue(error.error);
 				}
 			});
         },

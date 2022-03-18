@@ -6,7 +6,7 @@
 	data: {
 		user: {},
 		snippets: [],
-		sortBy: 1,
+		sortBy: 2,
 		hidePublic: false,
 
 		infoModalType: null,
@@ -41,17 +41,13 @@
 			}
 
 			if (v.sortBy === 1) {
-				//results = _.orderBy(results, (s) => {
-				//	return s.upvotes / (s.upvotes + s.downvotes);
-				//}, 'desc');
+				results = _.orderBy(results, (s) => {
+					return moment(s.creationDate);
+				}, 'asc');
 			} else if (v.sortBy === 2) {
-				//results = _.orderBy(results, (s) => {
-				//	return s.upvotes + s.downvotes;
-				//}, 'desc');
-			} else if (v.sortBy === 3) {
-				//results = _.orderBy(results, (s) => {
-				//	return Math.abs((s.upvotes / (s.upvotes + s.downvotes)) - .5);
-				//}, 'asc');
+				results = _.orderBy(results, (s) => {
+					return s.voteCount;
+				}, 'desc');
 			} else if (v.sortBy === 4 || v.sortBy === 5) {
 				results = _.orderBy(results, (s) => {
 					return s.voteCount;

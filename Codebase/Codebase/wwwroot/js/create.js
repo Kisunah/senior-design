@@ -47,7 +47,7 @@
 		v.editor = CodeMirror.fromTextArea(textarea_editor, {
 			tabSize: 4,
 			mode: 'text',
-			theme: '3024-night',
+			theme: 'xq-light',
 			lineNumbers: true,
 			styleActiveSelected: true,
 			styleActiveLine: true,
@@ -110,7 +110,9 @@
 			_.forEach(v.tags, function (t) {
 				if (t === id) {
 					if (action === "added") {
-						v.selectedTags.push(t);
+						if (!v.selectedTags.includes(t)) {
+							v.selectedTags.push(t);
+                        }
 					} else {
 						v.selectedTags = _.filter(v.selectedTags, function (t) {
 							if (t !== id) {
