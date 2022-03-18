@@ -137,6 +137,7 @@
 			$.ajax({
 				url: "https://api.jdoodle.com/v1/execute",
 				contentType: "application/json; charset=utf-8",
+				type: "json",
 				data: {
 					clientId: "a7c32c59a02db14c68f27b026c75e6b6",
 					clientSecret: "fac2276dcb1d21eb57450fee25566108916fc6611e9e21ab1fc10509f84a2da6",

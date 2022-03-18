@@ -133,8 +133,9 @@
 				url: document.location.origin + "/codebase/getCodeblocks",
 				contentType: "application/json; charset=utf-8",
 				data: {
+					search: search,
 					filter: {
-						id: ""
+						isPublic: "true"
 					}
 				},
 			    type: "POST",

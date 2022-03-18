@@ -11,9 +11,6 @@
 				<div class="row">
 					<h6 style="text-align: center; color: white;">{{ user.creationDate }}</h6>
 				</div>
-				<div class="row">
-					<div style="color: white;">{{ user.description }}</div>
-				</div>
 				<div class="row mt-3">
 					<h5 style="color: white;">Stats for Nerds</h5>
 				</div>
@@ -22,7 +19,7 @@
 						<button type="button" class="btn btn-outline-primary btn-sm" disabled style="width: 5vh;">{{ user.numberOfPosts }}</button>
 					</div>
 					<div class="col-8">
-						<p style="color: white; margin: auto;">Number of Posts</a>
+						<p style="color: white; margin: auto;">Number of Posts</p>
 					</div>
 				</div>
 				<div class="row mt-2">
@@ -31,22 +28,6 @@
 					</div>
 					<div class="col-8">
 						<p style="color: white; margin: auto;">Number of Upvotes</p>
-					</div>
-				</div>
-				<div class="row mt-2">
-					<div class="col-3" style="margin: auto;">
-						<button type="button" class="btn btn-outline-primary btn-sm" disabled style="width: 5vh;">{{ user.downvotes }}</button>
-					</div>
-					<div class="col-8">
-						<p style="color: white; margin: auto;">Number of Downvotes</p>
-					</div>
-				</div>
-				<div class="row mt-2">
-					<div class="col-3" style="margin: auto;">
-						<button type="button" class="btn btn-outline-primary btn-sm" disabled style="width: 5vh;">{{ user.comments }}</button>
-					</div>
-					<div class="col-8">
-						<p style="color: white; margin: auto;">Number of Comments</p>
 					</div>
 				</div>
 			</div>
@@ -82,7 +63,7 @@
 										<i class="fas fa-arrow-up"  @*v-on:click="upvote(snippet)"*@ style="text-align: center; color: grey;"></i>
 									</div>
 									<div class="row">
-										<h4 style="text-align: center; margin: auto;">{{ snippet.upvotes - snippet.downvotes }}</h4>
+										<h4 style="text-align: center; margin: auto;">{{ snippet.voteCount }}</h4>
 									</div>
 									<div class="row">
 										<i class="fas fa-arrow-down"  @*v-on:click="downvote(snippet)"*@ style="text-align: center; color: grey;"></i>
@@ -114,13 +95,13 @@
 									<div class="row">
 										Language:&nbsp;
 										<div class="mb-1" style="width: fit-content; padding-left: 0; padding-right: 10px;">
-											<button type="button" :id="'language-button-' + snippet.language.id" class="btn btn-outline-primary btn-sm"  v-on:click="languageDetails(snippet.language)">{{ snippet.language.language }}</button>
+											<button type="button" :id="'language-button-' + snippet.language" class="btn btn-outline-primary btn-sm"  v-on:click="languageDetails(snippet.language)">{{ snippet.language }}</button>
 										</div>
 									</div>
 									<div class="row" v-if="snippet.tags.length != 0">
 										Tags:&nbsp;
 										<div class="mb-1" v-for="tag in snippet.tags" v-bind:key="snippet.id + '-' + tag.id" style="width: fit-content; padding-left: 0; padding-right: 10px;">
-											<button type="button" :id="'tag-button-' + tag.id" class="btn btn-outline-primary btn-sm"  v-on:click="tagDetails(tag)">{{ tag.tag }}</button>
+											<button type="button" :id="'tag-button-' + tag" class="btn btn-outline-primary btn-sm"  v-on:click="tagDetails(tag)">{{ tag }}</button>
 										</div>
 									</div>
 								</div>

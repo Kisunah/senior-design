@@ -75,16 +75,27 @@
 
 	methods: {
 
-		getSnippets: async function (id) {
+		getSnippets: function (id) {
 			let v = this;
+
+			var data;
+			if (id === "CodeBaseDev") {
+				data = {
+					userId: id
+				}
+			}
+			else {
+				data = {
+					userId: id,
+					isPublic: true
+				}
+            }
 
 			$.ajax({
 				url: document.location.origin + "/codebase/getCodeblocks",
 				contentType: "application/json; charset=utf-8",
 				data: {
-					filter: {
-						id: ""
-					}
+					filter: data
 				},
 				type: "POST",
 				success: function (data) {
@@ -102,26 +113,24 @@
 		getUser: async function (id) {
 			let v = this;
 
-			//$.ajax({
-			//    url: /*API ENDPOINT*/,
-			//    type: "GET",
-			//    success: function (data) {
-			//        v.tags = data
-			//    },
-			//    error: function (error) {
-			//        console.log(error);
-			//    }
-			//});
+			var firstpost = null;
+			var numposts = 0;
+			var votes = 0;
+			_.forEach(v.snippets, (s) => {
+				numposts = numposts + 1;
+				if (firstpost === null) {
+					firstpost = moment(s.creationDate);
+				} else if (firstpost > moment(s.creationDate)) {
+					firstpost = moment(s.creationDate)
+				}
+				votes = votes + s.voteCount;
+            })
 
 			v.user = {
-				id: 1,
-				username: "CodeBaseDev",
-				creationDate: "2022-02-22",
-				description: "Hello, I am a student at the University of Cincinnati",
-				numberOfPosts: 15,
-				upvotes: 10000,
-				downvotes: 676,
-				comments: 57
+				username: id,
+				creationDate: firstpost.format("MM/DD/YYYY"),
+				numberOfPosts: numposts,
+				upvotes: votes
 			};
 		},
 
