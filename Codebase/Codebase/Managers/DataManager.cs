@@ -250,42 +250,25 @@ namespace Codebase.Managers
                     .Index(indexName)
                     .MatchAll());
             }
-            else if (input.filter.Count == 1)
-            {
-                if (input.filter.ContainsKey("id"))
-                {
-                    response = await client.SearchAsync<Codeblock>(s => s
-                        .Index(indexName)
-                        .Query(q => q
-                            .Match(m => m
-                                .Field(f => f.Id)
-                                .Query(input.filter["id"])
-                            )
-                        )
-                    );
-                }
-                else
-                {
-                    var test = bool.Parse(input.filter["isPublic"]);
-                    response = await client.SearchAsync<Codeblock>(s => s
-                        .Index(indexName)
-                        .Query(q => q
-                            .Match(m => m
-                                .Field(f => f.IsPublic)
-                                .Query((input.filter["isPublic"]))
-                            )
-                        )
-                    );
-                }
-            }
             else
             {
+                var container = new QueryContainer();
+                foreach (var filter in input.filter)
+                {
+                    var query = new MatchQuery
+                    {
+                        Field = filter.Key,
+                        Query = filter.Value
+                    };
+
+                    container &= query;
+                }
+
                 response = await client.SearchAsync<Codeblock>(s => s
                     .Index(indexName)
                     .Query(q => q
-                        .Match(m => m
-                            .Field(f => f.Id)
-                            .Query(input.filter["id"])
+                        .Bool(b => b
+                            .Must(m => container)                            
                         )
                     )
                 );
