@@ -13,7 +13,7 @@ namespace Codebase.Managers
     {
         public ElasticClient client;
 
-        public const string indexName = "codebase-031922";
+        public const string indexName = "codebase-032022";
 
         public static MapperConfiguration mapperConfig = new MapperConfiguration(cfg =>
             {
@@ -241,7 +241,6 @@ namespace Codebase.Managers
             if (input == null || input.filter == null || input.filter.Count == 0)
             {
                 response = await client.SearchAsync<Codeblock>(s => s
-                    .Size(100)
                     .Index(indexName)
                     .MatchAll());
             }
@@ -250,32 +249,17 @@ namespace Codebase.Managers
                 var container = new QueryContainer();
                 foreach (var filter in input.filter)
                 {
-                    if (filter.Key == "isPublic")
+                    // This handles filters that aren't tags
+                    var query = +new MatchQuery
                     {
-                        // This handles filters that aren't tags
-                        var query = +new TermQuery
-                        {
-                            Field = filter.Key,
-                            Value = filter.Value == "true" ? true : false
-                        };
+                        Field = filter.Key,
+                        Query = filter.Value
+                    };
 
-                        container &= +query;
-                    }
-                    else
-                    {
-                        // This handles filters that aren't tags
-                        var query = +new TermQuery
-                        {
-                            Field = filter.Key,
-                            Value = filter.Value
-                        };
-
-                        container &= +query;
-                    }
+                    container &= +query;
                 }
 
                 response = await client.SearchAsync<Codeblock>(s => s
-                    .Size(100)
                     .Index(indexName)
                     .Query(q => q
                         .Bool(b => b
@@ -416,7 +400,7 @@ namespace Codebase.Managers
                 CommentString = input.comment,
                 CommentGuid = Guid.NewGuid().ToString(),
                 ParentGuid = codeblockGuid,
-                UserId = "CodeBaseDev", // will need to be populated with unique user identifier that is created on user creating an account
+                UserId = input.userId, // will need to be populated with unique user identifier that is created on user creating an account
                 VoteCount = 0,
                 CreationDate = DateTime.UtcNow
             };

@@ -51,8 +51,8 @@
 				url: document.location.origin + "/codebase/getCodeblocks",
 				contentType: "application/json; charset=utf-8",
 				data: JSON.stringify({
-					"filter": {
-						"id": id.toString()
+					filter: {
+						id: id.toString()
 					}
 				}),
 				type: "POST",
@@ -79,13 +79,13 @@
 			let v = this;
 
 			$.ajax({
-				url: document.location.origin + "/codebase/getCodeblocks",
+				url: document.location.origin + "/codebase/searchCodeblocks",
 				contentType: "application/json; charset=utf-8",
-				data: {
-					filter: {
-						id: ""
+				data: JSON.stringify({
+					filters: {
+						isPublic: "true"
 					}
-				},
+				}),
 				type: "POST",
 				success: function (data) {
 					v.relatedSnippets = data.codeblocks;
@@ -141,11 +141,16 @@
 				url: document.location.origin + "/codebase/" + snippetId + "/createComment",
 				contentType: "application/json; charset=utf-8",
 				data: JSON.stringify({
+					"userId": "CodeBaseDev",
 					"comment": v.comment
 				}),
 				type: "POST",
 				success: function (data) {
-					v.getSnippet(snippetId);
+					v.snippet.comments.push({
+						userId: "CodeBaseDev",
+						commentString: v.comment,
+						creationDate: moment().format("MM/DD/YYYY")
+					});
 					v.comment = "";
 				},
 				error: function (error) {

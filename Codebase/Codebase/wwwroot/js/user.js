@@ -111,31 +111,25 @@
 		getSnippets: function (id) {
 			let v = this;
 
-			var data;
-			if (id === "CodeBaseDev") {
-				data = {
-					userId: id
-				}
-			}
-			else {
-				data = {
-					userId: id,
-					isPublic: "true"
-				}
-            }
-
 			$.ajax({
-				url: document.location.origin + "/codebase/searchCodeblocks",
+				url: document.location.origin + "/codebase/getCodeblocks",
 				contentType: "application/json; charset=utf-8",
 				data: JSON.stringify({
-					filters: data
+					filter: {
+						userId: id
+					}
 				}),
 				type: "POST",
 				success: function (data) {
-					v.snippets = data.codeblocks
+					v.snippets = _.filter(data.codeblocks, (d) => {
+						if (d.isPublic || id === "CodeBaseDev") {
+							return d;
+                        }
+					});
 					_.forEach(v.snippets, (s) => {
 						s.creationDate = moment(s.creationDate).format("MM/DD/YYYY");
 					});
+
 				},
 				error: function (error) {
 					console.log(error);

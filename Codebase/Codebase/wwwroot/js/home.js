@@ -39,7 +39,7 @@
 		filteredSnippets: function () {
 			let v = this;
 
-			results = v.snippets;
+			var results = v.snippets;
 
 			if (v.tagFilters.length != 0) {
 				results = _.filter(results, (s) => {
@@ -55,7 +55,8 @@
 
 			if (v.languageFilters.length != 0) {
 				results = _.filter(results, (s) => {
-					if (v.languageFilters.includes(s)) {
+					console.log(s);
+					if (v.languageFilters.includes(s.language)) {
 						return s;
 					}
 				});
