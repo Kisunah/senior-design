@@ -1,0 +1,61 @@
+﻿<div id="sandbox" v-cloak>
+	<div class="container-lg">
+		<div class="row mt-3">
+			<div id="textarea_editor" class="mb-2"></div>
+		</div>
+		<div v-if="compilable">
+			<div class="row mt-3">
+				<div class="col-6">
+					<div class="mb-1" style="width: 100%; padding-left: 0; padding-right: 10px;">
+						<button type="button" style="width: 100%;" class="btn btn-outline-primary btn-sm"  v-on:click="copy()"><i class="fa fa-clipboard" aria-hidden="true"></i></button>
+					</div>
+				</div>
+				<div class="col-6">
+					<div class="mb-1" style="width: 100%; padding-left: 0; padding-right: 10px;">
+						<button type="button" style="width: 100%;" class="btn btn-outline-primary btn-sm"  v-on:click="compile()"><i class="fa fa-play" aria-hidden="true"></i></button>
+					</div>
+				</div>
+			</div>
+			<div class="row mt-3">
+				<div id="textarea_output" class="mb-2"></div>
+			</div>
+		</div>
+		<div v-else>
+			<div class="row mt-3">
+				<div class="col-12">
+					<div class="mb-1" style="width: 100%; padding-left: 0; padding-right: 10px;">
+						<button type="button" style="width: 100%;" class="btn btn-outline-primary btn-sm"  v-on:click="copy()"><i class="fa fa-clipboard" aria-hidden="true"></i></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+@section Scripts
+{
+<script src="~/js/sandbox.js" asp-append-version="true"></script>
+<script src="~/lib/codemirror-5.65.0/mode/asciiarmor/asciiarmor.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/clike/clike.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/clojure/clojure.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/css/css.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/haskell/haskell.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/htmlembedded/htmlembedded.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/javascript/javascript.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/markdown/markdown.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/perl/perl.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/php/php.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/powershell/powershell.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/properties/properties.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/python/python.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/ruby/ruby.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/sas/sas.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/sass/sass.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/scheme/scheme.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/spreadsheet/spreadsheet.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/sql/sql.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/swift/swift.js"></script>
+<script src="~/lib/codemirror-5.65.0/mode/vb/vb.js"></script>
+
+<script src="~/lib/codemirror-5.65.0/mode/shell/shell.js"></script>
+}
+<script>var snippetId = "@ViewBag.Id"</script>

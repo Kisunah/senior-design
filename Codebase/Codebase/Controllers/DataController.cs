@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Codebase.InputOutput;
 using Codebase.Managers;
-using Codebase.InputOutput;
-using System.Web;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Codebase.Controllers
 {
@@ -238,6 +237,42 @@ namespace Codebase.Controllers
             {
                 SearchCodeblocksOutput result = await dataManager.SearchCodeblocks(input);
                 actionResult = Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw new Exception(ex.Message);
+            }
+            return actionResult;
+        }
+
+
+        [HttpPost]
+        [Route("/codebase/compileCodeblock")]
+        [ProducesResponseType(typeof(List<SearchCodeblocksOutput>), 200)]
+        [Produces("application/json")]
+        public async Task<IActionResult> compileCodeblockAsync(
+            [FromBody] compileCodeblockInput input)
+        {
+            IActionResult actionResult;
+            try
+            {
+                HttpClient client = new HttpClient();
+                HttpRequestMessage requestMessage = new HttpRequestMessage();
+                requestMessage.Content = JsonContent.Create(new
+                {
+                    clientId = "a7c32c59a02db14c68f27b026c75e6b6",
+                    clientSecret = "fac2276dcb1d21eb57450fee25566108916fc6611e9e21ab1fc10509f84a2da6",
+                    script = input.code,
+                    language = input.language,
+                    versionIndex = input.versionIndex
+                });
+                requestMessage.Method = HttpMethod.Post;
+                requestMessage.RequestUri = new Uri("https://api.jdoodle.com/v1/execute");
+
+                var response = await client.SendAsync(requestMessage);
+                var responseString = await response.Content.ReadAsStringAsync();
+                actionResult = Ok(responseString);
             }
             catch (Exception ex)
             {

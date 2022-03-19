@@ -46,6 +46,7 @@ namespace Codebase.InputOutput
 
     public class CreateCommentInput
     {
+        public string userId { get; set; }
         public string comment { get; set; }
     }
 
@@ -74,5 +75,13 @@ namespace Codebase.InputOutput
     public class SearchCodeblocksOutput
     {
         public List<Codeblock> codeblocks { get; set; }
+    }
+
+    public class compileCodeblockInput
+    {
+        public string language { get; set; }
+        public string code { get; set; }
+        public string versionIndex { get; set; }
+
     }
 }

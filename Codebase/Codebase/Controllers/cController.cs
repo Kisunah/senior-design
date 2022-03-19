@@ -13,7 +13,7 @@ namespace Codebase.Controllers
             _logger = logger;
         }
 
-        public IActionResult Home(string? search = null)
+        public IActionResult Home(string search = null)
         {
             ViewBag.Search = search;
             return View();
@@ -25,7 +25,13 @@ namespace Codebase.Controllers
             return View();
         }
 
-        public IActionResult User(Guid? id = null)
+        public IActionResult Sandbox(Guid id)
+        {
+            ViewBag.Id = id;
+            return View();
+        }
+
+        public IActionResult User(string id = "CodeBaseDev")
         {
             ViewBag.Id = id;
             return View();

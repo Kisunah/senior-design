@@ -8,11 +8,11 @@ html {
     position: relative;
     min-height: 100%;
     font-size: 14px;
-    background-color: #0a0c10;
+    background-color: white;
 }
 
 .modal-content {
-    background-color: #0a0c10;
+    background-color: white;
 }
 
 .modal-header {
@@ -26,7 +26,7 @@ html {
 body {
     margin-bottom: 60px;
     background-color: inherit;
-    color: white;
+    color: black;
 }
 
 a:link, a:visited, a:hover, a:active {
@@ -39,18 +39,13 @@ a:link, a:visited, a:hover, a:active {
 }
 
 .form-control {
-    background-color: #00000069;
-    color: white;
-}
-
-.navbar-nav > li > .dropdown-menu {
-    background-color: #FF0000;
-    color: white;
+    background-color: white;
+    color: black;
 }
 
 textarea {
-    background-color: #00000069;
-    color: white;
+    background-color: white;
+    color: black;
     height: 20vh;
     width: 100%;
 }
@@ -61,7 +56,7 @@ textarea {
 
 .card {
     background-color: inherit;
-    color: white;
+    color: black;
 }
 
 [v-cloak] {

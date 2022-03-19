@@ -11,7 +11,7 @@
 
 		tagFilters: [],
 		languageFilters: [],
-		sortBy: 1,
+		sortBy: 2,
 		searchTerm: "",
 
 		infoModalType: null,
@@ -31,7 +31,7 @@
 		v.getTags();
 		v.getLangauges();
 		v.getSnippets(v.searchTerm);
-		v.getTrending();
+		//v.getTrending();
 	},
 
 	computed: {
@@ -39,7 +39,7 @@
 		filteredSnippets: function () {
 			let v = this;
 
-			results = v.snippets;
+			var results = v.snippets;
 
 			if (v.tagFilters.length != 0) {
 				results = _.filter(results, (s) => {
@@ -55,24 +55,21 @@
 
 			if (v.languageFilters.length != 0) {
 				results = _.filter(results, (s) => {
-					if (v.languageFilters.includes(s)) {
+					console.log(s);
+					if (v.languageFilters.includes(s.language)) {
 						return s;
 					}
 				});
 			}
 
 			if (v.sortBy === 1) {
-				//results = _.orderBy(results, (s) => {
-				//	return s.upvotes / (s.upvotes + s.downvotes);
-				//}, 'desc');
+				results = _.orderBy(results, (s) => {
+					return moment(s.creationDate);
+				}, 'asc');
 			} else if (v.sortBy === 2) {
-				//results = _.orderBy(results, (s) => {
-				//	return s.upvotes + s.downvotes;
-				//}, 'desc');
-			} else if (v.sortBy === 3) {
-				//results = _.orderBy(results, (s) => {
-				//	return Math.abs((s.upvotes / (s.upvotes + s.downvotes)) - .5);
-				//}, 'asc');
+				results = _.orderBy(results, (s) => {
+					return s.voteCount;
+				}, 'desc');
 			} else if (v.sortBy === 4 || v.sortBy === 5) {
 				results = _.orderBy(results, (s) => {
 					return s.voteCount;
@@ -90,6 +87,21 @@
 			}
 
 			return results;
+		},
+
+		tagsLimited: function () {
+			let v = this;
+
+			var list = [];
+			_.forEach(v.snippets, (s) => {
+				_.forEach(s.tags, (t) => {
+					if (!list.includes(t)) {
+						list.push(t);
+					}
+				});
+			});
+
+			return _.orderBy(list, (s) => { return s;},'asc');
 		}
 
 	},
@@ -130,13 +142,14 @@
 			let v = this;
 
 			$.ajax({
-				url: document.location.origin + "/codebase/getCodeblocks",
+				url: document.location.origin + "/codebase/searchCodeblocks",
 				contentType: "application/json; charset=utf-8",
-				data: {
-					filter: {
-						id: ""
+				data: JSON.stringify({
+					search: search,
+					filters: {
+						isPublic: "true"
 					}
-				},
+				}),
 			    type: "POST",
 			    success: function (data) {
 					v.snippets = data.codeblocks
@@ -174,7 +187,7 @@
 		addTagFilter: function (tag) {
 			let v = this;
 
-			if (v.tagFilters.includes(tag.id)) {
+			if (v.tagFilters.includes(tag)) {
 				v.tagFilters.splice(v.tagFilters.indexOf(tag), 1);
 			} else {
 				v.tagFilters.push(tag);
@@ -196,7 +209,7 @@
 
 			v.infoModalType = "Tag";
 			v.infoModalItem = tag;
-			v.infoModalDescription = "temp";
+			v.infoModalDescription = "No implimentation";
 
 			$('#info-modal').modal('show');
 		},
@@ -263,32 +276,37 @@
 		upvote: function (snippet) {
 			let v = this;
 
-			//$.ajax({
-			//    url: /*API ENDPOINT*/,
-			//    type: "GET",
-			//    success: function (data) {
-			//    },
-			//    error: function (error) {
-			//    }
-			//});
-
-			alert("Upvote: " + snippet.id);
+			$.ajax({
+				url: document.location.origin + "/codebase/" + snippet.id + "/upVote",
+			    type: "POST",
+				success: function (data) {
+					_.forEach(v.snippets, (s) => {
+						if (s.id === snippet.id) {
+							snippet.voteCount = snippet.voteCount + 1;
+                        }
+					});
+			    },
+			    error: function (error) {
+			    }
+			});
 		},
 
 		downvote: function (snippet) {
 			let v = this;
 
-			//$.ajax({
-			//    url: /*API ENDPOINT*/,
-			//    type: "GET",
-			//    success: function (data) {
-			//    },
-			//    error: function (error) {
-			//        console.log(error);
-			//    }
-			//});
-
-			alert("Downvote: " + snippet.id);
+			$.ajax({
+				url: document.location.origin + "/codebase/" + snippet.id + "/downVote",
+				type: "POST",
+				success: function (data) {
+					_.forEach(v.snippets, (s) => {
+						if (s.id === snippet.id) {
+							snippet.voteCount = snippet.voteCount - 1;
+						}
+					});
+				},
+				error: function (error) {
+				}
+			});
 		},
 
 	}

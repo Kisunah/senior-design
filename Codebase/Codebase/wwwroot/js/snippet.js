@@ -8,6 +8,7 @@
 		relatedSnippets: [],
 		editor: null,
 		comment: null,
+		realLanguageCode: null,
 
 		infoModalType: null,
 		infoModalItem: null,
@@ -26,8 +27,8 @@
 
 			v.editor = CodeMirror.fromTextArea(textarea_editor, {
 				tabSize: 4,
-				mode: v.snippet.language,
-				theme: '3024-night',
+				mode: v.realLanguageCode,
+				theme: 'xq-light',
 				lineNumbers: true,
 				styleActiveSelected: true,
 				styleActiveLine: true,
@@ -50,8 +51,8 @@
 				url: document.location.origin + "/codebase/getCodeblocks",
 				contentType: "application/json; charset=utf-8",
 				data: JSON.stringify({
-					"filter": {
-						"id": id.toString()
+					filter: {
+						id: id.toString()
 					}
 				}),
 				type: "POST",
@@ -61,6 +62,12 @@
 					_.forEach(v.snippet.comments, (s) => {
 						s.creationDate = moment(s.creationDate).format("MM/DD/YYYY");
 					});
+					if (v.snippet.language === "c" || v.snippet.language === "c#" || v.snippet.language === "c++") {
+						v.realLanguageCode = "clike";
+					}
+					else {
+						v.realLanguageCode = v.snippet.language
+					}
 				},
 				error: function (error) {
 					console.log(error);
@@ -72,13 +79,13 @@
 			let v = this;
 
 			$.ajax({
-				url: document.location.origin + "/codebase/getCodeblocks",
+				url: document.location.origin + "/codebase/searchCodeblocks",
 				contentType: "application/json; charset=utf-8",
-				data: {
-					filter: {
-						id: ""
+				data: JSON.stringify({
+					filters: {
+						isPublic: "true"
 					}
-				},
+				}),
 				type: "POST",
 				success: function (data) {
 					v.relatedSnippets = data.codeblocks;
@@ -102,33 +109,29 @@
 		upvote: function (snippet) {
 			let v = this;
 
-			//$.ajax({
-			//    url: /*API ENDPOINT*/,
-			//    type: "GET",
-			//    success: function (data) {
-			//    },
-			//    error: function (error) {
-			//        console.log(error);
-			//    }
-			//});
-
-			alert("Upvote: " + snippet.id);
+			$.ajax({
+				url: document.location.origin + "/codebase/" + snippet.id + "/upVote",
+				type: "POST",
+				success: function (data) {
+					v.snippet.voteCount = v.snippet.voteCount + 1;
+				},
+				error: function (error) {
+				}
+			});
 		},
 
 		downvote: function (snippet) {
 			let v = this;
 
-			//$.ajax({
-			//    url: /*API ENDPOINT*/,
-			//    type: "GET",
-			//    success: function (data) {
-			//    },
-			//    error: function (error) {
-			//        console.log(error);
-			//    }
-			//});
-
-			alert("Downvote: " + snippet.id);
+			$.ajax({
+				url: document.location.origin + "/codebase/" + snippet.id + "/downVote",
+				type: "POST",
+				success: function (data) {
+					v.snippet.voteCount = v.snippet.voteCount - 1;
+				},
+				error: function (error) {
+				}
+			});
 		},
 
 		postComment: function () {
@@ -138,11 +141,16 @@
 				url: document.location.origin + "/codebase/" + snippetId + "/createComment",
 				contentType: "application/json; charset=utf-8",
 				data: JSON.stringify({
+					"userId": "CodeBaseDev",
 					"comment": v.comment
 				}),
 				type: "POST",
 				success: function (data) {
-					v.getSnippet(snippetId);
+					v.snippet.comments.push({
+						userId: "CodeBaseDev",
+						commentString: v.comment,
+						creationDate: moment().format("MM/DD/YYYY")
+					});
 					v.comment = "";
 				},
 				error: function (error) {
@@ -154,13 +162,13 @@
 		copy: function () {
 			let v = this;
 
-
+			navigator.clipboard.writeText(v.snippet.code);
 		},
 
 		openEditor: function () {
 			let v = this;
 
-
+			window.open(document.location.origin + "/c/Sandbox?id=" + snippetId, "_blank")
         },
 
 	}

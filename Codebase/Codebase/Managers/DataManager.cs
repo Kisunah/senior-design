@@ -13,7 +13,7 @@ namespace Codebase.Managers
     {
         public ElasticClient client;
 
-        public const string indexName = "codebase-030222";
+        public const string indexName = "codebase-032022";
 
         public static MapperConfiguration mapperConfig = new MapperConfiguration(cfg =>
             {
@@ -181,19 +181,15 @@ namespace Codebase.Managers
             {
                 "asciiarmor"
                 ,"c"
-                ,"clike"
+                ,"c++"
+                ,"c#"
                 ,"clojure"
-                ,"cmake"
                 ,"css"
-                ,"cs" // C#
-                ,"cpp" // C++
-                ,"go"
                 ,"haskell"
                 ,"htmlembedded"
                 ,"java"
                 ,"javascript"
                 ,"markdown"
-                ,"mathematica"
                 ,"pascal"
                 ,"perl"
                 ,"php"
@@ -210,9 +206,7 @@ namespace Codebase.Managers
                 ,"spreadsheet"
                 ,"sql"
                 ,"swift"
-                ,"typescript"
                 ,"vb"
-                ,"yaml"
             };
 
             validLanguages.Sort();
@@ -224,22 +218,16 @@ namespace Codebase.Managers
         {
             List<string> validTags = new List<string>
             {
-                "function",
-                "algorithm",
-                "testing",
-                "skeleton-code",
-                "script",
-                "query",
-                "class",
-                "sort",
-                "python3",
-                "selection",
-                "bubble",
-                "bad",
-                "help",
-                "python2.7",
-                "insertion",
-                "recursive"
+                "testing","skeleton-code","script","query","selection","help","python2.7","insertion",
+                "recursive","javascript","python","java","c#","php","android","html","jquery","c++","css","sql","r","node.js",
+                "arrays","c","reactjs","asp.net","json",".net","sql-server","swift","python-3.x","objective-c","angular","angularjs",
+                "regex","pandas","ruby","ajax","xml","asp.net-mvc","vba","spring","laravel","database","wordpress","typescript","string",
+                "windows","xcode","postgresql","bash","git","vb.net","multithreading","list","dataframe","react-native","algorithm",
+                "docker","forms","image","scala","visual-studio","twitter-bootstrap","function","powershell","numpy","api","performance",
+                "winforms","selenium","matlab","sqlite","vue.js","apache","hibernate","entity-framework","rest",
+                "loops","shell","facebook","android-studio","express","linq","csv","maven","swing","unit-testing","file","class",
+                "date","sorting","kotlin","symfony","tsql","dictionary","google-chrome","codeigniter","asp.net-core","perl",
+                "dart","opencv","google-maps","datetime","http","for-loop","validation"
             };
 
             validTags.Sort();
@@ -261,13 +249,14 @@ namespace Codebase.Managers
                 var container = new QueryContainer();
                 foreach (var filter in input.filter)
                 {
-                    var query = new MatchQuery
+                    // This handles filters that aren't tags
+                    var query = +new MatchQuery
                     {
                         Field = filter.Key,
                         Query = filter.Value
                     };
 
-                    container &= query;
+                    container &= +query;
                 }
 
                 response = await client.SearchAsync<Codeblock>(s => s
@@ -301,14 +290,29 @@ namespace Codebase.Managers
             {
                 foreach (var filter in input.filters)
                 {
-                    // This handles filters that aren't tags
-                    var query = +new TermQuery
+                    if (filter.Key == "isPublic")
                     {
-                        Field = filter.Key,
-                        Value = filter.Value
-                    };
+                        // This handles filters that aren't tags
+                        var query = +new TermQuery
+                        {
+                            Field = filter.Key,
+                            Value = filter.Value == "true" ? true : false
+                        };
 
-                    container &= +query;
+                        container &= +query;
+                    }
+                    else
+                    {
+                        // This handles filters that aren't tags
+                        var query = +new TermQuery
+                        {
+                            Field = filter.Key,
+                            Value = filter.Value
+                        };
+
+                        container &= +query;
+                    }
+                    
                 }
             }
 
@@ -325,6 +329,7 @@ namespace Codebase.Managers
 
             var response = await client.SearchAsync<Codeblock>(s => s
                 .Index(indexName)
+                .Size(100)
                 .Query(q => q
                     .Bool(b => b
                         .Must(m => m
@@ -381,7 +386,7 @@ namespace Codebase.Managers
                 VoteCount = 0,
                 Votes = new List<Vote>(),
                 Comments = new List<Comment>(),
-                UserId = input.userId ?? "test", // will need to be populated with unique user identifier that is created on user creating an account
+                UserId = input.userId ?? "CodeBaseDev", // will need to be populated with unique user identifier that is created on user creating an account
                 CreationDate = DateTime.UtcNow
             };
 
@@ -395,7 +400,7 @@ namespace Codebase.Managers
                 CommentString = input.comment,
                 CommentGuid = Guid.NewGuid().ToString(),
                 ParentGuid = codeblockGuid,
-                UserId = "test", // will need to be populated with unique user identifier that is created on user creating an account
+                UserId = input.userId, // will need to be populated with unique user identifier that is created on user creating an account
                 VoteCount = 0,
                 CreationDate = DateTime.UtcNow
             };
