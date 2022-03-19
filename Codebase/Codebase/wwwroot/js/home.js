@@ -23,22 +23,6 @@
 		filterModalSelected: null,
 	},
 
-	computed:{
-
-		tagsLimited: function () {
-			var list = [];
-			_.forEach(v.snippets, (s) => {
-				_.forEach(s.tags, (t) => {
-					if (!list.includes(t)) {
-						list.push(t);
-                    }
-				});
-			});
-			return list;
-        }
-
-    },
-
 	mounted: function () {
 		let v = this;
 
@@ -102,6 +86,21 @@
 			}
 
 			return results;
+		},
+
+		tagsLimited: function () {
+			let v = this;
+
+			var list = [];
+			_.forEach(v.snippets, (s) => {
+				_.forEach(s.tags, (t) => {
+					if (!list.includes(t)) {
+						list.push(t);
+					}
+				});
+			});
+
+			return _.orderBy(list, (s) => { return s;},'asc');
 		}
 
 	},
@@ -142,14 +141,14 @@
 			let v = this;
 
 			$.ajax({
-				url: document.location.origin + "/codebase/getCodeblocks",
+				url: document.location.origin + "/codebase/searchCodeblocks",
 				contentType: "application/json; charset=utf-8",
-				data: {
+				data: JSON.stringify({
 					search: search,
-					filter: {
+					filters: {
 						isPublic: "true"
 					}
-				},
+				}),
 			    type: "POST",
 			    success: function (data) {
 					v.snippets = data.codeblocks
@@ -209,7 +208,7 @@
 
 			v.infoModalType = "Tag";
 			v.infoModalItem = tag;
-			v.infoModalDescription = "temp";
+			v.infoModalDescription = "No implimentation";
 
 			$('#info-modal').modal('show');
 		},

@@ -65,7 +65,44 @@
 			}
 
 			return results;
-		}
+		},
+
+		usercreationDate: function () {
+			let v = this;
+
+			var firstpost = null;
+			_.forEach(v.snippets, (s) => {
+				if (firstpost === null) {
+					firstpost = moment(s.creationDate);
+				} else if (firstpost > moment(s.creationDate)) {
+					firstpost = moment(s.creationDate)
+				}
+			});
+
+			return firstpost;
+		},
+
+		usernumberOfPosts: function () {
+			let v = this;
+
+			var numposts = 0;
+			_.forEach(v.snippets, (s) => {
+				numposts = numposts + 1;
+			});
+
+			return numposts;
+		},
+
+		userupvotes: function () {
+			let v = this;
+
+			var votes = 0;
+			_.forEach(v.snippets, (s) => {
+				votes = votes + s.voteCount;
+			});
+
+			return votes;
+		},
 
 	},
 
@@ -83,16 +120,16 @@
 			else {
 				data = {
 					userId: id,
-					isPublic: true
+					isPublic: "true"
 				}
             }
 
 			$.ajax({
-				url: document.location.origin + "/codebase/getCodeblocks",
+				url: document.location.origin + "/codebase/searchCodeblocks",
 				contentType: "application/json; charset=utf-8",
-				data: {
-					filter: data
-				},
+				data: JSON.stringify({
+					filters: data
+				}),
 				type: "POST",
 				success: function (data) {
 					v.snippets = data.codeblocks
@@ -109,24 +146,8 @@
 		getUser: async function (id) {
 			let v = this;
 
-			var firstpost = null;
-			var numposts = 0;
-			var votes = 0;
-			_.forEach(v.snippets, (s) => {
-				numposts = numposts + 1;
-				if (firstpost === null) {
-					firstpost = moment(s.creationDate);
-				} else if (firstpost > moment(s.creationDate)) {
-					firstpost = moment(s.creationDate)
-				}
-				votes = votes + s.voteCount;
-            })
-
 			v.user = {
-				username: id,
-				creationDate: firstpost.format("MM/DD/YYYY"),
-				numberOfPosts: numposts,
-				upvotes: votes
+				username: id
 			};
 		},
 

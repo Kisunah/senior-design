@@ -9,7 +9,7 @@
 		editor: null,
 
 		selectedTags: [],
-		isPublic: true,
+		isPublic: "true",
 		title: null,
 		language: null,
 		description: "",
