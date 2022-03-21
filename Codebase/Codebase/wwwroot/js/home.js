@@ -309,6 +309,28 @@
 			});
 		},
 
+		clearLanguageFilters: function () {
+			let v = this;
+
+			_.forEach(v.languages, (l) => {
+				if (v.languageFilters.includes(l)) {
+					document.getElementById("language-checkbox-" + l).checked = false;
+                }
+			});
+			v.languageFilters = [];
+		},
+
+		clearTagFilters: function () {
+			let v = this;
+
+			_.forEach(v.tagsLimited, (t) => {
+				if (v.tagFilters.includes(t)) {
+					document.getElementById("tag-checkbox-" + t).checked = false;
+				}
+			});
+			v.tagFilters = [];
+		},
+
 	}
 
 })
