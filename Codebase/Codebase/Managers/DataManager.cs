@@ -13,7 +13,7 @@ namespace Codebase.Managers
     {
         public ElasticClient client;
 
-        public const string indexName = "codebase-032322";
+        public const string indexName = "codebase-032422";
 
         public static MapperConfiguration mapperConfig = new MapperConfiguration(cfg =>
             {

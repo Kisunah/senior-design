@@ -15,7 +15,7 @@ var data = [{
 			"loops",
 			"performance"
 		],
-		"userId": "AnotherUser"
+		"userId": "EampleUserOne"
 	},
 	{
 		"code": "// C program to implement recursive Binary Search\n#include <stdio.h>\n \n// A recursive binary search function. It returns\n// location of x in given array arr[l..r] is present,\n// otherwise -1\nint binarySearch(int arr[], int l, int r, int x)\n{\n    if (r >= l) {\n        int mid = l + (r - l) / 2;\n \n        // If the element is present at the middle\n        // itself\n        if (arr[mid] == x)\n            return mid;\n \n        // If element is smaller than mid, then\n        // it can only be present in left subarray\n        if (arr[mid] > x)\n            return binarySearch(arr, l, mid - 1, x);\n \n        // Else the element can only be present\n        // in right subarray\n        return binarySearch(arr, mid + 1, r, x);\n    }\n \n    // We reach here when element is not\n    // present in array\n    return -1;\n}\n \nint main(void)\n{\n    int arr[] = { 2, 3, 4, 10, 40 };\n    int n = sizeof(arr) / sizeof(arr[0]);\n    int x = 10;\n    int result = binarySearch(arr, 0, n - 1, x);\n    (result == -1)\n        ? printf(\"Element is not present in array\")\n        : printf(\"Element is present at index %d\", result);\n    return 0;\n}",
@@ -28,7 +28,7 @@ var data = [{
 			"class",
 			"algorithm"
 		],
-		"userId": "AnotherUser"
+		"userId": "EampleUserOne"
 	},
 	{
 		"code": "#include <iostream>\n#include <string>\n#include <locale> \n#include <stdio.h>\n#include <fstream>\n\nusing namespace std;\n\n//struct to hold info pulled in from book file\nstruct Book\n{\n\tstring Title;\n\tstring Author;\n\tint Word_Count;\n\tdouble Char_Count[26] = { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };\n\tint Line_Count;\n};\n\nint main() {\n\n\tbool Another_Book = false;\n\tdo {\n\t\tstring File, Line, Book_Text = \"\", Char_Count, AB;\n\t\tint Total_Char = 0;\n\n\t\tcout << \"Please enter the name of the file to be read. (Include .txt)\" << endl;\n\t\tcin >> File;\n\n\t\t//finding user's file\n\t\tfstream Text;\n\t\tText.open(File, ios::in);\n\n\t\tif (Text.fail()) {\n\t\t\tcout << \"There was an error reading in the file, please restart.\" << endl;\n\t\t\tAnother_Book = true;\n\t\t\tcontinue;\n\t\t}\n\t\telse {\n\n\t\t\tBook Read_Book;\n\t\t\tRead_Book.Word_Count = 0;\n\t\t\tRead_Book.Line_Count = 0;\n\n\t\t\t//steps through file line by line\n\t\t\twhile (getline(Text, Line)) {\n\t\t\t\tif (Read_Book.Line_Count == 0 && Line != \"\") {\n\t\t\t\t\tRead_Book.Title = Line;\n\t\t\t\t\tRead_Book.Line_Count++;\n\t\t\t\t}\n\t\t\t\telse if (Read_Book.Line_Count == 1 && Line != \"\") {\n\t\t\t\t\tRead_Book.Author = Line;\n\t\t\t\t\tRead_Book.Line_Count++;\n\t\t\t\t}\n\t\t\t\telse if (Read_Book.Line_Count >= 1 && (Line != \"\" and Line != \"Contents:\")) {\n\t\t\t\t\tBook_Text += Line;\n\t\t\t\t\tRead_Book.Line_Count++;\n\n\t\t\t\t\t//counting the numbers based on total spaces\n\t\t\t\t\tfor (size_t i = 0; i < Line.length(); i++) {\n\t\t\t\t\t\tif (Line.at(i) == 32)\n\t\t\t\t\t\t\tRead_Book.Word_Count++;\n\t\t\t\t\t}\n\t\t\t\t\tRead_Book.Word_Count++;\n\n\t\t\t\t\t//determines the frequency of characters in each line\n\t\t\t\t\tfor (int L = 65; L <= 90; L++) {\n\t\t\t\t\t\tfor (size_t z = 0; z < Line.length(); z++) {\n\t\t\t\t\t\t\tif (Line.at(z) == L || Line.at(z) == L + 32) {\n\t\t\t\t\t\t\t\tRead_Book.Char_Count[L - 65] += 1;\n\t\t\t\t\t\t\t\tTotal_Char++;\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\n\t\t\tRead_Book.Line_Count -= 2;\n\n\t\t\t//create output file\n\t\t\tfstream data;\n\t\t\tdata.open(\"CardCatalog.txt\", ios::app);\n\n\t\t\t//output data to file\n\t\t\tdata << \"Title : \" << Read_Book.Title << endl\n\t\t\t\t<< \"Author Full Name : \" << Read_Book.Author << endl\n\t\t\t\t<< \"Author First Name : \" << Read_Book.Author.substr(0, Read_Book.Author.find(\" \")) << endl\n\t\t\t\t<< \"Author Last Name : \" << (Read_Book.Author.substr(Read_Book.Author.find(\" \") + 1)) << endl\n\t\t\t\t<< \"Word Count : \" << Read_Book.Word_Count << endl\n\t\t\t\t<< \"Line Count : \" << Read_Book.Line_Count << endl << endl;\n\n\t\t\t//optional letter frequency output conditional\n\t\t\tcout << \"Do you wish to see the letter frequency?(Y/N)\" << endl;\n\t\t\tcin >> Char_Count;\n\t\t\tif (Char_Count == \"Y\") {\n\t\t\t\tcout << Read_Book.Title << \" letter frequency:\" << endl;\n\t\t\t\tfor (int c = 0; c < 26; c++) {\n\t\t\t\t\tcout << char(c + 65) << \" : \" << (Read_Book.Char_Count[c] / Total_Char) * 100 << \"%\" << endl;\n\t\t\t\t}\n\t\t\t}\n\n\t\t}\n\n\t\tcout << \"Would you like to do another book?(Y/N)\" << endl;\n\t\tcin >> AB;\n\n\t\tif (AB == \"Y\")\n\t\t\tAnother_Book = true;\n\t\telse\n\t\t\tAnother_Book = false;\n\n\t} while (Another_Book);\n\n\treturn 0;\n}",
@@ -39,7 +39,7 @@ var data = [{
 		"tags": [
 
 		],
-		"userId": "AnotherUser"
+		"userId": "EampleUserOne"
 	},
 	{
 		"code": "<script>\n// Javascript program for insertion sort \n   \n// Function to sort an array using insertion sort\nfunction insertionSort(arr, n) \n{ \n    let i, key, j; \n    for (i = 1; i < n; i++)\n    { \n        key = arr[i]; \n        j = i - 1; \n   \n        /* Move elements of arr[0..i-1], that are \n        greater than key, to one position ahead \n        of their current position */\n        while (j >= 0 && arr[j] > key)\n        { \n            arr[j + 1] = arr[j]; \n            j = j - 1; \n        } \n        arr[j + 1] = key; \n    } \n} \n   \n// A utility function to print an array of size n \nfunction printArray(arr, n) \n{ \n    let i; \n    for (i = 0; i < n; i++) \n        document.write(arr[i] + \" \"); \n    document.write(\"<br>\");\n} \n   \n// Driver code\n    let arr = [12, 11, 13, 5, 6 ]; \n    let n = arr.length; \n   \n    insertionSort(arr, n); \n    printArray(arr, n); \n     \n// This code is contributed by Mayank Tyagi\n   \n</script>",
@@ -55,7 +55,7 @@ var data = [{
 			"javascript",
 			"insertion"
 		],
-		"userId": "AnotherUser"
+		"userId": "EampleUserOne"
 	},
 	{
 		"code": "// C++ program for implementation of selection sort \n#include <bits/stdc++.h>\nusing namespace std;\n  \nvoid swap(int *xp, int *yp) \n{ \n    int temp = *xp; \n    *xp = *yp; \n    *yp = temp; \n} \n  \nvoid selectionSort(int arr[], int n) \n{ \n    int i, j, min_idx; \n  \n    // One by one move boundary of unsorted subarray \n    for (i = 0; i < n-1; i++) \n    { \n        // Find the minimum element in unsorted array \n        min_idx = i; \n        for (j = i+1; j < n; j++) \n        if (arr[j] < arr[min_idx]) \n            min_idx = j; \n  \n        // Swap the found minimum element with the first element \n        swap(&arr[min_idx], &arr[i]); \n    } \n} \n  \n/* Function to print an array */\nvoid printArray(int arr[], int size) \n{ \n    int i; \n    for (i=0; i < size; i++) \n        cout << arr[i] << \" \"; \n    cout << endl; \n} \n  \n// Driver program to test above functions \nint main() \n{ \n    int arr[] = {64, 25, 12, 22, 11}; \n    int n = sizeof(arr)/sizeof(arr[0]); \n    selectionSort(arr, n); \n    cout << \"Sorted array: \\n\"; \n    printArray(arr, n); \n    return 0; \n} ",
@@ -71,7 +71,7 @@ var data = [{
 			"function",
 			"sorting"
 		],
-		"userId": "AnotherUser"
+		"userId": "EampleUserOne"
 	},
 	{
 		"code": "# Recursive Python program for insertion sort\n# Recursive function to sort an array using insertion sort\n \ndef insertionSortRecursive(arr,n):\n    # base case\n    if n<=1:\n        return\n     \n    # Sort first n-1 elements\n    insertionSortRecursive(arr,n-1)\n    '''Insert last element at its correct position\n        in sorted array.'''\n    last = arr[n-1]\n    j = n-2\n     \n      # Move elements of arr[0..i-1], that are\n      # greater than key, to one position ahead\n      # of their current position\n    while (j>=0 and arr[j]>last):\n        arr[j+1] = arr[j]\n        j = j-1\n \n    arr[j+1]=last\n     \n# A utility function to print an array of size n\ndef printArray(arr,n):\n    for i in range(n):\n        print(arr[i],end=\" \")\n \n# Driver program to test insertion sort\narr = [12,11,13,5,6]\nn = len(arr)\ninsertionSortRecursive(arr, n)\nprintArray(arr, n)",
@@ -85,7 +85,7 @@ var data = [{
 			"python",
 			"recursive"
 		],
-		"userId": "AnotherUser"
+		"userId": "EampleUserOne"
 	},
 	{
 		"code": "// C# program for implementation\n// of Bubble Sort\nusing System;\n \nclass GFG\n{\n    static void bubbleSort(int []arr)\n    {\n        int n = arr.Length;\n        for (int i = 0; i < n - 1; i++)\n            for (int j = 0; j < n - i - 1; j++)\n                if (arr[j] > arr[j + 1])\n                {\n                    // swap temp and arr[i]\n                    int temp = arr[j];\n                    arr[j] = arr[j + 1];\n                    arr[j + 1] = temp;\n                }\n    }\n \n    /* Prints the array */\n    static void printArray(int []arr)\n    {\n        int n = arr.Length;\n        for (int i = 0; i < n; ++i)\n            Console.Write(arr[i] + \" \");\n        Console.WriteLine();\n    }\n \n    // Driver method\n    public static void Main()\n    {\n        int []arr = {64, 34, 25, 12, 22, 11, 90};\n        bubbleSort(arr);\n        Console.WriteLine(\"Sorted array\");\n        printArray(arr);\n    }\n \n}",
@@ -103,7 +103,7 @@ var data = [{
 			"list",
 			"testing"
 		],
-		"userId": "AnotherUser"
+		"userId": "EampleUserOne"
 	},
 	{
 		"code": "// Our data object\nvar data = { a: 1 }\n\n// The object is added to a Vue instance\nvar vm = new Vue({\n  data: data\n})\n\n// Getting the property on the instance\n// returns the one from the original data\nvm.a == data.a // => true\n\n// Setting the property on the instance\n// also affects the original data\nvm.a = 2\ndata.a // => 2\n\n// ... and vice-versa\ndata.a = 3\nvm.a // => 3",
@@ -144,7 +144,7 @@ var data = [{
 		"tags": [
 			"css"
 		],
-		"userId": "AnotherUser"
+		"userId": "EampleUserOne"
 	},
 	{
 		"code": "#include <fstream>\n#include <iostream>\n#include <string>\n#include <vector>\n#include <math.h>\n#include <locale> \n#include <stdio.h>\n\nusing namespace std;\n\nint Matt = 0;\n\n//=======================================================================================================================================================================================================\n\n// Intro and players\nint Intro(){\n    \n    cout << endl <<\"WHEEL OF FORTUNE!!\\nLadies and Gentleman your host Matthew Schlager!!\\n\\nHello and Welcome to the WHEEL OF FORTUNE.\\n(**When playing this game please enter all answers in capital Letters)\\nBefore we begin how many people will be playing today (2 - 4)?\" << endl;\n    \n    bool error = false;\n    int NumPlayers = 0;\n    \n    while (!error){\n    \n        cin >> NumPlayers;\n    \n        if ((NumPlayers < 2) || (NumPlayers > 4)){\n            error = false;\n            cout << \"That is too many players (2 - 4). Please re-enter the number of players.\" << endl;\n        }\n    \n        else{\n            error = true;\n        }\n    \n    }\n    \n    return NumPlayers;\n}\n\n//=======================================================================================================================================================================================================\n//Number of Games to be played\n\nint NumGames(){\n\n    cout << endl << \"How many games will we be playing today?\" << endl;\n\n    int games = 0;\n    cin >> games;\n    \n    return games;\n    \n}\n\n//=======================================================================================================================================================================================================\n//Gets puzzle from textfile puzzle.txt\n\nstring getPuzzle(string &catagory){\n    \n    ifstream puzzles(\"puzzle.txt\");\n    \n    int randomNum = rand() % 100 + 1, numOfLines = 0;\n    string ActualPuzzle, line;\n\n\n    while(getline(puzzles, line)){\n        \n        ++numOfLines;\n\n        if(numOfLines == randomNum){\n            \n            ActualPuzzle = line;\n            \n        }\n    \n    }\n    \n    //puzzle.txt is orginized by catagory, this shows catagory\n    if ((randomNum >= 1) && (randomNum <= 10))\n        catagory = \"Rhyme Time\";\n    else if ((randomNum >= 11) && (randomNum <= 20))\n        catagory = \"Quotes\";\n    else if ((randomNum >= 21) && (randomNum <= 30))\n        catagory = \"Fictional Characters\";\n    else if ((randomNum >= 31) && (randomNum <= 40))\n        catagory = \"Landmarks\";\n    else if ((randomNum >= 41) && (randomNum <= 50))\n        catagory = \"Megaword\";\n    else if ((randomNum >= 51) && (randomNum <= 60))\n        catagory = \"Place\";\n    else if ((randomNum >= 61) && (randomNum <= 70))\n        catagory = \"TV Show\";\n    else if ((randomNum >= 71) && (randomNum <= 80))\n        catagory = \"Song\";\n    else if ((randomNum >= 81) && (randomNum <= 90))\n        catagory = \"Song Lyrics\";\n    else \n        catagory = \"Slogans\";\n        \n    return ActualPuzzle;\n    \n}\n\n//=======================================================================================================================================================================================================\n//setting up the string used for displaying a board of /'s\n\nstring displayX(string Puzzle){\n    \n    string DisplayX = Puzzle;\n    \n    for (int l = 0; l <= Puzzle.length(); l++){\n        \n        if (Puzzle[l] >= 65 && Puzzle[l] <= 90){\n            \n            DisplayX[l] = 92;\n            \n        }\n        \n    }\n    \n    return DisplayX;\n    \n}\n\n//=======================================================================================================================================================================================================\n//displaying the string DisplayX\n\nvoid Display(string DisplayX, string catagory){\n    \n    cout << \"The Catagory for this puzzle is \" << catagory <<endl << \"------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\" << endl << \"| \";\n    \n    for (int i = 0; i < DisplayX.size(); i++){\n        \n        cout << \" \" << DisplayX[i] << \" |\";\n    \n    }\n    \n    cout << endl << \"------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\" << endl;\n\n    \n}\n\n//=======================================================================================================================================================================================================\n//spinning the wheel\n\nvoid Spin(int &spinVal){\n\n    cout << endl;\n    \n    if ((rand() % 100 + 1) == 32){\n        \n        spinVal = 1000000;\n        cout << \"OH MY WORD!! You landed on $1,000,000\";\n        \n    }\n    else{\n        \n        int randomNum = rand() % 19 + 1;\n        \n        if (randomNum == 11){\n            \n            spinVal = 0;\n            cout << \"UH OH. Looks like you landed on Bankrupt, which brings you down to 0.\" << endl;\n        \n        }\n        else{\n            \n            spinVal = randomNum * 100;\n            cout << \"Nicely Done! You landed on $\" << spinVal;\n        \n        }\n    \n    }\n\n}\n\n//=======================================================================================================================================================================================================\n\nstring removeSpaces(string remove_from_me) {\n    \n    int k = remove_from_me.length();\n\t\n\tfor (int i = 0; i <= k; i++) {\n\t\t\n\t\tif (isspace(remove_from_me[i])) {\n\t\t\t\n\t\t\tremove_from_me.erase(remove_from_me.begin() + i);\n\t\t\n\t\t}\n\t\n\t}\n\t\n\treturn remove_from_me;\n\n}\n\nvoid GameOver(string Puzzle,string UserGuess, string PlayerNames, string catagory){\n    \n    Puzzle = removeSpaces(Puzzle);\n    UserGuess = removeSpaces(UserGuess);\n    \n    int x = 0;\n    \n    for (int i = 0; i < Puzzle.length();i++){\n        \n        if (Puzzle[i] == UserGuess[i]){\n            \n            x += 1;\n        \n        }\n    \n    }   \n\n    if (x == Puzzle.length()){\n        \n        cout << endl << \"Congrats!! \" << PlayerNames << \" you solved the puzzle!!\";\n        Matt = 88;\n    \n    }\n    else\n        Matt = 66;\n\n}\n\n//=======================================================================================================================================================================================================\n\nint Solve (string Puzzle, string name, string catagory){\n    \n    cout << \"You have elected to solve the puzzle, type it out exactly as it appears (include all characters)\" << endl;\n    \n    char UserGuess[Puzzle.length()];\n    cin.ignore();\n    cin.getline(UserGuess, Puzzle.length());\n\n    GameOver(Puzzle,UserGuess,name,catagory);\n    \n    if (Matt != 88){\n        \n        cout << \"Sorry looks like that was wrong.\";\n        return 66;  \n    \n    }\n    else\n        return 88;\n\n}\n\n//=======================================================================================================================================================================================================\n\nvoid Choice (string &alpha,char &Letter){\n    \n    cout << endl << \"You have elected to select a Letter, below are the avaible letters.\" << endl;\n    \n    for (int i = 0; i <= alpha.length();i++){\n        \n        cout << \"| \" << alpha[i] << \" \";\n    \n    }\n    \n    cin >> Letter;\n    \n    for (int z = 0; z <= alpha.length(); z++){\n    \n        if (alpha[z] == Letter)\n            alpha[z] = 92;\n    \n    }\n\n}\n\n//=======================================================================================================================================================================================================\n\nvoid checkletter(char Letter,string &Puzzle,string &DisplayX,int &counter){\n    \n    for (int z = 0; z <= Puzzle.length(); z++){\n        \n        if (Puzzle[z] == Letter){\n            \n            DisplayX[z] = Letter;\n            counter += 1;\n        \n        }\n        \n    }\n\n}\n\n//=======================================================================================================================================================================================================\n\nvoid buyVowels(int &PlayerScore, string PlayerNames, string &vowel, int &counter, string Puzzle, string &DisplayX){\n    \n    cout << PlayerNames << \" you have elected to buy a vowel, lets look at the vowels on the board.\" << endl << endl;\n    \n    for (int i = 0; i <= vowel.size(); i++){\n    \n        cout << \"| \" << vowel[i] << \" \";\n    \n    }\n    \n    cout << endl;\n    \n    char vowelselect;\n    cin >> vowelselect;\n    \n    counter = 0;\n    checkletter(toupper(vowelselect),Puzzle,DisplayX,counter);\n    \n    for (int z = 0; z <= vowel.length(); z++){\n    \n        if (vowel[z] == toupper(vowelselect)){\n    \n            vowel[z] = 92;\n            \n        }\n    \n    }\n    \n    if (!(counter == 0)){\n        \n        PlayerScore -= counter * 200;\n        \n        cout << endl << \"Well \" << PlayerNames << \" it looks like there were \" << counter << \" \" << vowelselect << \"'s\" << endl << \"That will cost you $\" << counter * 200 << endl;\n        counter = 0;\n        Matt = 77;\n        \n    }\n    else{\n        \n        cout << endl << \"Well \" << PlayerNames << \" it looks like there were no \" << vowelselect << \"'s\" << endl;\n        Matt = 66;\n        \n    }\n\n}\n\n//=======================================================================================================================================================================================================\n\nmain(){\n    \n    // Intro and Number Player\n    int NumPlayers = Intro();\n    \n    // Player Names and Setting up scores\n    vector<string> PlayerNames;\n    vector<int> PlayerScore;\n    \n    string Name ;\n    cout << endl << \"That's Great!! Let's get to names.\" << endl;\n    \n    for (int i = 1; i <= NumPlayers; i++){\n        \n        cout << \"Please Enter the Name of Player \" << i << endl;\n        cin >> Name;\n        PlayerNames.push_back(Name);\n        PlayerScore.push_back(0);\n    \n    }\n    \n    int numGames = NumGames();\n    \n    // Let the games begin\n    for (int j = 1; j <= numGames; j++){\n        \n        //Getting a catagory and puzzle\n        string catagory;\n        string Puzzle = getPuzzle(catagory);\n        \n        //Displaying a hidden puzzle\n        string DisplayX = displayX(Puzzle);\n        \n        string alpha = \"BCDFGHJKLMNPQRSTVWXYZ\", vowel = \"AEIOU\";\n        int vowels = 0, x = 1, spinVal = 0, decide = 0;\n        \n        for (int y = 0; y < 2;){\n            \n            for (int k = 0;k <= NumPlayers - 1; k++){\n                \n                cout << endl << PlayerNames[k] << \" let's take a look at the puzzle!\" << endl;\n                \n                Display(DisplayX,catagory);\n                \n                decide = 0;\n                cout << endl << PlayerNames[k] << \" would you like to spin the wheel(press 1) or solve(press 2)?\";\n                cin >> decide;\n                \n                if (decide == 1)\n                    Spin(spinVal);\n                \n                else{\n                \n                    Matt = Solve(Puzzle,PlayerNames[k], catagory);\n                \n                    if (Matt == 66)\n                        goto End1;\n                    if (Matt == 88)\n                        goto End2;\n                    \n                }\n                \n                if (!(spinVal == 0)){\n                    \n                    char Letter ;\n                    Choice(alpha,Letter);\n                    int counter = 0;\n                    checkletter(Letter,Puzzle,DisplayX,counter);\n                    \n                    if (!(counter == 0)){\n                        \n                        cout << endl << \"Well \" << PlayerNames[k] << \" it looks like there were \" << counter << \" \" << Letter << \"'s\" << endl;\n                        PlayerScore[k] += spinVal * counter;\n                        GameOver(Puzzle,DisplayX,PlayerNames[k],catagory);\n                    \n                        if (Matt == 88)\n                            goto End2;\n                        \n                        End: \n                        Matt = 0; \n                    \n                        if (vowels <= 5){\n                    \n                            cout << \"This brings your total up to $\" << PlayerScore[k] << endl << endl << PlayerNames[k] << \" would you like spin again(press 1) or buy a vowel(press 2)?\";\n                            \n                            int zz = 0;\n                            cin >> zz;\n                            \n                            if (zz == 1){\n                    \n                                k = k - 1;\n                    \n                            }\n                    \n                            else if (zz == 2) {\n                    \n                                counter = 0;\n                                buyVowels(PlayerScore[k],PlayerNames[k],vowel,counter,Puzzle,DisplayX);\n                                vowels = vowels + 1;\n                    \n                                if (Matt == 77)\n                                    goto End;\n                    \n                                GameOver(Puzzle,DisplayX,PlayerNames[k],catagory);\n                                    \n                                cout << \"This brings your total up to $\" << PlayerScore[k] << endl << endl;\n                                \n                                if (Matt == 88)\n                                    goto End2;\n                                \n                                if (Matt == 66)\n                                    goto End1;\n                    \n                            }\n                    \n                        }\n                    \n                        else{\n                    \n                            cout << \"This brings your total up to $\" << PlayerScore[k] << endl << endl;\n                            k = k - 1;\n                    \n                        }\n                    \n                    }\n                    \n                    else\n                        cout << \"OH, looks like there are no \" << Letter << \"'s\" << endl;\n                \n                }\n                \n                End1: \n                Matt = 0;\n                \n                if(k == NumPlayers - 1){\n                    k = -1;\n                \n                }\n            \n            }\n            \n            if (Matt = 100){\n            \n                End2:\n                Matt = 0;\n                cout << endl << endl << \"The scores after this round are below.\" << endl;\n            \n                for (int q = 0; q <= NumPlayers - 1; q++){\n            \n                    cout << PlayerNames[q] << \": $\" << PlayerScore[q] << endl;\n                    y = 4;\n        \n                }\n        \n            }\n        \n        }\n\n    }\n    \n    cout << endl <<\"Congrats! You have finished the game! I hope you had fun and we will see you next time.\\nI'm Matthew Schlager and this has been WHEEL OF FORTUNE\";\n    \n}",
@@ -175,7 +175,7 @@ var data = [{
 			"string",
 			"visual-studio"
 		],
-		"userId": "MatthewSchlager"
+		"userId": "EampleUserTwo"
 	},
 	{
 		"code": "/* C program for Merge Sort */\n#include <stdio.h>\n#include <stdlib.h>\n  \n// Merges two subarrays of arr[].\n// First subarray is arr[l..m]\n// Second subarray is arr[m+1..r]\nvoid merge(int arr[], int l, int m, int r)\n{\n    int i, j, k;\n    int n1 = m - l + 1;\n    int n2 = r - m;\n  \n    /* create temp arrays */\n    int L[n1], R[n2];\n  \n    /* Copy data to temp arrays L[] and R[] */\n    for (i = 0; i < n1; i++)\n        L[i] = arr[l + i];\n    for (j = 0; j < n2; j++)\n        R[j] = arr[m + 1 + j];\n  \n    /* Merge the temp arrays back into arr[l..r]*/\n    i = 0; // Initial index of first subarray\n    j = 0; // Initial index of second subarray\n    k = l; // Initial index of merged subarray\n    while (i < n1 && j < n2) {\n        if (L[i] <= R[j]) {\n            arr[k] = L[i];\n            i++;\n        }\n        else {\n            arr[k] = R[j];\n            j++;\n        }\n        k++;\n    }\n  \n    /* Copy the remaining elements of L[], if there\n    are any */\n    while (i < n1) {\n        arr[k] = L[i];\n        i++;\n        k++;\n    }\n  \n    /* Copy the remaining elements of R[], if there\n    are any */\n    while (j < n2) {\n        arr[k] = R[j];\n        j++;\n        k++;\n    }\n}\n  \n/* l is for left index and r is right index of the\nsub-array of arr to be sorted */\nvoid mergeSort(int arr[], int l, int r)\n{\n    if (l < r) {\n        // Same as (l+r)/2, but avoids overflow for\n        // large l and h\n        int m = l + (r - l) / 2;\n  \n        // Sort first and second halves\n        mergeSort(arr, l, m);\n        mergeSort(arr, m + 1, r);\n  \n        merge(arr, l, m, r);\n    }\n}\n  \n/* UTILITY FUNCTIONS */\n/* Function to print an array */\nvoid printArray(int A[], int size)\n{\n    int i;\n    for (i = 0; i < size; i++)\n        printf(\"%d \", A[i]);\n    printf(\"\\n\");\n}\n  \n/* Driver code */\nint main()\n{\n    int arr[] = { 12, 11, 13, 5, 6, 7 };\n    int arr_size = sizeof(arr) / sizeof(arr[0]);\n  \n    printf(\"Given array is \\n\");\n    printArray(arr, arr_size);\n  \n    mergeSort(arr, 0, arr_size - 1);\n  \n    printf(\"\\nSorted array is \\n\");\n    printArray(arr, arr_size);\n    return 0;\n}",
@@ -199,7 +199,7 @@ var data = [{
 		"tags": [
 
 		],
-		"userId": "MatthewSchlager"
+		"userId": "EampleUserTwo"
 	},
 	{
 		"code": "#pragma once\n#include <iostream>\nusing namespace std;\n\ntemplate <class T> class Node {\nprivate:\n\npublic:\n\n\tT* data;\n\tNode * next;\n\tNode() {}\n\tNode(T* input) {\n\t\tdata = input;\n\t}\n\t~Node() {\n\t\tdata = nullptr;\n\t}\n};\n\ntemplate <class T>\nclass LinkedList {\nprivate:\n\n\tNode<T> * head;\n\tint length ;\n\tNode<T> * current ;\n\npublic:\n\n\tLinkedList() {\n\t\thead = nullptr;\n\t\tlength = 0;\n\t\tcurrent = nullptr;\n\t}\n\n\tvoid AddItem(T* item);\n\tT * GetItem(T* item);\n\tbool IsInList(T* item);\n\tT * Find(T* item);\n\tbool IsEmpty();\n\tint Size();\n\tT * SeeNext();\n\tT * SeeAt(int index);\n\tvoid Reset();\n\tvoid Print();\n\n\t~LinkedList() {\n\t\tfor (int i = 0; i < length; i++) {\n\t\t\tNode<T> * temp = head;\n\t\t\thead = head->next;\n\t\t\tdelete temp;\n\t\t}\n\t\tlength = 0;\n\t}\n};\n\n\ntemplate <class T>\nvoid LinkedList<T>::AddItem(T * item) {\n\tlength++;\n\tNode<T> * adder = new Node<T>(item);\n\tif (head == nullptr) {\n\t\thead = adder;\n\t\tcurrent = head;\n\t}\n\telse {\n\t\tNode<T> * temp = head;\n\t\twhile (temp->next != nullptr) {\n\t\t\ttemp = temp->next;\n\t\t}\n\t\ttemp->next = adder;\n\t}\n\t//Print();\n}\n\ntemplate <class T>\nT* LinkedList<T>::GetItem(T* item) {\n\tif (head == nullptr) {\n\t\treturn nullptr;\n\t}\n\n\tif (head->data->operator==(item)) {\n\t\tNode<T> * temp = head;\n\t\thead = head->next;\n\t\tT* RetVal = temp->data;\n\t\tdelete temp; // or temp->next = NULL;\n\t\tlength--;\n\t\treturn RetVal;\n\t}\n\n\tNode<T> * Ptr = head;\n\twhile (Ptr->next != nullptr) {\n\t\tif (Ptr->next->data->operator==(item)) {\n\t\t\tNode<T> * temp = Ptr->next;\n\t\t\tPtr->next = Ptr->next->next;\n\t\t\tT* RetVal = temp->data;\n\t\t\tdelete temp; // or temp->next = NULL;\n\t\t\t//delete Ptr;\n\t\t\tlength--;\n\t\t\treturn RetVal;\n\t\t}\n\t\tPtr = Ptr->next;\n\t}\n\treturn nullptr;\n}\n\ntemplate <class T>\nbool LinkedList<T>::IsInList(T* item) {\n\tNode<T> * Ptr = head;\n\tif (Ptr == nullptr)\n\t\treturn false;\n\tif (Ptr->data->operator==(item)) {\n\t\treturn true;\n\t}\n\twhile (Ptr->next != nullptr) {\n\t\tif (Ptr->next->data->operator==(item)) {\n\t\t\treturn true;\n\t\t}\n\t\tPtr = Ptr->next;\n\t}\n\treturn false;\n}\n\ntemplate <class T>\nT * LinkedList<T>::Find(T* item) {\n\t\n\tNode<T> * Ptr = head;\n\tif (Ptr->data->operator==(item)) {\n\t\treturn Ptr->data;\n\t}\n\twhile (Ptr->next != nullptr) {\n\t\tif (Ptr->next->data->operator==(item)) {\n\t\t\treturn Ptr->next->data;\n\t\t}\n\t\tPtr = Ptr->next;\n\t}\n\treturn nullptr;\n}\n\ntemplate <class T>\nbool LinkedList<T>::IsEmpty() {\n\tif (head == nullptr) {\n\t\treturn true;\n\t}\n\treturn false;\n}\n\ntemplate <class T>\nint LinkedList<T>::Size() {\n\treturn length;\n}\n\ntemplate <class T>\nT* LinkedList<T>::SeeNext() {\n\tif (head == nullptr) {\n\t\t//\t\tthrow EmptyListError;\n\t}\n\tNode<T> * temp = current;\n\tthis->current = this->current->next;\n\treturn temp->data;\n}\n\ntemplate <class T>\nT* LinkedList<T>::SeeAt(int index) {\n\tif (index > length) {\n\t\treturn nullptr;\n\t}\n\tNode<T> * temp;\n\ttemp = this->head;\n\n\tfor (int i = 0; i < index ; i++) {\n\t\tif (temp->next != nullptr) {\n\t\t\ttemp = temp->next;\n\t\t}\n\t}\n\n\t//this->current = temp->next;\n\tif (temp == nullptr) {\n\t\treturn nullptr;\n\t}\n\n\treturn temp->data;\n}\n\ntemplate <class T>\nvoid LinkedList<T>::Reset() {\n\tfor (int i = 0; i < length; i++) {\n\t\tNode<T> * temp = head;\n\t\thead = head->next;\n\t\tdelete temp;\n\t}\n\tlength = 0;\n}\n\ntemplate <class Part>\nvoid LinkedList<Part>::Print() {\n\tNode<Part> * temp = head;\n\tPart * b;\n\tfor (int i = 0; i < length; i++) {\n\t\tb = temp->data;\n\t\tb->Print();\n\t\ttemp = temp->next;\n\t\tif (i != length - 1)\n\t\t\tcout << \" /\\\\ \" << endl << \" || \" << endl;\n\t}\n}\n\n",
@@ -293,7 +293,7 @@ var data = [{
 			"loops"
 		],
 		"voteCount": 0,
-		"userId": "aDifferentUser",
+		"userId": "EampleUserThree",
 		"creationDate": "2022-03-21T20:03:10.3042814Z",
 		"comments": [
 
@@ -319,7 +319,7 @@ var data = [{
 			"python2.7"
 		],
 		"voteCount": 0,
-		"userId": "aDifferentUser",
+		"userId": "EampleUserThree",
 		"creationDate": "2022-03-21T20:06:23.1901275Z",
 		"comments": [
 
@@ -343,7 +343,7 @@ var data = [{
 			"loops"
 		],
 		"voteCount": 0,
-		"userId": "aDifferentUser",
+		"userId": "EampleUserThree",
 		"creationDate": "2022-03-21T20:07:52.6190211Z",
 		"comments": [
 
@@ -369,7 +369,7 @@ var data = [{
 			"multithreading"
 		],
 		"voteCount": 0,
-		"userId": "aDifferentUser",
+		"userId": "EampleUserThree",
 		"creationDate": "2022-03-21T20:09:46.8261064Z",
 		"comments": [
 
@@ -397,7 +397,7 @@ var data = [{
 			"google-maps"
 		],
 		"voteCount": 0,
-		"userId": "aDifferentUser",
+		"userId": "EampleUserThree",
 		"creationDate": "2022-03-21T20:11:24.5082433Z",
 		"comments": [
 
@@ -420,7 +420,7 @@ var data = [{
 			"javascript"
 		],
 		"voteCount": 0,
-		"userId": "aDifferentUser",
+		"userId": "EampleUserThree",
 		"creationDate": "2022-03-21T20:14:11.8978535Z",
 		"comments": [
 
@@ -442,7 +442,7 @@ var data = [{
 			"recursive"
 		],
 		"voteCount": 0,
-		"userId": "aDifferentUser",
+		"userId": "EampleUserThree",
 		"creationDate": "2022-03-21T20:17:37.5645577Z",
 		"comments": [
 
@@ -463,7 +463,7 @@ var data = [{
 			"algorithm"
 		],
 		"voteCount": 0,
-		"userId": "aDifferentUser",
+		"userId": "EampleUserThree",
 		"creationDate": "2022-03-21T20:19:12.82115Z",
 		"comments": [
 
@@ -486,7 +486,7 @@ var data = [{
 			"insertion"
 		],
 		"voteCount": 0,
-		"userId": "aDifferentUser",
+		"userId": "EampleUserFour",
 		"creationDate": "2022-03-21T20:20:31.2299736Z",
 		"comments": [
 
@@ -506,7 +506,7 @@ var data = [{
 
 		],
 		"voteCount": 0,
-		"userId": "aDifferentUser",
+		"userId": "EampleUserFour",
 		"creationDate": "2022-03-21T20:21:42.8621651Z",
 		"comments": [
 
@@ -518,20 +518,22 @@ var data = [{
 ];
 
 _.forEach(data, (s) => {
-	$.ajax({
-		url: document.location.origin + "/codebase/createCodeblock",
-		contentType: "application/json; charset=utf-8",
-		type: "POST",
-		data: JSON.stringify({
-			"userId": s.userId,
-			"title": s.title,
-			"isPublic": s.isPublic,
-			"language": s.language,
-			"description": s.description,
-			"tags": s.tags,
-			"code": s.code
-		})
-	});
+	setTimeout(() => {
+		$.ajax({
+			url: document.location.origin + "/codebase/createCodeblock",
+			contentType: "application/json; charset=utf-8",
+			type: "POST",
+			data: JSON.stringify({
+				"userId": s.userId,
+				"title": s.title,
+				"isPublic": s.isPublic,
+				"language": s.language,
+				"description": s.description,
+				"tags": s.tags,
+				"code": s.code
+			})
+		});
+	}, 2000);
 });
 
 /* Break */
@@ -573,114 +575,35 @@ _.forEach(newData, (s) => {
 /* Break */
 
 var comments = [
-	"A LOCKET IN YOUR POCKET",
-	"A SNAIL AND A WHALE",
-	"AFTER DARK",
-	"ALONG CAME A SPIDER AND SAT DOWN BESIDE HER",
-	"AN ATTITUDE OF GRATITUDE",
-	"AN OLDIE BUT A GOODIE",
-	"ANTS IN YOUR PANTS",
-	"APRIL SHOWERS BRING MAY FLOWERS",
-	"AS SNUG AS A BUG IN A RUG",
-	"RAPUNZEL RAPUNZEL LET DOWN YOUR HAIR",
-	"REMEMBER THE ALAMO",
-	"ROSEBUD",
-	"SCOTTY BEAM ME UP",
-	"SHE GAVE THEM SOME BROTH WITHOUT ANY BREAD",
-	"SHE SELLS SEASHELLS BY THE SEASHORE",
-	"SHOW ME THE MONEY!",
-	"SIMPLE SIMON MET A PIEMAN",
-	"SNAP OUT OF IT!",
-	"SWOON I'LL CATCH YOU",
-	"A DAMSEL IN DISTRESS",
-	"A GIANT ROBOT",
-	"A HOWLING WEREWOLF",
-	"A KNIGHT IN SHINING ARMOR",
-	"A PHANTOM HOLDING A SICKLE",
-	"A VAMPIRE FREAKING OUT AT A RAY OF SUNLIGHT",
-	"ABOMINABLE SNOWMAN",
-	"ACE VENTURA",
-	"ACHILLES",
-	"AGAMEMNON",
-	"THE LIBRARY OF CONGRESS",
-	"THE LINCOLN MEMORIAL",
-	"THE LION MONUMENT",
-	"THE LONDON PALLADIUM",
-	"THE LOUVRE MUSEUM",
-	"THE MATTERHORN",
-	"THE METROPOLITAN MUSEUM OF ART",
-	"THE MILLENNIUM BRIDGE",
-	"THE MOB MUSEUM",
-	"THE MUSEUM OF ITALIAN ART",
-	"AMBIVALENCE",
-	"APERITIF",
-	"CHRYSANTHEMUM",
-	"CIRCUMFERENCE",
-	"COGNIZANT",
-	"COMMENDATION",
-	"CONTORTIONIST",
-	"COPACETIC",
-	"ENTREPRENEUR",
-	"EROTICISM",
-	"DOUGLAS WYOMING",
-	"DOVER DELAWARE",
-	"DRESDEN GERMANY",
-	"DUBLIN BAY",
-	"DUBLIN IRELAND",
-	"DUBUQUE IOWA",
-	"DULUTH",
-	"DULUTH MINNESOTA",
-	"DUNDEE SCOTLAND",
-	"DURANGO",
-	"THROUGH THE WORMHOLE WITH MORGAN FREEMAN",
-	"THE TONIGHT SHOW STARRING JIMMY FALLON",
-	"NBC NIGHTLY NEWS WITH BRIAN WILLIAMS",
-	"THE REAL HOUSEWIVES OF BEVERLY HILLS",
-	"LAW AND ORDER SPECIAL VICTIMS UNIT",
-	"AMERICA'S FUNNIEST HOME VIDEOS",
-	"HARVEY BIRDMAN ATTORNEY AT LAW",
-	"LATE SHOW WITH DAVID LETTERMAN",
-	"LAW & ORDER SPECIAL VICTIMS UNIT",
-	"LAW & ORDER: SPECIAL VICTIMS UNIT",
-	"UNFORGETTABLE",
-	"PHILADELPHIA FREEDOM",
-	"SUBTERRANEAN HOMESICK BLUES",
-	"SUPERSTITION",
-	"EVERYTHING'S COMING UP ROSES",
-	"TALLAHASSEE LASSIE",
-	"CALIFORNIA DREAMIN'",
-	"CAPPUCCINO BAR",
-	"EVERYBODY'S TALKIN'",
-	"EVERYTHING I DO I DO IT FOR YOU",
-	"HERE A QUACK THERE A QUACK EVERYWHERE A QUACK QUACK",
-	"HAVE A YABBA-DABBA-DOO TIME A SABBATICAL DOO TIME",
-	"WE'RE GONNA ROCK ROCK ROCK 'TIL THE BROAD DAYLIGHT",
-	"I WRITE THE SONGS THAT MAKE THE WHOLE WORLD SING",
-	"THEY SAY THE NEON LIGHTS ARE BRIGHT ON BROADWAY",
-	"U MAKE MY LIFE COMPLETE V MEANS YOU'RE VERY SWEET",
-	"A SPOONFUL OF SUGAR HELPS THE MEDICINE GO DOWN",
-	"FAIRY TALES CAN COME TRUE IT CAN HAPPEN TO YOU",
-	"JINGLE BELLS JINGLE BELLS JINGLE ALL THE WAY",
-	"JUST LIKE A PICTURE PRINT BY CURRIER AND IVES",
-	"DOGS RULE",
-	"BETTER SOUND THROUGH RESEARCH",
-	"THINK DIFFERENT",
-	"LIFE GETS EASIER",
-	"LIVE CLARITIN CLEAR",
-	"STAY CLARITIN CLEAR",
-	"SUBWAY EAT FRESH",
-	"THE DIAMOND STORE",
-	"AMERICA RUNS ON DUNKIN'",
-	"BECAUSE YOU'RE WORTH IT"
+	"Vitula biviella is a species of snout moth in the genus Vitula. It was described by Zeller in 1848. It is found in most of Europe, except Ireland and the southern part of the Balkan Peninsula.[2] It is only recently present in Great Britain. The first records were noted in 1997 and 1998 from Kent and the species now seems to have established small breeding populations in both Kent and Suffolk.[3]",
+	"Grant Bond was born and raised in Kansas City, Kansas. His love for art was a predominate fixture in his youth and early adult life due to the support and influence of his grandmother. He studied under Russian painter Sergei Davydov (artist) for many years. Bond has credited comic creator Ande Parks for personally sparking an early interest in creating comics. He left the creative world behind to successfully manage a business for most of the 1990s. In late 2006 he returned to comics with his first book Revere: Revolution in Silver originally published with Alias Enterprises. As a relative newcomer to comics, Bond's animation-influenced art style has already amassed a heavy fan base.",
+	"Dihydrothiepine may refer to several isomeric chemical compounds",
+	"Casas de Pedro Barba, or simply Pedro Barba, is a small community of summer residences on the island of La Graciosa, Canary Islands, Spain. Its population, as of 1 January 2018 and according to the Spanish Statistical Institute, is of 3 inhabitants.[1] It is part of the municipality of Teguise on the neighbouring island of Lanzarote. There are no asphalted roads on La Graciosa; a dirt track connects the settlement to the only other inhabited town on the island, Caleta de Sebo, from which a regular ferry service is offered to Lanzarote.",
+	"Rosenergoatom (Russian: Росэнергоатом) is the Russian nuclear power station operations subsidiary of Atomenergoprom.",
+	"Bariarpur (Hindi: बरियारपुर) is a village in Munger district in Bihar state of India.",
+	"The Château d'Ivry-la-Bataille is a ruinous Norman castle in the town of Ivry-la-Bataille in the Normandy region. It is among the earliest examples of a stone donjon or keep, which would become a common feature of later Norman castles in various parts of Europe.",
+	"Notocetus is an extinct genus of river dolphin belonging to Squalodelphinidae. Known specimens have been found in Early Miocene marine deposits from Argentina, Italy and Peru.",
+	"Salto is a barrio in the municipality of Cidra, Puerto Rico. Its population in 2010 was 176.",
+	"Asparagus asparagoides, commonly known as bridal creeper, bridal-veil creeper, gnarboola, smilax or smilax asparagus, is a herbaceous climbing plant of the family Asparagaceae native to eastern and southern Africa. Sometimes grown as an ornamental plant, it has become a serious environmental weed in Australia and New Zealand.",
+	"Chuuk High School (CHS), formerly Truk High School, is a secondary school in Weno, Chuuk Lagoon, Chuuk State, Federated States of Micronesia. It is a part of the Chuuk State Department of Education.",
+	"The Burloak Canoe Club is a flatwater canoe/kayak racing club located in Oakville, Ontario. It serves the communities of Burlington and Oakville and provides a variety of canoe-based activities for local residents focusing primarily on the two disciplines of sprint canoe and sprint kayak. Burloak Canoe Club is located on Navy Flats along the banks of Sixteen Mile Creek[1] and boasts a sizable building that caters not only to sport but to special events as well.",
+	"The Indian cricket team played one One Day International against Scotland between the conclusion of the Test Series and the beginning of the ODI series against England on August 16, 2007. In what was the first ODI between the two sides, India won the rain-affected match by seven wickets.",
+	"Allan Sydney Lewis (born December 12, 1941) is a Panamanian former professional baseball player. He was an outfielder and pinch runner over parts of 6 seasons (1967–1973) with the Kansas City/Oakland Athletics. Lewis was a member of the 1972 and 1973 World Series champion Athletics. For his career he batted .207 with 1 home run and 44 stolen bases in 156 games. Lewis is one of only seven players with more career game appearances than plate appearances.",
+	"Corey Schueneman (born September 2, 1995) is an American professional ice hockey defenseman currently playing for the Montreal Canadiens of the National Hockey League (NHL).",
+	"The Monterey Bay Aquarium Research Institute (MBARI) is a private, non-profit oceanographic research center in Moss Landing, California. MBARI was founded in 1987 by David Packard, and is primarily funded by the David and Lucile Packard Foundation. Christopher Scholin serves as the institute's president and chief executive officer, managing a work force of approximately 220 scientists, engineers, and operations and administrative staff.",
+	"The team jumping competition at the 2006 FEI World Equestrian Games was held between August 29 and August 31, 2006.",
+	"Parivartan (Transformation) is a grass-roots activism organisation based in the Sundar Nagari area of New Delhi, India.[1] During the 2000s, Parivartan used Right to Information (RTI) to address citizens' grievances related to Public Distribution System (PDS), public works, social welfare schemes, income tax and electricity.",
+	"A protoconch (meaning first or earliest or original shell) is an embryonic or larval shell which occurs in some classes of molluscs, e.g., the initial chamber of an ammonite or the larval shell of a gastropod. In older texts it is also called "nucleus". The protoconch may sometimes consist of several whorls, but when this is the case, the whorls show no growth lines.",
+	"Mercedes Vecino Francés (4 February 1916 – 28 August 2004) was a Spanish film actress. She was famous as the woman who gave the first kiss in Spanish cinema."
 ];
 
-var users = ["CodeBaseDev", "AnotherUser", "MatthewSchlager", "ThatOneGuy"];
+var users = ["CodeBaseDev", "EampleUserOne", "EampleUserTwo", "ExampleUserThree", "ExampleUserFour"];
 
 _.forEach(newData, (s) => {
 	var ran = Math.random() * (5 - 1) + 1;
 	for (var i = 0; i < ran; i++) {
-		var rand = Math.random() * (95 - 1) + 1;
-		var randi = Math.random() * (4 - 1) + 1;
+		var rand = Math.random() * (19 - 0) + 0;
+		var randi = Math.random() * (4 - 0) + 0;
 
 		$.ajax({
 			url: document.location.origin + "/codebase/" + s.id + "/createComment",

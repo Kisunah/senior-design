@@ -19,7 +19,6 @@
 		let v = this;
 
 		v.getSnippet(snippetId);
-		v.getRelated(snippetId);
 
 		setTimeout(function () {
 			var textarea_editor = document.getElementById("textarea_editor");
@@ -44,7 +43,7 @@
 
 	methods: {
 
-		getSnippet: async function (id) {
+		getSnippet: function (id) {
 			let v = this;
 
 			$.ajax({
@@ -68,6 +67,8 @@
 					else {
 						v.realLanguageCode = v.snippet.language
 					}
+
+					v.getRelated(v.snippet.title);
 				},
 				error: function (error) {
 					console.log(error);
@@ -75,19 +76,21 @@
 			});
 		},
 
-		getRelated: async function (id) {
+		getRelated: function (title) {
 			let v = this;
 
 			$.ajax({
 				url: document.location.origin + "/codebase/searchCodeblocks",
 				contentType: "application/json; charset=utf-8",
 				data: JSON.stringify({
+					search: title,
 					filters: {
 						isPublic: "true"
 					}
 				}),
 				type: "POST",
 				success: function (data) {
+					data.codeblocks.shift();
 					v.relatedSnippets = data.codeblocks;
 				},
 				error: function (error) {
