@@ -1,6 +1,6 @@
 ﻿<div id="home" v-cloak>
-	<div class="container-lg" style="position: fixed;">
-		<div class="row" style="height: 88vh;">
+	<div class="container-lg">
+		<div class="row">
 			<div class="col-2">
 				<div class="card">
 					<div class="card-body">
@@ -15,7 +15,7 @@
 								<label class="btn btn-outline-primary btn-sm" :for="'tag-checkbox-' + tag">{{ tag }}</label>
 							</div>
 							<div class="mb-1" style="width: fit-content; padding-left: 0; padding-right: 10px;">
-								<button type="button" class="btn btn-outline-primary btn-sm"  v-on:click="">Clear</button>
+								<button type="button" class="btn btn-outline-primary btn-sm"  v-on:click="clearTagFilters()">Clear</button>
 							</div>
 						</div>
 					</div>
@@ -33,14 +33,14 @@
 								<label class="btn btn-outline-primary btn-sm" :for="'language-checkbox-' + language">{{ language }}</label>
 							</div>
 							<div class="mb-1" style="width: fit-content; padding-left: 0; padding-right: 10px;">
-								<button type="button" class="btn btn-outline-primary btn-sm"  v-on:click="">Clear</button>
+								<button type="button" class="btn btn-outline-primary btn-sm"  v-on:click="clearLanguageFilters()">Clear</button>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-10">
-				<div class="row hidescroll" style="overflow-y: scroll; height: 88vh;">
+				<div class="row">
 					<div class="card mb-3" v-if="searchTerm">
 						<div class="card-body">
 							<div class="row">
