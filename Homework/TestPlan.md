@@ -105,27 +105,7 @@ For Codebase, our testing plan primarily focuses on initially testing each compo
 <br>**API-T4.8**  - Functional
 <br>**API-T4.9**  - Unit Test
 
-<br>**API-T5.1**  - **API Test 5**
-<br>**API-T5.2**  - Assure the upvote API works for comments
-<br>**API-T5.3**  - Call the upVote API on a comment and check that all values are properly updated
-<br>**API-T5.4**  - Route variables: codeGuid and postType
-<br>**API-T5.5**  - 204 HTTP code
-<br>**API-T5.6**  - Normal
-<br>**API-T5.7**  - Blackbox
-<br>**API-T5.8**  - Functional
-<br>**API-T5.9**  - Unit Test
-
-<br>**API-T6.1**  - **API Test 6**
-<br>**API-T6.2**  - Assure the downvote API works for comments
-<br>**API-T6.3**  - Call the downVote API on a comment and check that all values are properly updated
-<br>**API-T6.4**  - Route variables: codeGuid and postType
-<br>**API-T6.5**  - 204 HTTP code
-<br>**API-T6.6**  - Normal
-<br>**API-T6.7**  - Blackbox
-<br>**API-T6.8**  - Functional
-<br>**API-T6.9**  - Unit Test
-
-<br>**API-T7.1**  - **API Test 7**
+<br>**API-T7.1**  - **API Test 5**
 <br>**API-T7.2**  - Assure the full text search API returns the proper results
 <br>**API-T7.3**  - Call the search API and verify returned results are the desired results
 <br>**API-T7.4**  - JSON object: search string, list of filters
@@ -220,73 +200,276 @@ For Codebase, our testing plan primarily focuses on initially testing each compo
 | S-T6 | Normal          | Blackbox          | Functional             | Unit             |
 
 ## Results
-
-### UI-T1
-
-
-
-### UI-T2
+### UI
+#### **UI-T1**
 
 
 
-### UI-T3
+#### **UI-T2**
 
 
 
-### UI-T4
+#### **UI-T3**
 
 
 
-### UI-T5
+#### **UI-T4**
 
 
 
-### UI-T6
+#### **UI-T5**
 
 
 
-### API-T1
+#### **UI-T6**
 
+### API
+ - ***Api tests were all manually done via Postman***
+#### **API-T1**
+An index was created using our createIndex API.
+```json
+POST codebaseEndpoint/codebase/createIndex
+```
 
+A codeblock was then created and successfully indexed into the database using the createCodeblock API.
+```json
+POST codebaseEndpoint/codebase/createCodeblock
+```
 
-### API-T2
+Input
+```json.
+{
+    "title": "Bubble Sort",
+    "description": "Sorting algorithm",
+    "code": "for(i = 0; i < 10; i++): print(i)",
+    "language": "python",
+    "isPublic": true,
+    "tags": ["python", "algorithm"]
+}
+```
 
+Returned a response code of 200 with a json output.
+```json
+{
+    "title": "Bubble Sort",
+    "description": "Sorting algorithm",
+    "code": "for(i = 0; i < 10; i++): print(i)",
+    "isPublic": true,
+    "tags": [
+        "python",
+        "algorithm"
+    ],
+    "codeblockGuid": "bdf719c7-b862-4170-a077-77d11bd095ec"
+}
+```
 
+#### **API-T2**
+Called the upVote API on a Codeblock to increment the vote count.
+```json
+POST codebaseEndpoint/codebase/codeblockGuid/upVote
+```
 
-### API-T3
+Returns a response code of 200 with a json output.
+```json
+{
+    "title": "Bubble Sort",
+    "description": "Sorting algorithm",
+    "code": "for(i = 0; i < 10; i++): print(i)",
+    "voteCount": 1,
+    "codeblockGuid": "bdf719c7-b862-4170-a077-77d11bd095ec"
+}
+```
 
+#### **API-T3**
+Called the downVote API on a Codeblock to increment the vote count.
+```json
+POST codebaseEndpoint/codebase/codeblockGuid/downVote
+```
 
+Returns a response code of 200 with a json output.
+```json
+{
+    "title": "Bubble Sort",
+    "description": "Sorting algorithm",
+    "code": "for(i = 0; i < 10; i++): print(i)",
+    "voteCount": -1,
+    "codeblockGuid": "bdf719c7-b862-4170-a077-77d11bd095ec"
+}
+```
 
-### API-T4
+#### **API-T4**
+Called the createComment API on a Codeblock.
+```json
+POST codebaseEndpoint/codebase/codeblockGuid/createComment
+```
 
+Input
+```json
+{
+    "comment": "This is really well implemented!"
+}
+```
 
+Returns a response code of 204 so there is no output.
+Another API was written to retrieve all codeblocks with basic filtering functionality that we can use to show that the comment has been added to the codeblock.
+```json
+POST codebaseEndpoint/codebase/getCodeblocks
+```
 
-### API-T5
+Input
+```json
+{
+    "filter": {
+        "id": "bdf719c7-b862-4170-a077-77d11bd095ec"
+    }
+}
+```
 
+Returns an array of codeblocks matching the query. In this case it is a single codeblock because of the filter for the unique ID.
+```json
+{
+    "codeblocks": [
+        {
+            "code": "for(i = 0; i < 10; i++): print(i)",
+            "id": "bdf719c7-b862-4170-a077-77d11bd095ec",
+            "title": "Bubble Sort",
+            "description": "Sorting algorithm",
+            "isPublic": true,
+            "language": "python",
+            "tags": [
+                "python",
+                "algorithm"
+            ],
+            "voteCount": -1,
+            "userId": "CodeBaseDev",
+            "creationDate": "2022-04-15T15:26:40.6586363Z",
+            "comments": [
+                {
+                    "commentString": "This is really well implemented!",
+                    "commentGuid": "3882e615-8b31-48c0-bcb1-4d7861d50843",
+                    "parentGuid": "bdf719c7-b862-4170-a077-77d11bd095ec",
+                    "userId": null,
+                    "voteCount": 0,
+                    "creationDate": "2022-04-15T15:35:27.7141914Z"
+                }
+            ],
+            "votes": [
+                {
+                    "userId": "test",
+                    "parentGuid": "bdf719c7-b862-4170-a077-77d11bd095ec",
+                    "voteGuid": "228f8f39-f5bd-4d9a-94fd-bb7085b855b8",
+                    "voteType": "u",
+                    "creationDate": "2022-04-15T15:30:20.6169778Z"
+                },
+                {
+                    "userId": "test",
+                    "parentGuid": "bdf719c7-b862-4170-a077-77d11bd095ec",
+                    "voteGuid": "aa5e02d5-5f8b-497d-8150-1589e55a92e9",
+                    "voteType": "d",
+                    "creationDate": "2022-04-15T15:31:21.0734321Z"
+                },
+                {
+                    "userId": "test",
+                    "parentGuid": "bdf719c7-b862-4170-a077-77d11bd095ec",
+                    "voteGuid": "121a1499-0796-4d92-9fca-54efa97207f9",
+                    "voteType": "d",
+                    "creationDate": "2022-04-15T15:31:22.5446563Z"
+                }
+            ]
+        }
+    ]
+}
+```
 
+#### **API-T5**
+Call the searchCodeblocks API.
+```json
+POST codebaseEndpoint/codebase/searchCodeblocks
+```
 
-### API-T6
+Input.
+```json
+{
+    "search": "sort",
+    "filters": {
+        "isPublic": "true"
+    },
+    "tags": []
+}
+```
 
+Returns an array of codeblocks matching the search and filter criteria.
+```json
+{
+    "codeblocks": [
+        {
+            "code": "for(i = 0; i < 10; i++): print(i)",
+            "id": "bdf719c7-b862-4170-a077-77d11bd095ec",
+            "title": "Bubble Sort",
+            "description": "Sorting algorithm",
+            "isPublic": true,
+            "language": "python",
+            "tags": [
+                "python",
+                "algorithm"
+            ],
+            "voteCount": -1,
+            "userId": "CodeBaseDev",
+            "creationDate": "2022-04-15T15:26:40.6586363Z",
+            "comments": [
+                {
+                    "commentString": "This is really well implemented!",
+                    "commentGuid": "3882e615-8b31-48c0-bcb1-4d7861d50843",
+                    "parentGuid": "bdf719c7-b862-4170-a077-77d11bd095ec",
+                    "userId": null,
+                    "voteCount": 0,
+                    "creationDate": "2022-04-15T15:35:27.7141914Z"
+                }
+            ],
+            "votes": [
+                {
+                    "userId": "test",
+                    "parentGuid": "bdf719c7-b862-4170-a077-77d11bd095ec",
+                    "voteGuid": "228f8f39-f5bd-4d9a-94fd-bb7085b855b8",
+                    "voteType": "u",
+                    "creationDate": "2022-04-15T15:30:20.6169778Z"
+                },
+                {
+                    "userId": "test",
+                    "parentGuid": "bdf719c7-b862-4170-a077-77d11bd095ec",
+                    "voteGuid": "aa5e02d5-5f8b-497d-8150-1589e55a92e9",
+                    "voteType": "d",
+                    "creationDate": "2022-04-15T15:31:21.0734321Z"
+                },
+                {
+                    "userId": "test",
+                    "parentGuid": "bdf719c7-b862-4170-a077-77d11bd095ec",
+                    "voteGuid": "121a1499-0796-4d92-9fca-54efa97207f9",
+                    "voteType": "d",
+                    "creationDate": "2022-04-15T15:31:22.5446563Z"
+                }
+            ]
+        },
+        {
+            "code": "for(i = 0; i < 10; i++){ console.log(i) }",
+            "id": "11a70ba3-f8c7-40e5-ba12-104e45812b30",
+            "title": "Quick Sort",
+            "description": "Sorting algorithm",
+            "isPublic": true,
+            "language": "javascript",
+            "tags": [
+                "javascript",
+                "algorithm"
+            ],
+            "voteCount": 0,
+            "userId": "CodeBaseDev",
+            "creationDate": "2022-04-15T15:48:19.0199135Z",
+            "comments": [],
+            "votes": []
+        }
+    ]
+}
+```
 
-
-### S-T1
-
-
-
-### S-T2
-
-
-
-### S-T3
-
-
-
-### S-T4
-
-
-
-### S-T5
-
-
-
-### S-T6
+### Security
+#### User login and authentication was one of the pieces that was not able to be implemented, therefore testing was not able to happen.
