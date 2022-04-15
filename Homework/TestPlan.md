@@ -218,3 +218,75 @@ For Codebase, our testing plan primarily focuses on initially testing each compo
 | S-T4 | Normal          | Blackbox          | Functional             | Unit             |
 | S-T5 | Normal          | Blackbox          | Functional             | Unit             |
 | S-T6 | Normal          | Blackbox          | Functional             | Unit             |
+
+## Results
+
+### UI-T1
+
+
+
+### UI-T2
+
+
+
+### UI-T3
+
+
+
+### UI-T4
+
+
+
+### UI-T5
+
+
+
+### UI-T6
+
+
+
+### API-T1
+
+
+
+### API-T2
+
+
+
+### API-T3
+
+
+
+### API-T4
+
+
+
+### API-T5
+
+
+
+### API-T6
+
+
+
+### S-T1
+
+
+
+### S-T2
+
+
+
+### S-T3
+
+
+
+### S-T4
+
+
+
+### S-T5
+
+
+
+### S-T6
