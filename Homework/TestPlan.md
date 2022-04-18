@@ -203,25 +203,35 @@ For Codebase, our testing plan primarily focuses on initially testing each compo
 ### UI
 #### **UI-T1**
 
-
+*[Refer to section the security section below](https://github.com/Kisunah/senior-design/blob/master/Homework/TestPlan.md#security)*
 
 #### **UI-T2**
 
-
+*[Refer to section the security section below](https://github.com/Kisunah/senior-design/blob/master/Homework/TestPlan.md#security)*
 
 #### **UI-T3**
 
+![HomePage](Images/HomePage.png)
 
+Above it can be seen that the home screen successfully loads codeblocks and filters defined within the [UI-Diagrams](https://github.com/Kisunah/senior-design/blob/master/Homework/UI-Diagrams/UI-Diagrams.md).
 
 #### **UI-T4**
 
+![CodeBlockPage](Images/CodeBlockPage.png)
 
+Above it can be seen that the codeblock screen successfully loads the selected codeblack along with a comment section and related codeblocks as defined within the [UI-Diagrams](https://github.com/Kisunah/senior-design/blob/master/Homework/UI-Diagrams/UI-Diagrams.md).
 
 #### **UI-T5**
 
+![UserPage](Images/UserPage.png)
 
+Above it can be seen that the user screen successfully loads all user posts (public and private) along with account details as defined within the [UI-Diagrams](https://github.com/Kisunah/senior-design/blob/master/Homework/UI-Diagrams/UI-Diagrams.md).
 
 #### **UI-T6**
+
+![CreatePage](Images/CreatePage.png)
+
+Above it can be seen that the create screen successfully loads and contains input fields for code, tags, title, description, and the ability to private the codeblock.
 
 ### API
  - ***Api tests were all manually done via Postman***
