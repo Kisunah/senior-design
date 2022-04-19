@@ -33,3 +33,19 @@ This semester the CodeBase development team didn't have any available hours wher
 ## Individual Work
 
 In addition to the meetings above each party recorded 30+ hours of development for their specific part. In total each member contributed over 40 hours to this project in the last semester.
+
+### Seth
+ - January: 12 hours
+   - Assisting in laying out our testing plan for Assignment #1.
+   - Initial coding of the first API controller and manager.
+   - Finish the API for inserting codeblocks into our database.
+- February: 16 hours
+   - Write the createComment and createVote APIs.
+   - Write deleteComment and removeVote APIs.
+   - Write scripts for populating the database with sample data.
+- March: 16 hours
+   - Searching codeblocks APIs
+      - Full text search of codeblocks.
+      - Get APIs for retrieving codeblocks, list of languages, and list of tags.
+   - Add validation checks for ensuring new codeblocks have a valid language and valid tags.
+   - Refactoring search APIs to ensure all filtering could be handled.
