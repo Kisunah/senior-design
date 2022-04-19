@@ -14,15 +14,15 @@ This semester the CodeBase development team didn't have any available hours wher
 ## Team Meetings (10 hours)
 
    - 1/10/22
-      - Post winter break discussion of accomplishments and status. Reviewed the ongoing work being done on the front and backend. Both still very much in there raw phases but continue to see slow consistent development.
+      - Post winter break discussion of accomplishments and status. Reviewed the ongoing work being done on the front and backend. Both still very much in their raw phases but continue to see slow consistent development. Talk about the structure of data and requirements for API.
    - 1/24/22
-      - Meeting to discuss ongoing on the backend, Seth showing the group how Elastic search works and how we will connect it to the front end. Also aided in setting it up on our machines.
+      - Meeting to discuss ongoing on the backend, Seth showing the group how Elastic search works and how we will connect it to the front end. Assisted other members of the team in setting up docker and installing images to be able to run the database locally.
    - 2/6/22
-      - Meeting to talk about what we need to provide Professor Cheng with. General updates on progress and updates to development plan.
+      - Meeting to talk about what we need to provide Professor Cheng with. General updates on progress and updates to development plan. Continuing to follow the time table we built in the fall.
    - 2/24/22
-      - Short meeting to review updated with everyone’s work.
+      - Short meeting to review updated with everyone’s work. All parties are still on track to begin merger at the beginning of March.
    - 3/14/22
-      - Discussing the ongoing integration work being done along with updates that need to be made for the front end and back end to work correctly.
+      - Discussing the ongoing integration work being done along with updates that need to be made for the front end and back end to work correctly. Planning out work that will be done over the coming spring break.
    - 3/26/22
       - Final review of poster and video before turning in to Cheng and peer-reviewal.
    - 4/10/22
@@ -31,3 +31,5 @@ This semester the CodeBase development team didn't have any available hours wher
       - Final reviewal of spring design report.
 
 ## Individual Work
+
+In addition to the meetings above each party recorded 30+ hours of development for their specific part. In total each member contributed over 40 hours to this project in the last semester.
