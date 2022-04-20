@@ -66,3 +66,17 @@ In addition to the meetings above each party recorded 30+ hours of development f
    - Integrate Seth's backend API to the UI
    - Debugging UI and JavaScript
    - Poster and Demo Video
+
+### James
+ - January: 12 hours
+   - Assisting in laying out our test plan for Assignment 1
+   - Assisting with architectural design decisions
+   - Research desirable account security and management features
+ - February: 12 hours
+   - Implementing UI for User and Codeblock web pages
+   - Communication with Matt to determine a style and feel for UI
+   - Code reviewing functionality implemented by Matt and Seth
+ - March: 16 hours
+   - Make finishing touches to the User and Codeblock web pages
+   - Quality assurance testing of the fully integrated application
+   - Assist in documenting our progress and preparing our presentation
