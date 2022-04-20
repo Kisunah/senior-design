@@ -50,35 +50,19 @@ In addition to the meetings above each party recorded 30+ hours of development f
    - Add validation checks for ensuring new codeblocks have a valid language and valid tags.
    - Refactoring search APIs to ensure all filtering could be handled.
 
-### Seth
- - January: 12 hours
-   - Assisting in laying out our testing plan for Assignment #1.
-   - Initial coding of the first API controller and manager.
-   - Finish the API for inserting codeblocks into our database.
-- February: 16 hours
-   - Write the createComment and createVote APIs.
-   - Write deleteComment and removeVote APIs.
-   - Write scripts for populating the database with sample data.
-- March: 16 hours
-   - Searching codeblocks APIs
-      - Full text search of codeblocks.
-      - Get APIs for retrieving codeblocks, list of languages, and list of tags.
-   - Add validation checks for ensuring new codeblocks have a valid language and valid tags.
-   - Refactoring search APIs to ensure all filtering could be handled.
-
 ### Matthew
  - January: 12 hours
-   - Implimenting basic layout for web interface
+   - Implementing basic layout for web interface
    - Setting up the framework of the project and web pages
    - Creating test data for web UI testing and building
    - TestPlan design
  - February: 12 hours
    - Fleshing out UI for Home and Compiling web pages
    - Communication with James to determine a style and feel for UI
-   - Begin implimenting JDoddle API for code compiling
+   - Begin implementing JDoddle API for code compiling
    - User Manual
  - March: 22 hours
    - Finish the design of Home and Compile pages
    - Integrate Seth's backend API to the UI
-   - Debugging UI and Javascript
+   - Debugging UI and JavaScript
    - Poster and Demo Video
